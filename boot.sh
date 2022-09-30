@@ -13,7 +13,7 @@ echo "--------------------------------------------------------------------------
 
     if [[ $EUID == 0 ]]; then
         while true; do
-    read -p 'The script is currently running as root, this is not recommended but you can still continue if you want? yes/no: ' input
+    read -p 'The script is currently running as root, (If this message is incorrect then you can just ignore it and type yes.) this is not recommended but you can still continue if you want? yes/no: ' input
     case $input in
         [yY]*)
             echo 'Continuing the script...'
@@ -58,9 +58,13 @@ sudo ideviceenterrecovery $var
     esac
 done
 
+sleep 3
+
+echo "if you chose to put your device into recovery mode from normal mode, please now put your device into DFU mode and type yes when your device is in DFU mode"
+echo "---------------------------------------------------------------------------------------------------------------------"
 
 while true; do
-    read -p 'Is your device in DFU mode now, and are you also in the directory where the boot files are stored? If not then please put your device in DFU mode and cd into the directory with the boot files then run the script again, if it is then type yes yes/no: ' input
+    read -p 'Is your device in DFU mode now, and are you also in the directory where the boot files are stored? If not then please put your device in DFU mode and cd into the directory with the boot files then run the script again, if it is then type yes. yes/no: ' input
     case $input in
         [yY]*)
             echo 'Continuing the script...'
@@ -77,6 +81,23 @@ done
 
 echo "Assuming the ipwndfu folder is in the home directory and that python2 is installed..."
 
+while true; do
+    read -p 'Is this correct? yes/no: ' input
+    case $input in
+        [yY]*)
+            echo 'Continuing the script...'
+            break
+            ;;
+        [nN]*)
+            echo "Please copy the ipwdnfu folder into your home directory and install python2 and then restart your device and the script"
+            echo 'Exiting...'
+            exit 1
+            ;;
+         *)
+            echo 'Invalid input' >&2
+    esac
+done
+
 echo "Running the commands for ipwndfu A8/A9..."
 
 cd ~/ipwndfu/
@@ -86,14 +107,14 @@ sudo python2.7 ./ipwndfu -p --rmsigchecks
 cd -
 
 while true; do
-    read -p 'did ipwndfu work succefully? If it did not then please type no and then please force restart your device and put it back into DFU mode and then run the script again, if did then please type yes. yes/no: ' input
+    read -p 'did ipwndfu work succefully? If it did not then please type no and then please force restart your device and put it back into DFU mode and then run the script again, or if you just want to put your device into PwnedDFU mode with sigchecks removed then you can type no and exit the script too. if it did then please type yes. yes/no: ' input
     case $input in
         [yY]*)
             echo 'Continuing the script...'
             break
             ;;
         [nN]*)
-            echo 'exiting...'
+            echo 'Exiting...'
             exit 1
             ;;
          *)
@@ -142,7 +163,7 @@ while true; do
             break
             ;;
         [nN]*)
-            echo 'exiting...'
+            echo 'Exiting...'
             exit 1
             ;;
          *)
