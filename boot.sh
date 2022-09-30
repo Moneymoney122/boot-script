@@ -98,11 +98,15 @@ while true; do
     esac
 done
 
-echo "Running the commands for ipwndfu A8/A9..."
+echo "Changing into the ipwndfu directory..."
 
 cd ~/ipwndfu/
 
+echo "Running the commands for ipwndfu A8/A9..."
+
 sudo python2.7 ./ipwndfu -p --rmsigchecks
+
+echo "Changing back into the directory with the boot files..."
 
 cd -
 
