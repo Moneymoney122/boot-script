@@ -2,8 +2,16 @@
 
 echo 'Ensure device is in pwnedDFU mode with sigchecks removed.'
 
+echo "assuming the ipwndfu folder is in the home directory and that python2 is installed"
+
+cd ~/ipwndfu/
+
+sudo python2.7 ./ipwndfu -p --rmsigchecks
+
+cd -
+
 while true; do
-    read -p 'Is your device in pwnedDFU mode with sigchecks removed? If it is not please type no and then do it, if it is then just type yes. yes/no: ' input
+    read -p 'did ipwndfu work succefully? If it did not then please type no and then please force restart your device and put it back into DFU mode and then run the script again, if did then please type yes. yes/no: ' input
     case $input in
         [yY]*)
             echo 'Continuing the script...'
