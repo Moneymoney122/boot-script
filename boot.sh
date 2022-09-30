@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 clear
-BPurple='\033[1;34m'
-echo -e "I ${BPurple}Boot script for tethered downgraded A8/A9 devices, this script is made by Moneymoney122 (@chandler_hacker on twitter)"
+ICyan='\033[0;96m'
+echo -e "${ICyan}Boot script for tethered downgraded A8/A9 devices, this script is made by Moneymoney122 (@chandler_hacker on twitter)"
 echo "---------------------------------------------------------------------------------------------------------------------"
 echo "this script is a modified version of the boot script from the sunst0rm tether downgrade tool made by mineek (https://github.com/mineek/sunst0rm)"
 echo "---------------------------------------------------------------------------------------------------------------------"
