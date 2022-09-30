@@ -2,13 +2,13 @@
 
 clear
 ICyan='\033[0;96m'
-echo -e "${ICyan}Boot script for tethered downgraded A8/A9 devices, this script is made by Moneymoney122 (@chandler_hacker on twitter)"
+echo -e "${ICyan}Boot script for tethered downgraded A8/A9 devices, this script is made by Moneymoney122 (@chandler_hacker on twitter)."
 echo "---------------------------------------------------------------------------------------------------------------------"
-echo "this script is a modified version of the boot script from the sunst0rm tether downgrade tool made by mineek (https://github.com/mineek/sunst0rm)"
+echo "this script is a modified version of the boot script from the sunst0rm tether downgrade tool made by mineek. (https://github.com/mineek/sunst0rm)"
 echo "---------------------------------------------------------------------------------------------------------------------"
-echo "verbose output is enabled by default in this script, so you will see a lot of text in the terminal"
+echo "verbose output is enabled by default in this script, so you will see a lot of text in the terminal."
 echo "---------------------------------------------------------------------------------------------------------------------"
-echo "this script will also ask for your user's password, it is completly safe and you can check the code if you want to be sure"
+echo "this script will also ask for your user's password, it is completly safe and you can check the code if you want to be sure."
 echo "---------------------------------------------------------------------------------------------------------------------"
 
     if [[ $EUID == 0 ]]; then
@@ -89,7 +89,7 @@ while true; do
             break
             ;;
         [nN]*)
-            echo "Please copy the ipwdnfu folder into your home directory and install python2 and then restart your device and then restart the script"
+            echo "Please copy the ipwdnfu folder into your home directory and install python2 (you can check if it's installed by running: "python2 --version" in the terminal (without the quotes) and then restart your device and the script"
             echo 'Exiting...'
             exit 1
             ;;
@@ -107,7 +107,7 @@ sudo python2.7 ./ipwndfu -p --rmsigchecks
 cd -
 
 while true; do
-    read -p 'did ipwndfu work succefully? If it did not then please type no and then please force restart your device and put it back into DFU mode and then run the script again, or if you just want to put your device into PwnedDFU mode with sigchecks removed then you can type no and exit the script too. if it did then please type yes. yes/no: ' input
+    read -p 'Did ipwndfu work succefully? If it did not then please type no and then please force restart your device and put it back into DFU mode and then run the script again, or if ipwndfu worked succesfully and you just want to put your device into PwnedDFU mode with sigchecks removed then you can type no and exit the script too. if it did then please type yes. yes/no: ' input
     case $input in
         [yY]*)
             echo 'Continuing the script...'
