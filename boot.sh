@@ -89,7 +89,7 @@ while true; do
             break
             ;;
         [nN]*)
-            echo "Please copy the ipwdnfu folder into your home directory and install python2 and then restart your device and the script"
+            echo "Please copy the ipwdnfu folder into your home directory and install python2 and then restart your device and then restart the script"
             echo 'Exiting...'
             exit 1
             ;;
