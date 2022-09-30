@@ -31,9 +31,7 @@ echo "--------------------------------------------------------------------------
 done
     fi
 
-echo "waiting 10 seconds for you to read the above text"
-
-sleep 10
+read -n 1 -s -r -p "Press any key to continue"
 
 clear
 
