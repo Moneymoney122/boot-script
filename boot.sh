@@ -30,7 +30,7 @@ echo "--------------------------------------------------------------------------
 done
     fi
 
-read -n 1 -s -r -p "Press any key to continue"
+read -n 1 -s -r -p "------------------------------------Press any key to continue (Or Ctrl+C to Exit)------------------------------------"
 
 clear
 
@@ -138,7 +138,7 @@ while true; do
     esac
 done
 
-echo "Assuming the ipwndfu folder is in the home directory and that python2 is installed..."
+echo "Assuming the ipwndfu and gaster folders is in the home directory and that python2 is installed..."
 
 while true; do
     read -p 'Is this correct? yes/no: ' input
@@ -148,7 +148,7 @@ while true; do
             break
             ;;
         nN]*) 
-           echo "Please copy the ipwndfu (if you do not have ipwndfu, well you probably do if you were able to tether downgrade your device. but if you don't then please download a version for your device that is capable of removing signature checks from your device while in DFU mode, though keep in mind that this script is made for A8/A9 devices, the one I recommend is: https://github.com/exploit3dguy/ipwndfu) folder into your home directory and install python2 (it is needed for ipwndfu, you can check if it's installed by running: python2 --version in the terminal.) and keep your device in DFU mode and restart the script"
+           echo "Please copy the ipwndfu (if you do not have ipwndfu/gaster, well you probably do if you were able to tether downgrade your device. but if you don't then please download a version for your device that is capable of removing signature checks from your device while in DFU mode, though keep in mind that this script is made for A8/A9 devices, the one I recommend is: https://github.com/exploit3dguy/ipwndfu and gaster can be found here: https://github.com/0x7ff/gaster) folder into your home directory and install python2 (it is needed for ipwndfu, you can check if it's installed by running: python2 --version in the terminal.) and keep your device in DFU mode and restart the script"
             echo 'Exiting...'
             exit 1
             ;;
@@ -159,7 +159,11 @@ done
 
 echo "---------------------------------------------------------------------------------------------------------------------"
 
-echo "Changing into the ipwndfu directory..."
+while true; do
+    read -p 'Do you want to use ipwndfu or gaster to pwn your device? ipwndfu/gaster: ' input
+    case $input in
+        [ipwndfu]*)
+        echo "Changing into the ipwndfu directory..."
 
 cd ~/ipwndfu/
 
@@ -170,9 +174,29 @@ sudo python2.7 ./ipwndfu -p --rmsigchecks
 echo "Changing back into the directory with the boot files..."
 
 cd -
+            break
+            ;;
+        [gaster]*) 
+           
+ cd ~/gaster/
+
+echo "Running the commands for gaster..."
+
+./gaster pwn
+
+echo "Changing back into the directory with the boot files..."
+
+cd -          
+           
+          break
+            ;;
+         *)
+            echo 'Invalid input' >&2
+    esac
+done
 
 while true; do
-    read -p 'Did ipwndfu work succefully? If it did not then please type no and then please force restart your device and put it back into DFU mode and then run the script again, or if ipwndfu worked succesfully and you just want to put your device into PwnedDFU mode with sigchecks removed then you can type no and exit the script too. if it did then please type yes. Or if you are not sure then type imunsure if you are not sure and you want to check if it worked correctly yes/no: ' input
+    read -p 'Did ipwndfu/gaster work succefully? If it did not then please type no and then please force restart your device and put it back into DFU mode and then run the script again, if one tool failed you can try the other one, or if ipwndfu/gaster worked succesfully and you just want to put your device into PwnedDFU mode with sigchecks removed then you can type no and exit the script too. if it did then please type yes. Or if you are not sure then type imunsure if you are not sure and you want to check if it worked correctly yes/no/imunsure: ' input
     case $input in
         [yY]*)
             echo 'Continuing the script...'
@@ -185,7 +209,7 @@ while true; do
           [imunsure]*)
           
            sudo irecovery -q
-          echo "If that command prints [MODE]: DFU and [PWND]: CHECKM8 and ipwndfu said patched mapping and signature checks then it was successful, if it says anything different then it most likely wasn't successful and you should force restart your device run the script again."
+          echo "If that command prints [MODE]: DFU and [PWND]: CHECKM8/[PWND]:gaster and ipwndfu said patched mapping and signature checks or gaster said Now you can boot untrusted images. then it was successful, if it says anything different then it most likely wasn't successful and you should force restart your device run the script again."
             ;;
             *)
          echo 'Invalid input' >&2
