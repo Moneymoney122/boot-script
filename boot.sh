@@ -179,7 +179,7 @@ while true; do
           [imunsure]*)
           
            sudo irecovery -q
-          echo "If that command prints [MODE]: DFU and [PWNED]: CHECKM8 and ipwndfu said patched mapping and signature checks then it was successful, if it says anything different then it most likely wasn't successful and you should force restart your device run the script again."
+          echo "If that command prints [MODE]: DFU and [PWND]: CHECKM8 and ipwndfu said patched mapping and signature checks then it was successful, if it says anything different then it most likely wasn't successful and you should force restart your device run the script again."
             ;;
             *)
          echo 'Invalid input' >&2
