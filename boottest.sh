@@ -28,9 +28,6 @@ echo "--------------------------------------------------------------------------
     esac
 done
     fi
-
-read -n 1 -s -r -p "Press any key to continue"
-
 clear
 
 while true; do
@@ -77,17 +74,17 @@ done
 
 sleep 3
 
+clear
+
 echo "if you chose to put your device into recovery mode from normal mode, please now put your device into DFU mode"
 echo "---------------------------------------------------------------------------------------------------------------------"
-
 echo "Please make sure your device is in DFU mode now, and make sure you are curently in the directory where the boot files are stored"
-
   read -p 'Do you want help entering DFU mode? yes/no: ' input
     case $input in
         [yY]*)
             echo 'Continuing to the entering DFU tutorial...'
-
 echo "Hold the power button and home button for 10 seconds..."
+
 echo "1" 
 sleep 1
 echo "2"
@@ -133,18 +130,14 @@ echo "Your device should now be in DFU mode"
 
 sudo irecovery -q
       
-"If you see "[MODE]:DFU" in the text above it means your device is successfully in DFU mode, if you don't see that it could mean your device is not in DFU mode or you computer is having trouble detecting it."
-
-          break
+echo "If you see [MODE]:DFU in the text above it means your device is successfully in DFU mode, if you do not see that it could mean your device is not in DFU mode or you computer is having trouble detecting it."
             ;;
         [nN]*)
             echo 'Skipping...'
-            break
             ;;
          *)
             echo 'Invalid input' >&2
     esac
-done
 
 echo "---------------------------------------------------------------------------------------------------------------------"
 
@@ -173,8 +166,8 @@ while true; do
             echo 'Continuing the script...'
             break
             ;;
-        [nN]*)
-            echo "Please copy the ipwdnfu folder into your home directory and install python2 (you can check if it's installed by running: "python2 --version" in the terminal (without the quotes) and then restart your device and the script"
+        nN]*) 
+           echo "Please copy the ipwndfu (if you do not have ipwndfu, well you probably do if you were able to tether downgrade your device. but if you don't then please download a version for your device that is capable of removing signature checks from your device while in DFU mode, though keep in mind that this script is made for A8/A9 devices, the one I recommend is: https://github.com/exploit3dguy/ipwndfu) folder into your home directory and install python2 (it is needed for ipwndfu, you can check if it's installed by running: python2 --version in the terminal.) and keep your device in DFU mode and restart the script"
             echo 'Exiting...'
             exit 1
             ;;
@@ -196,7 +189,7 @@ echo "Changing back into the directory with the boot files..."
 cd -
 
 while true; do
-    read -p 'Did ipwndfu work succefully? If it did not then please type no and then please force restart your device and put it back into DFU mode and then run the script again, or if ipwndfu worked succesfully and you just want to put your device into PwnedDFU mode with sigchecks removed then you can type no and exit the script too. if it did then please type yes. Or if you're not sure then type "im not sure" (without the quotes) if you're not sure and you want to check if it worked correctly" yes/no: ' input
+    read -p 'Did ipwndfu work succefully? If it did not then please type no and then please force restart your device and put it back into DFU mode and then run the script again, or if ipwndfu worked succesfully and you just want to put your device into PwnedDFU mode with sigchecks removed then you can type no and exit the script too. if it did then please type yes. Or if you are not sure then type imunsure if you are not sure and you want to check if it worked. correctly" yes/no: ' input
     case $input in
         [yY]*)
             echo 'Continuing the script...'
@@ -206,28 +199,13 @@ while true; do
             echo 'Exiting...'
             exit 1
             ;;
-          [im not sure]
+          [imunsure]*)
+          
            sudo irecovery -q
-          echo "If that command prints "[MODE]: DFU" and "[PWNED]: CHECKM8" and ipwndfu said "patched mapping and signature checks" then it was successful, if it says anything different then it most likely wasn't successful and you should force restart your device run the script again."
+          echo "If that command prints [MODE]: DFU and [PWNED]: CHECKM8 and ipwndfu said patched mapping and signature checks then it was successful, if it says anything different then it most likely wasn't successful and you should force restart your device run the script again."
             ;;
             *)
          echo 'Invalid input' >&2
-    esac
-done
-
-while true; do
-    read -p 'If you inputted "im not sure" (if you didn't input that option just ignore this and type no) and if ipwndfu wasn't successful, Do you want to run the script again? yes/no: ' input
-    case $input in
-        [yY]*)
-            echo 'Exiting...' 
-            exit 1
-            ;;
-        [nN]*)
-            echo 'Continuing the script...'
-            break
-            ;;
-            *)
-            echo 'Invalid input' >&2
     esac
 done
 
