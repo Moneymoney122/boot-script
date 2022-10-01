@@ -92,7 +92,7 @@ echo "Hold the power button and home button for 10 seconds..."
 for i in {1..10}
 do
     sleep 1
-    echo -n $i
+    echo -n "$i "
 done
 
 echo "Release the power button without releasing the home button and continue to hold the home button for another 10 seconds..."
@@ -100,7 +100,7 @@ echo "Release the power button without releasing the home button and continue to
 for i in {1..10}
 do
     sleep 1
-    echo -n $i
+    echo -n "$i "
 done
 
 echo "Your device should now be in DFU mode"
