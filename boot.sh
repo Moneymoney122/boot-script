@@ -103,10 +103,14 @@ do
     echo -n "$i "
 done
 
-echo "Your device should now be in DFU mode"
+echo -e "\nYour device should now be in DFU mode"
+
+echo "---------------------------------------------------------------------------------------------------------------------"
 
 sudo irecovery -q
       
+echo "---------------------------------------------------------------------------------------------------------------------"
+
 echo "If you see [MODE]:DFU in the text above it means your device is successfully in DFU mode, if you do not see that it could mean your device is not in DFU mode or you computer is having trouble detecting it."
             ;;
         [nN]*)
