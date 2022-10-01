@@ -95,7 +95,7 @@ do
     echo -n "$i "
 done
 
-echo "Release the power button without releasing the home button and continue to hold the home button for another 10 seconds..."
+echo -e "\nRelease the power button without releasing the home button and continue to hold the home button for another 10 seconds..."
 
 for i in {1..10}
 do
@@ -153,6 +153,8 @@ while true; do
     esac
 done
 
+echo "---------------------------------------------------------------------------------------------------------------------"
+
 echo "Changing into the ipwndfu directory..."
 
 cd ~/ipwndfu/
@@ -166,7 +168,7 @@ echo "Changing back into the directory with the boot files..."
 cd -
 
 while true; do
-    read -p 'Did ipwndfu work succefully? If it did not then please type no and then please force restart your device and put it back into DFU mode and then run the script again, or if ipwndfu worked succesfully and you just want to put your device into PwnedDFU mode with sigchecks removed then you can type no and exit the script too. if it did then please type yes. Or if you are not sure then type imunsure if you are not sure and you want to check if it worked. correctly" yes/no: ' input
+    read -p 'Did ipwndfu work succefully? If it did not then please type no and then please force restart your device and put it back into DFU mode and then run the script again, or if ipwndfu worked succesfully and you just want to put your device into PwnedDFU mode with sigchecks removed then you can type no and exit the script too. if it did then please type yes. Or if you are not sure then type imunsure if you are not sure and you want to check if it worked correctly yes/no: ' input
     case $input in
         [yY]*)
             echo 'Continuing the script...'
