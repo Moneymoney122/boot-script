@@ -89,47 +89,20 @@ echo "Please make sure your device is in DFU mode now, and make sure you are cur
             echo 'Continuing to the entering DFU tutorial...'
 echo "Hold the power button and home button for 10 seconds..."
 
-echo "1" 
-sleep 1
-echo "2"
-sleep 1
-echo "3"
-sleep 1
-echo "4"
-sleep 1
-echo "5"
-sleep 1
-echo "6"
-sleep 1
-echo "7"
-sleep 1
-echo "8"
-sleep 1
-echo "9"
-sleep 1
-echo "10"
+for i in {1..10}
+do
+    sleep 1
+    echo $i
+done
 
 echo "Release the power button without releasing the home button and continue to hold the home button for another 10 seconds..."
 
-echo "1" 
-sleep 1
-echo "2"
-sleep 1
-echo "3"
-sleep 1
-echo "4"
-sleep 1
-echo "5"
-sleep 1
-echo "6"
-sleep 1
-echo "7"
-sleep 1
-echo "8"
-sleep 1
-echo "9"
-sleep 1
-echo "10"
+for i in {1..10}
+do
+    sleep 1
+    echo $i
+done
+
 echo "Your device should now be in DFU mode"
 
 sudo irecovery -q
