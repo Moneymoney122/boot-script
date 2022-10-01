@@ -147,7 +147,7 @@ while true; do
             echo 'Continuing the script...'
             break
             ;;
-        nN]*) 
+        [nN]*) 
            echo "Please copy the ipwndfu (if you do not have ipwndfu/gaster, well you probably do if you were able to tether downgrade your device. but if you don't then please download a version for your device that is capable of removing signature checks from your device while in DFU mode, though keep in mind that this script is made for A8/A9 devices, the one I recommend is: https://github.com/exploit3dguy/ipwndfu and gaster can be found here: https://github.com/0x7ff/gaster) folder into your home directory and install python2 (it is needed for ipwndfu, you can check if it's installed by running: python2 --version in the terminal.) and keep your device in DFU mode and restart the script"
             echo 'Exiting...'
             exit 1
