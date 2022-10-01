@@ -43,6 +43,27 @@ var=`ideviceinfo | grep "UniqueDeviceID" | grep -wv "UniqueDeviceID: "`
 
 sudo ideviceenterrecovery $var
 
+
+while true; do
+    read -p 'Did your device enter recovery mode (black screen) from normal mode? yes/no: ' input
+    case $input in
+        [yY]*)
+            echo 'Continuing the script...'
+            break
+            ;;
+        [nN]*)
+            
+echo "if you device did not enter recovery mode (black screen) from normal mode then your device probably wasn't detected by the computer, you could try to run "sudo systemctl restart usbmuxd" (without the quotes) in the terminal to restart usbmuxd and then try running the script again"
+
+echo 'Exiting...'
+            exit 1
+            ;;
+         *)
+            echo 'Invalid input' >&2
+    esac
+done
+
+
             break
             ;;
         [nN]*)
@@ -110,7 +131,11 @@ sleep 1
 echo "10"
 echo "Your device should now be in DFU mode"
 
-            break
+sudo irecovery -q
+      
+"If you see "[MODE]:DFU" in the text above it means your device is successfully in DFU mode, if you don't see that it could mean your device is not in DFU mode or you computer is having trouble detecting it."
+
+          break
             ;;
         [nN]*)
             echo 'Skipping...'
@@ -183,7 +208,7 @@ while true; do
             ;;
           [im not sure]
            sudo irecovery -q
-          echo "If that command prints "(MODE): DFU and (PWNED): CHECKM8 and ipwndfu said patched mapping and signature checks then it was successful, if it says anything different then it most likely wasn't successful and you should run the script again.
+          echo "If that command prints "[MODE]: DFU" and "[PWNED]: CHECKM8" and ipwndfu said "patched mapping and signature checks" then it was successful, if it says anything different then it most likely wasn't successful and you should force restart your device run the script again."
             ;;
             *)
          echo 'Invalid input' >&2
