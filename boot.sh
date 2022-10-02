@@ -3,7 +3,8 @@
 clear
 
 ICyan='\033[0;96m'
-echo -e "${ICyan}Boot script for tethered downgraded A8/A9 devices, this script is made by Moneymoney122 (@chandler_hacker on twitter)."
+echo -e "${ICyan}---------------------------------------------------------------------------------------------------------------------"
+echo "Boot script for tethered downgraded A8/A9 devices, this script is made by Moneymoney122 (@chandler_hacker on twitter)."
 echo "---------------------------------------------------------------------------------------------------------------------"
 echo "this script is a modified version of the boot script from the sunst0rm tether downgrade tool made by mineek. (https://github.com/mineek/sunst0rm)"
 echo "---------------------------------------------------------------------------------------------------------------------"
@@ -46,7 +47,7 @@ sudo ideviceenterrecovery $var
 
 
 while true; do
-    read -p 'Did your device enter recovery mode (black screen) from normal mode? yes/no: ' input
+    read -p 'Did your device enter recovery mode (black screen if your device is tether downgraded) from normal mode? yes/no: ' input
     case $input in
         [yY]*)
             echo 'Continuing the script...'
@@ -54,7 +55,7 @@ while true; do
             ;;
         [nN]*)
             
-echo "if you device did not enter recovery mode (black screen) from normal mode then your device probably wasn't detected by the computer, you could try to run "sudo systemctl restart usbmuxd" (without the quotes) in the terminal to restart usbmuxd and then try running the script again"
+echo "if you device did not enter recovery mode (black screen if your device is tether downgraded) from normal mode then your device probably wasn't detected by the computer, you could try to run "sudo systemctl restart usbmuxd" (without the quotes) in the terminal to restart usbmuxd and then try running the script again or you could put your device into DFU mode manually, if you want to do that please power off your device and then power it back on by holding the power button like normal but you will still see a black screen until you have tether booted your device if your device is tether downgraded and then run the script again until you reach the entering DFU mode tutorial (input no when asked if you want to enter recovery mode from normal mode) and then follow the tutorial to enter DFU mode"
 
 echo 'Exiting...'
             exit 1
@@ -80,6 +81,7 @@ sleep 3
 
 clear
 
+echo "---------------------------------------------------------------------------------------------------------------------"
 echo "if you chose to put your device into recovery mode from normal mode, please now put your device into DFU mode"
 echo "---------------------------------------------------------------------------------------------------------------------"
 echo "Please make sure your device is in DFU mode now, and make sure you are curently in the directory where the boot files are stored"
