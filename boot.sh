@@ -220,33 +220,46 @@ done
 
 sleep 1
 
+echo "Searching for device..."
 
 sudo irecovery -v -v -q
 
-sudo irecovery -f ./ibss.img4
+echo "Sending iBSS..."
+sudo irecovery -v -v -f ./ibss.img4
 echo "Sending iBSS again..."
 sudo irecovery -v -v -f ./ibss.img4
+echo "Sending iBEC..."
 sudo irecovery -v -v -f ./ibec.img4
+echo "Sending BootLogo...."
 sudo irecovery -v -v -f ./bootlogo.img4
 sudo irecovery -v -v -c "setpicture 0"
 echo "Putting some nice colours on the screen becuase I can..."
 sleep 3
+echo "Running command \"bgcolor 0 0 0\" on the device..."
 sudo irecovery -v -v -c "bgcolor 0 0 0"
 sleep 3
+echo "Running command \"bgcolor 255 0 0\" on the device..."
 sudo irecovery -v -v -c "bgcolor 255 0 0"
 sleep 3
+echo "Running command \"bgcolor 0 255 0\" on the device..."
 sudo irecovery -v -v -c "bgcolor 0 255 0"
 sleep 3
+echo "Running command \"bgcolor 0 0 255\" on the device..."
 sudo irecovery -v -v -c "bgcolor 0 0 255"
 sleep 3
 if [[ -f "./ramdisk.img4" ]]; then
   sudo irecovery -f ./ramdisk.img4
   sudo irecovery -c ramdisk
 fi
+echo "Sending DeviceTree..."
 sudo irecovery -v -v -f ./devicetree.img4
+echo "Running command \"devicetree\" on the device..."
 sudo irecovery -v -v -c devicetree
+echo "Sending TrustCache..."
 sudo irecovery -v -v -f ./trustcache.img4
+echo "Running command \"firmware\" on the device...
 sudo irecovery -v -v -c firmware
+echo "Sending Kernel..."
 sudo irecovery -v -v -f ./krnlboot.img4
 
 echo "Files have been uploaded to your device, if you do not want to boot your device now (idk why you would not want to because this is a boot script lmao, but I'm adding the option not to anyway.) then you can use the following command to boot your device later: sudo irecovery -v -v -c bootx" 
