@@ -394,7 +394,7 @@ while true; do
     read -p 'Do you want to send The Kernel? yes/no: ' input
     case $input in
         [yY]*)
-echo "Sending The Kernel..."
+echo "Sending Kernel..."
 echo "Sending Kernel..."
 sudo irecovery -v -v -f ./krnlboot.img4
 echo "Running command \"firmware\" on the device...
@@ -403,7 +403,7 @@ sudo irecovery -v -v -c firmware
             ;;
         [nN]*)
 
-echo 'Skipping sending The Kernel...'
+echo 'Skipping sending Kernel...'
             break
             ;;
          *)
