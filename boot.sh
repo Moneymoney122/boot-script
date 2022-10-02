@@ -224,14 +224,97 @@ echo "Searching for device..."
 
 sudo irecovery -v -v -q
 
-echo "Sending iBSS..."
-sudo irecovery -v -v -f ./ibss.img4
-echo "Sending iBSS again..."
-sudo irecovery -v -v -f ./ibss.img4
-echo "Sending iBEC..."
+while true; do
+    read -p 'Do you want to send iBSS? yes/no: ' input
+    case $input in
+        [yY]*)
+            echo 'Sending iBSS...'
+sudo irecovery -v v -f ./ibss.img4
+echo "iBSS has been sent"
+            break
+            ;;
+        [nN]*)
+            
+echo "No files have been sent, now going to exit.."
+
+echo 'Exiting...'
+            exit 1
+            ;;
+         *)
+            echo 'Invalid input' >&2
+    esac
+done
+
+while true; do
+    read -p 'Do you want to send iBSS again? yes/no: ' input
+    case $input in
+        [yY]*)
+            echo 'Sending iBSS again...'
+sudo irecovery -v v -f ./ibss.img4
+echo "iBSS has been sent twice"
+            break
+            ;;
+        [nN]*)
+            
+echo "iBSS has only been sent once, now going to exit.."
+
+echo 'Exiting...'
+            exit 1
+            ;;
+         *)
+            echo 'Invalid input' >&2
+    esac
+done
+
+while true; do
+    read -p 'Do you want to send iBEC? yes/no: ' input
+    case $input in
+        [yY]*)
+            echo 'Sending iBEC...'
 sudo irecovery -v -v -f ./ibec.img4
-echo "Sending BootLogo...."
+ echo "iBSS and iBEC has been sent"
+           break
+            ;;
+        [nN]*)
+            
+echo "Only iBSS has been sent, now going to exit.."
+
+echo 'Skipping sending iBEC...'
+            break
+            ;;
+         *)
+            echo 'Invalid input' >&2
+    esac
+done
+
+while true; do
+    read -p 'Do you want to send BootLogo? yes/no: ' input
+    case $input in
+        [yY]*)
+            echo 'Sending BootLogo...'
 sudo irecovery -v -v -f ./bootlogo.img4
+echo "iBSS, iBEC and BootLogo has been sent"
+            break
+            ;;
+        [nN]*)
+            
+echo "Only iBSS and iBEC has been sent, now going to exit.."
+
+echo 'Skipping sending BootLogo...'
+            break
+            ;;
+         *)
+            echo 'Invalid input' >&2
+    esac
+done
+
+while true; do
+    read -p 'Do you want to send display commands? yes/no: ' input
+    case $input in
+        [yY]*)
+            echo 'Sending display commands...'
+sudo irecovery -v -v -f ./bootlogo.img4
+echo "Sent display commands"
 sudo irecovery -v -v -c "setpicture 0"
 echo "Putting some nice colours on the screen becuase I can..."
 sleep 3
@@ -246,21 +329,88 @@ sudo irecovery -v -v -c "bgcolor 0 255 0"
 sleep 3
 echo "Running command \"bgcolor 0 0 255\" on the device..."
 sudo irecovery -v -v -c "bgcolor 0 0 255"
+           break
+            ;;
+        [nN]*)
+            
+echo "Only iBSS, iBEC and BootLogo has been sent so far"
+
+echo 'Skipping display commands...'
+            break
+            ;;
+         *)
+            echo 'Invalid input' >&2
+    esac
+done
+
 sleep 3
+
 if [[ -f "./ramdisk.img4" ]]; then
   sudo irecovery -f ./ramdisk.img4
   sudo irecovery -c ramdisk
 fi
-echo "Sending DeviceTree..."
+
+while true; do
+    read -p 'Do you want to send DeviceTree? yes/no: ' input
+    case $input in
+        [yY]*)
+            echo 'Sending DeviceTree...'
 sudo irecovery -v -v -f ./devicetree.img4
-echo "Running command \"devicetree\" on the device..."
-sudo irecovery -v -v -c devicetree
+   echo "Running command \"devicetree\" on the device..."
+sudo irecovery -v -v -c devicetree       
+            break
+            ;;
+        [nN]*)
+
+echo 'Skipping Sending DeviceTree...'
+            break
+            ;;
+         *)
+            echo 'Invalid input' >&2
+    esac
+done
+
+while true; do
+    read -p 'Do you want to send TrustCache? yes/no: ' input
+    case $input in
+        [yY]*)
 echo "Sending TrustCache..."
 sudo irecovery -v -v -f ./trustcache.img4
 echo "Running command \"firmware\" on the device...
 sudo irecovery -v -v -c firmware
+           break
+            ;;
+        [nN]*)
+
+echo 'Skipping sending TrustCache...'
+            break
+            ;;
+         *)
+            echo 'Invalid input' >&2
+    esac
+done
+
+while true; do
+    read -p 'Do you want to send The Kernel? yes/no: ' input
+    case $input in
+        [yY]*)
+echo "Sending The Kernel..."
 echo "Sending Kernel..."
 sudo irecovery -v -v -f ./krnlboot.img4
+echo "Running command \"firmware\" on the device...
+sudo irecovery -v -v -c firmware
+           break
+            ;;
+        [nN]*)
+
+echo 'Skipping sending The Kernel...'
+            break
+            ;;
+         *)
+            echo 'Invalid input' >&2
+    esac
+done
+
 
 echo "Files have been uploaded to your device, if you do not want to boot your device now (idk why you would not want to because this is a boot script lmao, but I'm adding the option not to anyway.) then you can use the following command to boot your device later: sudo irecovery -v -v -c bootx" 
 
