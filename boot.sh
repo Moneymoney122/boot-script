@@ -36,7 +36,7 @@ read -n 1 -s -r -p "------------------------------------Press any key to continu
 clear
 
 while true; do
-    read -p 'If your device is currenlty in normal mode and you want to reboot it, this script can enter recovery mode (it will be a black screen but it will be in recovery mode.) for you and then you can enter DFU mode from there, this is a safer option if your device is already in normal mode. Is your device is currenlty in normal mode? yes/no: ' input
+    read -p 'If your device is currently in normal mode and you want to reboot it, this script can enter recovery mode (it will be a black screen but it will be in recovery mode.) for you and then you can enter DFU mode from there, this is a safer option if your device is already in normal mode. Is your device is currently in normal mode? yes/no: ' input
     case $input in
         [yY]*)
             echo 'Entering recovery mode...'
