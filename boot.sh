@@ -55,7 +55,7 @@ while true; do
             ;;
         [nN]*)
             
-echo if you device did not enter recovery mode (black screen if your device is tether downgraded) from normal mode then your device probably wasn't detected by the computer, you could try to run /"sudo systemctl restart usbmuxd/" (without the quotes) in the terminal to restart usbmuxd and then try running the script again or you could put your device into DFU mode manually, if you want to do that please power off your device and then power it back on by holding the power button like normal but you will see a black screen until you have tether booted your device if your device is tether downgraded and then run the script again until you reach the entering DFU mode tutorial (input no when asked if you want to enter recovery mode from normal mode) and then follow the tutorial to enter DFU mode
+echo "if you device did not enter recovery mode (black screen if your device is tether downgraded) from normal mode then your device probably wasn't detected by the computer, you could try to run \"sudo systemctl restart usbmuxd\" (without the quotes) in the terminal to restart usbmuxd and then try running the script again or you could put your device into DFU mode manually, if you want to do that please power off your device and then power it back on by holding the power button like normal but you will see a black screen until you have tether booted your device if your device is tether downgraded and then run the script again until you reach the entering DFU mode tutorial (input no when asked if you want to enter recovery mode from normal mode) and then follow the tutorial to enter DFU mode"
 
 echo 'Exiting...'
             exit 1
