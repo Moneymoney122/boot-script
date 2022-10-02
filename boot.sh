@@ -220,6 +220,64 @@ done
 
 sleep 1
 
+while true; do
+    read -p 'Do you want to send all the files to boot your device now (easy), or do you want to choose which files to send and enable verbose mode (advanced)? easy/advanced: ' input
+    case $input in
+        [easy]*)
+sleep 1
+
+sudo irecovery -f ./iBSS.img4
+#send iBSS again.
+sudo irecovery -f ./iBSS.img4
+sudo irecovery -f ./iBEC.img4
+sudo irecovery -f ./bootlogo.img4
+sudo irecovery -c "setpicture 0"
+sudo irecovery -c "bgcolor 0 0 0"
+sleep 3
+if [[ -f "./ramdisk.img4" ]]; then
+  sudo irecovery -f ./ramdisk.img4
+  sudo irecovery -c ramdisk
+fi
+sudo irecovery -f ./devicetree.img4
+sudo irecovery -c devicetree
+sudo irecovery -f ./trustcache.img4
+sudo irecovery -c firmware
+sudo irecovery -f ./krnlboot.img4
+sudo irecovery -c bootx
+         
+echo "Files have been uploaded to your device, if you do not want to boot your device now (idk why you would not want to because this is a boot script lmao, but I'm adding the option not to anyway.) then you can use the following command to boot your device later: sudo irecovery -v -v -c bootx" 
+
+while true; do
+    read -p 'Do you want to boot your device now? yes/no: ' input
+    case $input in
+        [yY]*)
+            echo 'Booting your device...'
+            break
+            ;;
+        [nN]*)
+            echo 'Exiting...'
+            exit 1
+            ;;
+         *)
+            echo 'Invalid input' >&2
+    esac
+done
+
+sudo irecovery -v -v -c bootx
+
+echo "Done, enjoy your tether booted device OwO"
+            exit 1
+            ;;
+        [advanced]*)
+
+echo 'Continuing to advanced mode...'
+            break
+            ;;
+         *)
+            echo 'Invalid input' >&2
+    esac
+
+
 echo "Searching for device..."
 
 sudo irecovery -v -v -q
