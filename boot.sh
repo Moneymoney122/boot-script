@@ -448,7 +448,8 @@ while true; do
         [yY]*)
             echo 'Booting your device...'
 sudo irecovery -v -v -c bootx
-            break
+ echo "Done, enjoy your tethered booted device OwO"
+          break
             ;;
         [nN]*)
             echo 'Exiting...'
@@ -456,9 +457,6 @@ sudo irecovery -v -v -c bootx
             ;;
          *)
             echo 'Invalid input' >&2
-
-echo "Done, enjoy your tether booted device OwO"
-
 
    esac
 done
@@ -469,7 +467,7 @@ while true; do
         [yY]*)
             echo 'Booting your device...'
 sudo irecovery -v -v -c bootx
-echo "Done, enjoy your tether booted device OwO"           
+echo "Done, enjoy your tethered booted device OwO"           
             exit 1 
             ;;
         [nN]*)
