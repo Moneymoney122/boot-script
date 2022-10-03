@@ -228,6 +228,7 @@ while true; do
     read -p 'Do you want to send all the files to boot your device now (easy), or do you want to choose which files to send and enable verbose mode (advanced)? e/a: ' input
     case $input in
         [e]*)
+echo "Entering easy mode..."
 sleep 1
 sudo irecovery -f ./ibss.img4
 #send iBSS again.
@@ -253,8 +254,7 @@ echo "Files have been uploaded to your device, if you do not want to boot your d
         break
         ;;
         [a]*)
-echo 'Continuing to advanced mode...'
-
+echo 'Entering advanced mode...'
 
 echo "Searching for device..."
 
