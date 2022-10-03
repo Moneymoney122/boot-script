@@ -190,7 +190,7 @@ cd -
            
           break
           ;;
-          [done]*)
+          [d]*)
 
 echo "Skipping pwning your device..."
           
