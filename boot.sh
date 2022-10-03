@@ -29,7 +29,7 @@ echo "--------------------------------------------------------------------------
             echo 'Invalid input' >&2
     esac
 done
-    fi
+fi
 
 read -n 1 -s -r -p "------------------------------------Press any key to continue (Or Ctrl+C to Exit)------------------------------------"
 
@@ -44,7 +44,6 @@ while true; do
 var=`ideviceinfo | grep "UniqueDeviceID" | grep -wv "UniqueDeviceID: "`
 
 sudo ideviceenterrecovery $var
-
 
 while true; do
     read -p 'Did your device enter recovery mode (black screen if your device is tether downgraded) from normal mode? yes/no: ' input
@@ -64,8 +63,6 @@ echo 'Exiting...'
             echo 'Invalid input' >&2
     esac
 done
-
-
             break
             ;;
         [nN]*)
@@ -162,10 +159,11 @@ done
 echo "---------------------------------------------------------------------------------------------------------------------"
 
 while true; do
-    read -p 'Do you want to use ipwndfu or gaster to pwn your device? ipwndfu/gaster: ' input
+    read -p 'Do you want to use ipwndfu or gaster to pwn your device, or is your device already done being pwned? i/g/d: ' input
     case $input in
-        [ipwndfu]*)
-        echo "Changing into the ipwndfu directory..."
+        [i]*)
+
+echo "Changing into the ipwndfu directory..."
 
 cd ~/ipwndfu/
 
@@ -176,9 +174,9 @@ sudo python2.7 ./ipwndfu -p --rmsigchecks
 echo "Changing back into the directory with the boot files..."
 
 cd -
-            break
-            ;;
-        [gaster]*) 
+          break
+          ;;
+        [g]*) 
            
  cd ~/gaster/
 
@@ -191,14 +189,20 @@ echo "Changing back into the directory with the boot files..."
 cd -          
            
           break
-            ;;
+          ;;
+          [done]*)
+
+echo "Skipping pwning your device..."
+          
+          break
+          ;;
          *)
             echo 'Invalid input' >&2
     esac
 done
 
 while true; do
-    read -p 'Did ipwndfu/gaster work succefully? If it did not then please type no and then please force restart your device and put it back into DFU mode and then run the script again, if one tool failed you can try the other one, or if ipwndfu/gaster worked succesfully and you just want to put your device into PwnedDFU mode with sigchecks removed then you can type no and exit the script too. if it did then please type yes. Or if you are not sure then type imunsure if you are not sure and you want to check if it worked correctly yes/no/imunsure: ' input
+    read -p 'Did ipwndfu/gaster work succefully? If it did not then please type no and then please force restart your device and put it back into DFU mode and then run the script again, if one tool failed you can try the other one, or if ipwndfu/gaster worked succesfully and you just want to put your device into PwnedDFU mode with sigchecks removed then you can type no and exit the script too or if you have already successfuly pwned your device and skipped pwning your device this time then type yes. if it did then please type yes. Or if you are not sure then type imunsure if you are not sure and you want to check if it worked correctly yes/no/imunsure: ' input
     case $input in
         [yY]*)
             echo 'Continuing the script...'
@@ -221,15 +225,14 @@ done
 sleep 1
 
 while true; do
-    read -p 'Do you want to send all the files to boot your device now (easy), or do you want to choose which files to send and enable verbose mode (advanced)? easy/advanced: ' input
+    read -p 'Do you want to send all the files to boot your device now (easy), or do you want to choose which files to send and enable verbose mode (advanced)? e/a: ' input
     case $input in
-        [easy]*)
+        [e]*)
 sleep 1
-
-sudo irecovery -f ./iBSS.img4
+sudo irecovery -f ./ibss.img4
 #send iBSS again.
-sudo irecovery -f ./iBSS.img4
-sudo irecovery -f ./iBEC.img4
+sudo irecovery -f ./ibss.img4
+sudo irecovery -f ./ibec.img4
 sudo irecovery -f ./bootlogo.img4
 sudo irecovery -c "setpicture 0"
 sudo irecovery -c "bgcolor 0 0 0"
@@ -244,38 +247,13 @@ sudo irecovery -f ./trustcache.img4
 sudo irecovery -c firmware
 sudo irecovery -f ./krnlboot.img4
 sudo irecovery -c bootx
-         
+        
 echo "Files have been uploaded to your device, if you do not want to boot your device now (idk why you would not want to because this is a boot script lmao, but I'm adding the option not to anyway.) then you can use the following command to boot your device later: sudo irecovery -v -v -c bootx" 
 
-while true; do
-    read -p 'Do you want to boot your device now? yes/no: ' input
-    case $input in
-        [yY]*)
-            echo 'Booting your device...'
-            break
-            ;;
-        [nN]*)
-            echo 'Exiting...'
-            exit 1
-            ;;
-         *)
-            echo 'Invalid input' >&2
-    esac
-done
-
-sudo irecovery -v -v -c bootx
-
-echo "Done, enjoy your tether booted device OwO"
-            exit 1
-            ;;
-        [advanced]*)
-
+        break
+        ;;
+        [a]*)
 echo 'Continuing to advanced mode...'
-            break
-            ;;
-         *)
-            echo 'Invalid input' >&2
-    esac
 
 
 echo "Searching for device..."
@@ -293,10 +271,8 @@ echo "iBSS has been sent"
             ;;
         [nN]*)
             
-echo "No files have been sent, now going to exit.."
-
-echo 'Exiting...'
-            exit 1
+echo "Skipping sending iBSS..."
+            break
             ;;
          *)
             echo 'Invalid input' >&2
@@ -314,10 +290,8 @@ echo "iBSS has been sent twice"
             ;;
         [nN]*)
             
-echo "iBSS has only been sent once, now going to exit.."
-
-echo 'Exiting...'
-            exit 1
+echo "Skipping sending iBSS twice..."
+            break
             ;;
          *)
             echo 'Invalid input' >&2
@@ -330,19 +304,17 @@ while true; do
         [yY]*)
             echo 'Sending iBEC...'
 sudo irecovery -v -v -f ./ibec.img4
- echo "iBSS and iBEC has been sent"
+echo "iBEC has been sent"
            break
             ;;
         [nN]*)
-            
-echo "Only iBSS has been sent, now going to exit.."
 
 echo 'Skipping sending iBEC...'
             break
             ;;
          *)
             echo 'Invalid input' >&2
-    esac
+   esac
 done
 
 while true; do
@@ -351,19 +323,19 @@ while true; do
         [yY]*)
             echo 'Sending BootLogo...'
 sudo irecovery -v -v -f ./bootlogo.img4
-echo "iBSS, iBEC and BootLogo has been sent"
+echo "BootLogo has been sent"
             break
             ;;
         [nN]*)
             
-echo "Only iBSS and iBEC has been sent, now going to exit.."
+echo "Skipping sending BootLogo.."
 
-echo 'Skipping sending BootLogo...'
             break
             ;;
          *)
             echo 'Invalid input' >&2
-    esac
+   esac
+
 done
 
 while true; do
@@ -387,18 +359,16 @@ sudo irecovery -v -v -c "bgcolor 0 255 0"
 sleep 3
 echo "Running command \"bgcolor 0 0 255\" on the device..."
 sudo irecovery -v -v -c "bgcolor 0 0 255"
-           break
+            break  
             ;;
         [nN]*)
             
-echo "Only iBSS, iBEC and BootLogo has been sent so far"
-
 echo 'Skipping display commands...'
             break
             ;;
          *)
             echo 'Invalid input' >&2
-    esac
+   esac
 done
 
 sleep 3
@@ -414,7 +384,7 @@ while true; do
         [yY]*)
             echo 'Sending DeviceTree...'
 sudo irecovery -v -v -f ./devicetree.img4
-   echo "Running command \"devicetree\" on the device..."
+echo "Running command \"devicetree\" on the device..."
 sudo irecovery -v -v -c devicetree       
             break
             ;;
@@ -425,8 +395,8 @@ echo 'Skipping Sending DeviceTree...'
             ;;
          *)
             echo 'Invalid input' >&2
-    esac
-done
+   esac
+done            
 
 while true; do
     read -p 'Do you want to send TrustCache? yes/no: ' input
@@ -434,9 +404,9 @@ while true; do
         [yY]*)
 echo "Sending TrustCache..."
 sudo irecovery -v -v -f ./trustcache.img4
-echo "Running command \"firmware\" on the device...
+echo "Running command \"firmware\" on the device..."
 sudo irecovery -v -v -c firmware
-           break
+            break
             ;;
         [nN]*)
 
@@ -453,14 +423,12 @@ while true; do
     case $input in
         [yY]*)
 echo "Sending Kernel..."
-echo "Sending Kernel..."
 sudo irecovery -v -v -f ./krnlboot.img4
-echo "Running command \"firmware\" on the device...
+echo "Running command \"firmware\" on the device..."
 sudo irecovery -v -v -c firmware
-           break
+            break
             ;;
         [nN]*)
-
 echo 'Skipping sending Kernel...'
             break
             ;;
@@ -469,7 +437,6 @@ echo 'Skipping sending Kernel...'
     esac
 done
 
-
 echo "Files have been uploaded to your device, if you do not want to boot your device now (idk why you would not want to because this is a boot script lmao, but I'm adding the option not to anyway.) then you can use the following command to boot your device later: sudo irecovery -v -v -c bootx" 
 
 while true; do
@@ -477,6 +444,7 @@ while true; do
     case $input in
         [yY]*)
             echo 'Booting your device...'
+sudo irecovery -v -v -c bootx
             break
             ;;
         [nN]*)
@@ -485,9 +453,27 @@ while true; do
             ;;
          *)
             echo 'Invalid input' >&2
-    esac
-done
-
-sudo irecovery -v -v -c bootx
 
 echo "Done, enjoy your tether booted device OwO"
+
+
+   esac
+done
+
+while true; do
+    read -p 'Do you want to boot your device now? yes/no: ' input
+    case $input in
+        [yY]*)
+            echo 'Booting your device...'
+sudo irecovery -v -v -c bootx
+echo "Done, enjoy your tether booted device OwO"           
+            exit 1 
+            ;;
+        [nN]*)
+            echo 'Exiting...'
+            exit 1
+            ;;
+         *)
+            echo 'Invalid input' >&2
+   esac
+done
