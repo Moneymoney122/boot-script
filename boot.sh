@@ -460,21 +460,3 @@ sudo irecovery -v -v -c bootx
 
    esac
 done
-
-while true; do
-    read -p 'Do you want to boot your device now? yes/no: ' input
-    case $input in
-        [yY]*)
-            echo 'Booting your device...'
-sudo irecovery -v -v -c bootx
-echo "Done, enjoy your tethered booted device OwO"           
-            exit 1 
-            ;;
-        [nN]*)
-            echo 'Exiting...'
-            exit 1
-            ;;
-         *)
-            echo 'Invalid input' >&2
-   esac
-done
