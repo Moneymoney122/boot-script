@@ -225,7 +225,7 @@ done
 sleep 1
 
 while true; do
-    read -p 'Do you want to send all the files to boot your device now (easy), or do you want to choose which files to send and enable verbose mode (advanced)? e/a: ' input
+    read -p 'Do you want to send all the files to boot your device now (easy), or do you want to choose which files to send and enable verbose mode (advanced), or have the files already been sent(s)? e/a: ' input
     case $input in
         [e]*)
 echo "Entering easy mode..."
@@ -436,6 +436,11 @@ echo 'Skipping sending Kernel...'
             echo 'Invalid input' >&2
     esac
 done
+  
+  ;;
+  [s]*)
+  break
+
 
     esac
 done
