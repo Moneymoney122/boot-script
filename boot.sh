@@ -437,6 +437,9 @@ echo 'Skipping sending Kernel...'
     esac
 done
 
+    esac
+done
+
 echo "Files have been uploaded to your device, if you do not want to boot your device now (idk why you would not want to because this is a boot script lmao, but I'm adding the option not to anyway.) then you can use the following command to boot your device later: sudo irecovery -v -v -c bootx" 
 
 while true; do
