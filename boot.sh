@@ -52,6 +52,8 @@ while true; do
     esac
 done
 
+clear
+
 #cd into the folder with your boot files, change this command to cd into the folder with  your bootfiles  
 cd ~/sunst0rm/boot-ixbugnoe/
 
