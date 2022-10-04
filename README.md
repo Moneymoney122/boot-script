@@ -43,6 +43,8 @@ Table of contents:
 
  run `git clone https://github.com/Moneymoney122/boot.sh` in the terminal while in your home directory or download the zip from this page and unzip the files and place them in a folder called "boot.sh" (without the quotes) in your home directory
 
+- And then run:
+
 `cd ~/boot-script/`
 
 `chmod +x boot.sh` or if you want to use the other versions of this script: `chmod +x boot.sh old-boot.sh test-boot.sh`
