@@ -257,11 +257,11 @@ sudo irecovery -f ./ibss.img4
 #send iBSS again.
 echo "Sending iBSS again..."
 sudo irecovery -f ./ibss.img4
-echo "Sening iBEC..."
+echo "Sending iBEC..."
 sudo irecovery -f ./ibec.img4
-echo "Sending BootLogo"
+echo "Sending BootLogo..."
 sudo irecovery -f ./bootlogo.img4
-echo "Running display commands"
+echo "Running display commands..."
 sudo irecovery -c "setpicture 0"
 sudo irecovery -c "bgcolor 0 0 0"
 sleep 3
