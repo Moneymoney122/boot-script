@@ -34,7 +34,7 @@ fi
 read -n 1 -s -r -p "------------------------------------Press any key to continue (Or Ctrl+C to Exit)------------------------------------"
 
 
-echo "changing directory into the folder with your boot files, please change this command to match the name of the folder with your boot files by opening this script with a text editor and editing the command on line 56, if you have not already."
+echo "changing directory into the folder with your boot files, please change this command to match the name of the folder with your boot files by opening this script with a text editor and editing the command on line 58, if you have not already."
 
 while true; do
     read -p 'Continue? yes/no: ' input
