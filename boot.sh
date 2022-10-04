@@ -252,11 +252,16 @@ while true; do
         [e]*)
 echo "Entering easy mode..."
 sleep 1
+echo "Sending iBSS..."
 sudo irecovery -f ./ibss.img4
 #send iBSS again.
+echo "Sending iBSS again..."
 sudo irecovery -f ./ibss.img4
+echo "Sening iBEC..."
 sudo irecovery -f ./ibec.img4
+echo "Sending BootLogo"
 sudo irecovery -f ./bootlogo.img4
+echo "Running display commands"
 sudo irecovery -c "setpicture 0"
 sudo irecovery -c "bgcolor 0 0 0"
 sleep 3
@@ -264,12 +269,16 @@ if [[ -f "./ramdisk.img4" ]]; then
   sudo irecovery -f ./ramdisk.img4
   sudo irecovery -c ramdisk
 fi
+echo "Sending DeviceTree..."
 sudo irecovery -f ./devicetree.img4
+echo "Running command \"devicetree\" on the device"
 sudo irecovery -c devicetree
+echo "Sending TrustCache..."
 sudo irecovery -f ./trustcache.img4
+echo "Running command \"firmware\" on the device"
 sudo irecovery -c firmware
+echo "Sending Kernel..."
 sudo irecovery -f ./krnlboot.img4
-sudo irecovery -c bootx
         
 echo "Files have been uploaded to your device, if you do not want to boot your device now (idk why you would not want to because this is a boot script lmao, but I'm adding the option not to anyway.) then you can use the following command to boot your device later: sudo irecovery -v -v -c bootx" 
 
