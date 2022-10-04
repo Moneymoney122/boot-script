@@ -13,7 +13,7 @@ Table of contents:
 ## What is this?
 
 - This script is for tether booting A8/A9 devices that have been downgraded by [sunst0rm](https://github.com/mineek/sunst0rm)
-  - It might work with devices that have been tethered downgraded by other tools,
+  - It might work with devices that have been tethered downgraded by other tools.
   
 - I made this script for personal use, but anyone can use it
 
