@@ -2,7 +2,7 @@
 
 - A boot script I made for personal use. But anyone can use it, if you do use it, use it at your own risk.
 
-"test-boot.sh" is the testing version that I'm adding to and changing constantly.
+- "test-boot.sh" is the testing version that I'm adding to and changing constantly.
 
 - "boot"sh is the stable and current version.
 
