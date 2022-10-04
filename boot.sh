@@ -33,7 +33,27 @@ fi
 
 read -n 1 -s -r -p "------------------------------------Press any key to continue (Or Ctrl+C to Exit)------------------------------------"
 
-clear
+
+echo "changing directory into the folder with your boot files, please change this command to match the name of the folder with your boot files by opening this script with a text editor and editing the command on line 56, if you have not already."
+
+while true; do
+    read -p 'Continue? yes/no: ' input
+    case $input in
+        [yY]*)
+            echo 'Continuing the script...'
+            break
+            ;;
+        [nN]*)
+            echo 'Exiting...'
+            exit 1
+            ;;
+         *)
+            echo 'Invalid input' >&2
+    esac
+done
+
+#cd into the folder with your boot files, change this command to cd into the folder with  your bootfiles  
+cd ~/sunst0rm/boot-ixbugnoe/
 
 while true; do
     read -p 'If your device is currently in normal mode and you want to reboot it, this script can enter recovery mode (it will be a black screen but it will be in recovery mode.) for you and then you can enter DFU mode from there, this is a safer option if your device is already in normal mode. Is your device is currently in normal mode? yes/no: ' input
@@ -345,8 +365,8 @@ while true; do
             echo 'Sending display commands...'
 sudo irecovery -v -v -f ./bootlogo.img4
 echo "Sent display commands"
-sudo irecovery -v -v -c "setpicture 0"
-echo "Putting some nice colours on the screen becuase I can..."
+sudo irecovery -v -v -c "setpicture 0"	
+echo "Putting some nice colours on the screen because I can..."
 sleep 3
 echo "Running command \"bgcolor 0 0 0\" on the device..."
 sudo irecovery -v -v -c "bgcolor 0 0 0"
@@ -359,6 +379,10 @@ sudo irecovery -v -v -c "bgcolor 0 255 0"
 sleep 3
 echo "Running command \"bgcolor 0 0 255\" on the device..."
 sudo irecovery -v -v -c "bgcolor 0 0 255"
+echo "Running command \"bgcolor 127 0 0\" on the device..."
+sudo irecovery -v -v -c "bgcolor 127 0 0"
+echo "Running command \"bgcolor 0 0 0\" on the device..."
+sudo irecovery -v -v -c "bgcolor 0 0 0"
             break  
             ;;
         [nN]*)
