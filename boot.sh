@@ -111,6 +111,15 @@ echo "Please make sure your device is in DFU mode now, and make sure you are cur
     case $input in
         [yY]*)
             echo 'Continuing to the entering DFU tutorial...'
+
+echo "Get ready to hold the power button and home button for 10 seconds..."
+
+for i in {1..3}
+do
+    sleep 1
+    echo -n "$i "
+done
+
 echo "Hold the power button and home button for 10 seconds..."
 
 for i in {1..10}
@@ -462,8 +471,6 @@ while true; do
         [yY]*)
 echo "Sending Kernel..."
 sudo irecovery -v -v -f ./krnlboot.img4
-echo "Running command \"firmware\" on the device..."
-sudo irecovery -v -v -c firmware
             break
             ;;
         [nN]*)
@@ -493,7 +500,8 @@ while true; do
             echo 'Booting your device...'
 sudo irecovery -v -v -c bootx
  echo "Done, enjoy your tethered booted device OwO"
-          break
+ echo "if your device failed to boot, it could have not been pwned successfully by ipwndfu or gaster, please retry ipwndfu or gaster, or if you used any other tool to pwn your device ensure that worked successfully too"
+            break
             ;;
         [nN]*)
             echo 'Exiting...'
@@ -504,3 +512,4 @@ sudo irecovery -v -v -c bootx
 
    esac
 done
+#end of script
