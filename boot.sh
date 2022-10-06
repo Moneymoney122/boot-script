@@ -1,3 +1,6 @@
+
+#start of script
+
 #!/usr/bin/env bash
 
 clear
@@ -16,6 +19,12 @@ echo "if you have any issues with this script please read the README.md file inc
 echo "---------------------------------------------------------------------------------------------------------------------"
 echo "if you see any commands in quotes and you want to run them then please copy the commands without the quotes and then run them"
 echo "---------------------------------------------------------------------------------------------------------------------"
+echo "this script will be changing directory into the folder with your boot files, please change this command to match the name of the folder with your boot files by opening this script with a text editor and editing the command on line 47, if you have not already."
+echo "---------------------------------------------------------------------------------------------------------------------"
+
+read -n 1 -s -r -p "------------------------------------Press any key to continue (Or Ctrl+C to Exit)------------------------------------"
+
+clear
 
     if [[ $EUID == 0 ]]; then
         while true; do
@@ -35,27 +44,7 @@ echo "--------------------------------------------------------------------------
 done
 fi
 
-read -n 1 -s -r -p "------------------------------------Press any key to continue (Or Ctrl+C to Exit)------------------------------------"
-
 clear
-
-echo "changing directory into the folder with your boot files, please change this command to match the name of the folder with your boot files by opening this script with a text editor and editing the command on line 57, if you have not already."
-
-while true; do
-    read -p 'Continue? yes/no: ' input
-    case $input in
-        [yY]*)
-            echo 'Continuing the script...'
-            break
-            ;;
-        [nN]*)
-            echo 'Exiting...'
-            exit 1
-            ;;
-         *)
-            echo 'Invalid input' >&2
-    esac
-done
 
 #cd into the folder with your boot files, change this command to cd into the folder with your bootfiles  
 cd ~/sunst0rm/boot-ixbugnoe/
@@ -124,7 +113,7 @@ do
     echo -n "$i "
 done
 
-echo "Hold the power button and home button for 10 seconds..."
+echo -e "\nHold the power button and home button for 10 seconds..."
 
 for i in {1..10}
 do
