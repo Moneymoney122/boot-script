@@ -43,6 +43,8 @@ Table of contents:
 
  run `git clone https://github.com/Moneymoney122/boot.sh` in the terminal while in your home directory or download the zip from this page and unzip the files and place them in a folder called "boot.sh" (without the quotes) in your home directory
 
+ - if you have already downloaded this script and you want to download it again run: `cd ~/boot-script/ && git pull`
+
 - And then run:
 
 `cd ~/boot-script/`
@@ -59,7 +61,7 @@ This script will ask for your user's password, this is not intended to be anythi
 
 - libirecovery: https://github.com/libimobiledevice/libirecovery
 
-- ipwndfu, gaster or some other tool that's capable of putting your device in pwned dfu mode with signature checks removed
+- ipwndfu, gaster or some other tool that is capable of putting your device in pwned dfu mode with signature checks removed
 
    - if you use any other tool than ipwndfu/gaster then you will need to pwn your device with sigchecks removed and then run the script and when you get to the pwning part of the script you will need to enter the option "already pwned" 
 
@@ -68,6 +70,8 @@ This script will ask for your user's password, this is not intended to be anythi
 - gaster: https://github.com/0x7ff/gaster
 
 - sudo
+
+- git
 
 ## Issues/Contact Me:
 
