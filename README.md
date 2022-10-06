@@ -65,9 +65,9 @@ This script will ask for your user's password, this is not intended to be anythi
 
 - ipwndfu, gaster or some other tool that is capable of putting your device in pwned dfu mode with signature checks removed
 
- - fork of ipwndfu for A8/A9 devices: https://github.com/exploit3dguy/ipwndfu
+  - fork of ipwndfu for A8/A9 devices: https://github.com/exploit3dguy/ipwndfu
 
-  - gaster: https://github.com/0x7ff/gaster
+   - gaster: https://github.com/0x7ff/gaster
  
     - python2 is required for ipwndfu
 
