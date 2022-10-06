@@ -20,6 +20,8 @@ echo "if you see any commands in quotes and you want to run them then please cop
 echo "---------------------------------------------------------------------------------------------------------------------"
 echo "this script will be changing directory into the folder with your boot files, please change this command to match the name of the folder with your boot files by opening this script with a text editor and editing the command on line 47, if you have not already."
 echo "---------------------------------------------------------------------------------------------------------------------"
+echo "please ensure that the ipwndfu and gaster folders are in the home directory and that python2 is installed before continuing"
+echo "---------------------------------------------------------------------------------------------------------------------"
 
 read -n 1 -s -r -p "------------------------------------Press any key to continue (Or Ctrl+C to Exit)------------------------------------"
 
@@ -148,32 +150,14 @@ echo "If you see [MODE]:DFU in the text above it means your device is successful
 echo "---------------------------------------------------------------------------------------------------------------------"
 
 while true; do
-    read -p 'Is your device in DFU mode now, and are you also in the directory where the boot files are stored? If not then please put your device in DFU mode and cd into the directory with the boot files then run the script again, if it is then type yes. yes/no: ' input
+    read -p 'Is your device in DFU mode now? yes/no: ' input
     case $input in
         [yY]*)
             echo 'Continuing the script...'
             break
             ;;
         [nN]*)
-            echo 'Exiting...'
-            exit 1
-            ;;
-         *)
-            echo 'Invalid input' >&2
-    esac
-done
-
-echo "Assuming the ipwndfu and gaster folders is in the home directory and that python2 is installed..."
-
-while true; do
-    read -p 'Is this correct? yes/no: ' input
-    case $input in
-        [yY]*)
-            echo 'Continuing the script...'
-            break
-            ;;
-        [nN]*) 
-           echo "Please copy the ipwndfu (if you do not have ipwndfu/gaster, well you probably do if you were able to tether downgrade your device. but if you don't then please download a version for your device that is capable of removing signature checks from your device while in DFU mode, though keep in mind that this script is made for A8/A9 devices, the one I recommend is: https://github.com/exploit3dguy/ipwndfu and gaster can be found here: https://github.com/0x7ff/gaster) folder into your home directory and install python2 (it is needed for ipwndfu, you can check if it's installed by running: python2 --version in the terminal.) and keep your device in DFU mode and restart the script"
+echo "please run the script again"
             echo 'Exiting...'
             exit 1
             ;;
@@ -200,6 +184,49 @@ sudo python2.7 ./ipwndfu -p --rmsigchecks
 echo "Changing back into the directory with the boot files..."
 
 cd -
+
+while true; do
+    read -p 'did you get the "ValueError: The device has no langid" error, if you did this can usually be fixed by running ipwndfu again without restarting your device. yes/no: ' input
+    case $input in
+        [yY]*)
+            echo 'Running ipwndfu again...'
+echo "Changing into the ipwndfu directory..."
+
+cd ~/ipwndfu/
+
+echo "Running the commands for ipwndfu A8/A9..."
+
+sudo python2.7 ./ipwndfu -p --rmsigchecks
+
+echo "Changing back into the directory with the boot files..."
+
+cd -
+
+
+    break
+            ;;
+        [nN]*)
+            echo 'Skipping...'
+            break
+            ;;
+         *)
+            echo 'Invalid input' >&2
+            
+          break
+          ;;
+
+   esac
+done
+
+            break
+            ;;
+        [nN]*)
+            echo 'Skipping...'
+            break
+            ;;
+         *)
+            echo 'Invalid input' >&2
+            
           break
           ;;
         [g]*) 
@@ -217,14 +244,12 @@ cd -
           break
           ;;
           [d]*)
-
 echo "Skipping pwning your device..."
-          
           break
           ;;
          *)
             echo 'Invalid input' >&2
-    esac
+   esac
 done
 
 while true; do
