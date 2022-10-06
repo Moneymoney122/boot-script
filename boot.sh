@@ -186,7 +186,7 @@ echo "Changing back into the directory with the boot files..."
 cd -
 
 while true; do
-    read -p 'did you get the "ValueError: The device has no langid" error, if you did this can usually be fixed by running ipwndfu again without restarting your device. yes/no: ' input
+    read -p 'did you get the "ValueError: The device has no langid" error, if you did this can usually be fixed by running ipwndfu again without restarting your device, or you can use this as an opportunity to force restart your device and put it back into DFU mode and then run ipwndfu again if it failed with an error other than "ValueError: The device has no langid" without having to run the script again. yes/no: ' input
     case $input in
         [yY]*)
             echo 'Running ipwndfu again...'
@@ -211,27 +211,13 @@ cd -
             ;;
          *)
             echo 'Invalid input' >&2
-            
-          break
-          ;;
 
    esac
-done
-
-            break
-            ;;
-        [nN]*)
-            echo 'Skipping...'
-            break
-            ;;
-         *)
-            echo 'Invalid input' >&2
-            
+done        
           break
           ;;
         [g]*) 
-           
- cd ~/gaster/
+cd ~/gaster/
 
 echo "Running the commands for gaster..."
 
@@ -240,7 +226,6 @@ echo "Running the commands for gaster..."
 echo "Changing back into the directory with the boot files..."
 
 cd -          
-           
           break
           ;;
           [d]*)
@@ -266,7 +251,7 @@ while true; do
           [imunsure]*)
           
            sudo irecovery -q
-          echo "If that command prints [MODE]: DFU and [PWND]: CHECKM8/[PWND]:gaster and ipwndfu said patched mapping and signature checks or gaster said Now you can boot untrusted images. then it was successful, if it says anything different then it most likely wasn't successful and you should force restart your device run the script again."
+          echo "If that command prints [MODE]: DFU and [PWND]: CHECKM8/[PWND]: gaster and ipwndfu said patched mapping and signature checks or gaster said Now you can boot untrusted images. then it was successful, if it says anything different then it most likely wasn't successful and you should force restart your device run the script again."
             ;;
             *)
          echo 'Invalid input' >&2
