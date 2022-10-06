@@ -19,13 +19,15 @@ Table of contents:
 
 - This script is not made by mineek, it is made by me (Moneymoney122)
 
-- It is intended for use on linux (only tested on Arch Linux, but should work on every distro)
+- It is intended for use on Linux (only tested on Arch Linux, but should work on every distro)
 
-- It may or may not work
+   - it might work on Mac OS, but I don't know
 
 - Use it at your own risk, I am not responsible for any damage it may cause.
 
 - I have no idea why I made this script, and I have no idea if it is actually useful or not
+
+- it may or may not work
 
 - Released on the 1st of October 2022
 
