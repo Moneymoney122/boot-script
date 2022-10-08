@@ -21,9 +21,9 @@ Table of contents:
 
 - It is intended for use on Linux (only tested on Arch Linux, but should work on every distro)
 
-   - it might work on Mac OS, but I don't know
+   - ~~it might work on Mac OS, but I don't know~~
 
-    - Update: tested on Mac OS Catalina (10.15) and it works
+    - *Update: tested on Mac OS Catalina (10.15) and it works*
 
 - Use it at your own risk, I am not responsible for any damage it may cause.
 
