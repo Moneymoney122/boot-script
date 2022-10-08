@@ -61,6 +61,10 @@ This script will ask for your user's password, this is not intended to be anythi
 
 ## Dependencies for this script: 
 
+- sunst0rm if you want to tether downgrade your device: https://github.com/mineek/sunst0rm
+
+    - linux fork of sunst0rm: https://github.com/MCApollo/sunst0rm
+
 - ideviceinfo and ideviceenterrecovery: https://github.com/libimobiledevice/libimobiledevice
 
 - libirecovery: https://github.com/libimobiledevice/libirecovery
@@ -74,6 +78,7 @@ This script will ask for your user's password, this is not intended to be anythi
     - python2 is required for ipwndfu
 
      - if you use any other tool than ipwndfu/gaster then you will need to pwn your device with sigchecks removed and then run the script and when you get to the pwning part of the script you will need to enter the option "already pwned" 
+
 
 
 - sudo
