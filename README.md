@@ -23,6 +23,8 @@ Table of contents:
 
    - it might work on Mac OS, but I don't know
 
+    - Update: tested on Mac OS Catalina (10.15) and it works
+
 - Use it at your own risk, I am not responsible for any damage it may cause.
 
 - I have no idea why I made this script, and I have no idea if it is actually useful or not
