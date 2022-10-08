@@ -457,22 +457,22 @@ sudo irecovery -v -v -f ./bootlogo.img4
 echo "Sent display commands"
 sudo irecovery -v -v -c "setpicture 0"	
 echo "Putting some nice colours on the screen because I can..."
-sleep 1
+sleep 3
 echo "Running command \"bgcolor 0 0 0\" on the device..."
 sudo irecovery -v -v -c "bgcolor 0 0 0"
-sleep 1
+sleep 3
 echo "Running command \"bgcolor 255 0 0\" on the device..."
 sudo irecovery -v -v -c "bgcolor 255 0 0"
-sleep 1
+sleep 3
 echo "Running command \"bgcolor 0 255 0\" on the device..."
 sudo irecovery -v -v -c "bgcolor 0 255 0"
-sleep 1
+sleep 3
 echo "Running command \"bgcolor 0 0 255\" on the device..."
 sudo irecovery -v -v -c "bgcolor 0 0 255"
-sleep 1
+sleep 3
 echo "Running command \"bgcolor 127 0 0\" on the device..."
 sudo irecovery -v -v -c "bgcolor 127 0 0"
-sleep 1
+sleep 3
 echo "Running command \"bgcolor 0 0 0\" on the device..."
 sudo irecovery -v -v -c "bgcolor 0 0 0"
             break  
