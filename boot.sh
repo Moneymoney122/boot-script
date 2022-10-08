@@ -70,7 +70,6 @@ echo "--------------------------------------------------------------------------
 
 echo "Searching for devices in normal mode..."
 
-
 ActivationState=$(ideviceinfo | grep ActivationState: | awk '{print $NF}')
 DeviceName=$(ideviceinfo | grep DeviceName | awk '{print $NF}')
 UniqueDeviceID=$(ideviceinfo | grep UniqueDeviceID | awk '{print $NF}')
