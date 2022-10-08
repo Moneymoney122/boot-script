@@ -108,6 +108,8 @@ var=`ideviceinfo | grep "UniqueDeviceID" | grep -wv "UniqueDeviceID: "`
 
 sudo ideviceenterrecovery $var
 
+sleep 3
+
 echo "---------------------------------------------------------------------------------------------------------------------"
 
 while true; do
@@ -140,8 +142,6 @@ done
             echo 'Invalid input' >&2
     esac
 done
-
-sleep 3
 
 clear
 
