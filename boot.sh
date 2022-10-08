@@ -108,9 +108,9 @@ var=`ideviceinfo | grep "UniqueDeviceID" | grep -wv "UniqueDeviceID: "`
 
 sudo ideviceenterrecovery $var
 
-sleep 3
-
 echo "---------------------------------------------------------------------------------------------------------------------"
+
+sleep 3
 
 while true; do
     read -p 'Did your device enter recovery mode (black screen if your device is tether downgraded) from normal mode? yes/no: ' input
