@@ -316,6 +316,7 @@ while true; do
     case $input in
         [e]*)
 echo "Entering easy mode..."
+cpid=$(irecovery -q | grep "CPID" | sed "s/CPID: //")
 sleep 1
 echo "Sending iBSS..."
 sudo irecovery -f ./ibss.img4
@@ -324,6 +325,12 @@ echo "Sending iBSS again..."
 sudo irecovery -f ./ibss.img4
 echo "Sending iBEC..."
 sudo irecovery -f ./ibec.img4
+if [[ "$cpid" == *"0x80"* ]]; then
+    irecovery -f ibec.img4
+    sleep 2
+    irecovery -c "go"
+    sleep 5
+fi
 echo "Sending BootLogo..."
 sudo irecovery -f ./bootlogo.img4
 echo "Running display commands..."
