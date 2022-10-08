@@ -4,6 +4,12 @@
 
 clear
 
+#colours
+RED="\033[1;31m"
+GREEN="\033[1;32m"
+YELLOW="\033[1;33m"
+CYAN="\033[0;36m"
+NC="\e[0m"
 ICyan='\033[0;96m'
 echo -e "${ICyan}---------------------------------------------------------------------------------------------------------------------"
 echo "Boot script for tethered downgraded A8/A9 devices, this script is made by Moneymoney122 (@chandler_hacker on twitter)."
@@ -18,7 +24,7 @@ echo "if you have any issues with this script please read the README.md file inc
 echo "---------------------------------------------------------------------------------------------------------------------"
 echo "if you see any commands in quotes and you want to run them then please copy the commands without the quotes and then run them"
 echo "---------------------------------------------------------------------------------------------------------------------"
-echo "this script will be changing directory into the folder with your boot files, please change this command to match the name of the folder with your boot files by opening this script with a text editor and editing the command on line 47, if you have not already."
+echo "this script will be changing directory into the folder with your boot files, please change this command to match the name of the folder with your boot files by opening this script with a text editor and editing the command on line 80, if you have not already."
 echo "---------------------------------------------------------------------------------------------------------------------"
 echo "please ensure that the ipwndfu and gaster folders are in the home directory and that python2 is installed before continuing"
 echo "---------------------------------------------------------------------------------------------------------------------"
@@ -47,10 +53,33 @@ fi
 
 clear
 
-#cd into the folder with your boot files, change this command to cd into the folder with your bootfiles  
+echo "---------------------------------------------------------------------------------------------------------------------"
+
+echo "Searching for devices in normal mode..."
+
+
+ActivationState=$(ideviceinfo | grep ActivationState: | awk '{print $NF}')
+DeviceName=$(ideviceinfo | grep DeviceName | awk '{print $NF}')
+UniqueDeviceID=$(ideviceinfo | grep UniqueDeviceID | awk '{print $NF}')
+SerialNumber=$(ideviceinfo | grep -w SerialNumber | awk '{print $NF}')
+ProductType=$(ideviceinfo | grep ProductType | awk '{print $NF}')
+ProductVersion=$(ideviceinfo | grep ProductVersion | awk '{print $NF}')
+
+if test -z "$ActivationState"
+then
+      echo ' ----------------------------------------------------------------------'
+      echo -e "$RED  *******unable to connect to any devices in normal mode*******$NC"
+else
+      echo ' ----------------------------------------------------------------------'
+      echo -e "Serial Number: $SerialNumber Device: $ProductType Firmware: $ProductVersion UDID: $UniqueDeviceID Name: $DeviceName Activation State: $ActivationState" 
+fi
+
+#cd into the folder with your boot files, change this command to cd into the folder with your boot files  
+echo -e "${ICyan}---------------------------------------------------------------------------------------------------------------------"
+echo "Changing into the folder with your boot files..."
 cd ~/sunst0rm/boot-ixbugnoe/
 
-clear
+echo "---------------------------------------------------------------------------------------------------------------------"
 
 while true; do
     read -p 'If your device is currently in normal mode and you want to reboot it, this script can enter recovery mode (it will be a black screen but it will be in recovery mode.) for you and then you can enter DFU mode from there, this is a safer option if your device is already in normal mode. Is your device is currently in normal mode? yes/no: ' input
@@ -61,6 +90,8 @@ while true; do
 var=`ideviceinfo | grep "UniqueDeviceID" | grep -wv "UniqueDeviceID: "`
 
 sudo ideviceenterrecovery $var
+
+echo "---------------------------------------------------------------------------------------------------------------------"
 
 while true; do
     read -p 'Did your device enter recovery mode (black screen if your device is tether downgraded) from normal mode? yes/no: ' input
@@ -98,7 +129,7 @@ sleep 3
 clear
 
 echo "---------------------------------------------------------------------------------------------------------------------"
-echo "if you chose to put your device into recovery mode from normal mode, please now put your device into DFU mode"
+echo -e "${ICyan}if you chose to put your device into recovery mode from normal mode, please now put your device into DFU mode"
 echo "---------------------------------------------------------------------------------------------------------------------"
 echo "Please make sure your device is in DFU mode now, and make sure you are curently in the directory where the boot files are stored"
   read -p 'Do you want help entering DFU mode? yes/no: ' input
@@ -181,9 +212,13 @@ echo "Running the commands for ipwndfu A8/A9..."
 
 sudo python2.7 ./ipwndfu -p --rmsigchecks
 
+ho "---------------------------------------------------------------------------------------------------------------------"
+
 echo "Changing back into the directory with the boot files..."
 
 cd -
+
+echo "---------------------------------------------------------------------------------------------------------------------"
 
 while true; do
     read -p 'did you get the "ValueError: The device has no langid" error, if you did this can usually be fixed by running ipwndfu again without restarting your device, or you can use this as an opportunity to force restart your device and put it back into DFU mode and then run ipwndfu again if it failed with an error other than "ValueError: The device has no langid" without having to run the script again. yes/no: ' input
@@ -237,6 +272,8 @@ echo "Skipping pwning your device..."
    esac
 done
 
+echo "---------------------------------------------------------------------------------------------------------------------"
+
 while true; do
     read -p 'Did ipwndfu/gaster work succefully? If it did not then please type no and then please force restart your device and put it back into DFU mode and then run the script again, if one tool failed you can try the other one, or if ipwndfu/gaster worked succesfully and you just want to put your device into PwnedDFU mode with sigchecks removed then you can type no and exit the script too or if you have already successfuly pwned your device and skipped pwning your device this time then type yes. if it did then please type yes. Or if you are not sure then type imunsure if you are not sure and you want to check if it worked correctly yes/no/imunsure: ' input
     case $input in
@@ -259,6 +296,8 @@ while true; do
 done
 
 sleep 1
+
+echo "---------------------------------------------------------------------------------------------------------------------"
 
 while true; do
     read -p 'Do you want to send all the files to boot your device now (easy), or do you want to choose which files to send and enable verbose mode (advanced), or have the files already been sent(s)? e/a/s: ' input
@@ -494,6 +533,8 @@ echo "Continuing to the boot part of this script..."
 
     esac
 done
+
+echo "---------------------------------------------------------------------------------------------------------------------"
 
 echo "Files have been uploaded to your device, if you do not want to boot your device now (idk why you would not want to because this is a boot script lmao, but I'm adding the option not to anyway.) then you can use the following command to boot your device later: sudo irecovery -v -v -c bootx" 
 
