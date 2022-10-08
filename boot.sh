@@ -39,6 +39,8 @@ echo "this script will be changing directory into the folder with your boot file
 echo "---------------------------------------------------------------------------------------------------------------------"
 echo "please ensure that the ipwndfu and gaster folders are in the home directory and that python2 is installed before continuing"
 echo "---------------------------------------------------------------------------------------------------------------------"
+echo "if your device is in DFU mode at any time and you want to exit it, hold the power button and home button for 15 seconds"
+echo "---------------------------------------------------------------------------------------------------------------------"
 
 read -n 1 -s -r -p "------------------------------------Press any key to continue (Or Ctrl+C to Exit)------------------------------------"
 
