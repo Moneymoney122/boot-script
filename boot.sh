@@ -328,13 +328,15 @@ sudo irecovery -f ./ibss.img4
 #send iBSS again.
 echo "Sending iBSS again..."
 sudo irecovery -f ./ibss.img4
+cho "Sending iBEC..."
 sudo irecovery -f ./ibec.img4
 if [[ "$cpid" == *"0x80"* ]]; then
     irecovery -f ibec.img4
     sleep 2
     irecovery -c "go"
     sleep 5
-fiecho "Sending BootLogo..."
+fi
+echo "Sending BootLogo..."
 sudo irecovery -f ./bootlogo.img4
 echo "Running display commands..."
 sudo irecovery -c "setpicture 0"
