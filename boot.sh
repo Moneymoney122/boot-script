@@ -1,16 +1,3 @@
-#This program is free software: you can redistribute it and/or modify
-#it under the terms of the GNU General Public License as published by
-#the Free Software Foundation, either version 3 of the License, or
-#(at your option) any later version.
-
-#This program is distributed in the hope that it will be useful,
-#but WITHOUT ANY WARRANTY; without even the implied warranty of
-#MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#GNU General Public License for more details.
-
-#You should have received a copy of the GNU General Public License
-#along with this program.  If not, see <https://www.gnu.org/licenses/>.
-
 #start of script
 
 #!/usr/bin/env bash
@@ -70,12 +57,17 @@ echo "--------------------------------------------------------------------------
 
 echo "Searching for devices in normal mode..."
 
+
 ActivationState=$(ideviceinfo | grep ActivationState: | awk '{print $NF}')
 DeviceName=$(ideviceinfo | grep DeviceName | awk '{print $NF}')
 UniqueDeviceID=$(ideviceinfo | grep UniqueDeviceID | awk '{print $NF}')
 SerialNumber=$(ideviceinfo | grep -w SerialNumber | awk '{print $NF}')
 ProductType=$(ideviceinfo | grep ProductType | awk '{print $NF}')
 ProductVersion=$(ideviceinfo | grep ProductVersion | awk '{print $NF}')
+UniqueChipID=$(ideviceinfo | grep UniqueChipID | awk '{print $NF}')
+HardwareModel=$(ideviceinfo | grep HardwareModel | awk '{print $NF}')
+CPUArchitecture=$(ideviceinfo | grep CPUArchitecture | awk '{print $NF}')
+HardwarePlatform=$(ideviceinfo | grep HardwarePlatform | awk '{print $NF}')
 
 if test -z "$ActivationState"
 then
@@ -83,7 +75,9 @@ then
       echo -e "$RED  *******unable to connect to any devices in normal mode*******$NC"
 else
       echo ' ----------------------------------------------------------------------'
-      echo -e "Serial Number: $SerialNumber Device: $ProductType Firmware: $ProductVersion UDID: $UniqueDeviceID Name: $DeviceName Activation State: $ActivationState" 
+      echo -e "Serial Number: $SerialNumber | Device: $ProductType | Firmware: $ProductVersion | UDID: $UniqueDeviceID"
+      echo -e "\nName: $DeviceName | Activation State: $ActivationState | ECID (Decimal): $UniqueChipID | Board ID: $HardwareModel"
+      echo -e "\nCPU Arch: $CPUArchitecture | Hardware Platform: $HardwarePlatform"
 fi
 
 #cd into the folder with your boot files, change this command to cd into the folder with your boot files  
@@ -224,7 +218,7 @@ echo "Running the commands for ipwndfu A8/A9..."
 
 sudo python2.7 ./ipwndfu -p --rmsigchecks
 
-ho "---------------------------------------------------------------------------------------------------------------------"
+echo "---------------------------------------------------------------------------------------------------------------------"
 
 echo "Changing back into the directory with the boot files..."
 
@@ -316,7 +310,6 @@ while true; do
     case $input in
         [e]*)
 echo "Entering easy mode..."
-cpid=$(irecovery -q | grep "CPID" | sed "s/CPID: //")
 sleep 1
 echo "Sending iBSS..."
 sudo irecovery -f ./ibss.img4
@@ -325,12 +318,6 @@ echo "Sending iBSS again..."
 sudo irecovery -f ./ibss.img4
 echo "Sending iBEC..."
 sudo irecovery -f ./ibec.img4
-if [[ "$cpid" == *"0x80"* ]]; then
-    irecovery -f ibec.img4
-    sleep 2
-    irecovery -c "go"
-    sleep 5
-fi
 echo "Sending BootLogo..."
 sudo irecovery -f ./bootlogo.img4
 echo "Running display commands..."
