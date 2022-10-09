@@ -310,6 +310,7 @@ while true; do
            Mode=$(irecovery -q | grep "MODE" | sed "s/MODE: //")
            if [[ "$Mode" == *"Recovery"* ]]; then
            echo "Your device is in recovery mode, not DFU mode. Please run the script again."
+           exit 1
            fi
            echo "---------------------------------------------------------------------------------------------------------------------"
            break
