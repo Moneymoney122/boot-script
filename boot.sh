@@ -330,7 +330,7 @@ sudo irecovery -f ./ibss.img4
 #send iBSS again.
 echo "Sending iBSS again..."
 sudo irecovery -f ./ibss.img4
-cho "Sending iBEC..."
+echo "Sending iBEC..."
 sudo irecovery -f ./ibec.img4
 if [[ "$cpid" == *"0x80"* ]]; then
     irecovery -f ibec.img4
