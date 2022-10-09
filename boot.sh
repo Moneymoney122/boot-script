@@ -87,10 +87,10 @@ then
       echo ' ----------------------------------------------------------------------'
       echo -e "$RED  *******unable to connect to any devices in normal mode*******$NC"
 else
-      echo ' ----------------------------------------------------------------------'
-      echo -e "Serial Number: $SerialNumber | Device: $ProductType | Firmware: $ProductVersion | UDID: $UniqueDeviceID"
-      echo -e "\nName: $DeviceName | Activation State: $ActivationState | ECID (Decimal): $UniqueChipID | Board ID: $HardwareModel"
-      echo -e "\nCPU Arch: $CPUArchitecture | Hardware Platform: $HardwarePlatform"
+      echo '----------------------------------------------------------------------'
+      echo -e "$GREENSerial Number: $SerialNumber | Device: $ProductType | Firmware: $ProductVersion | UDID: $UniqueDeviceID"
+      echo -e "$GREEN\nName: $DeviceName | Activation State: $ActivationState | ECID (Decimal): $UniqueChipID | Board ID: $HardwareModel"
+      echo -e "$GREEN\nCPU Arch: $CPUArchitecture | Hardware Platform: $HardwarePlatform"
 fi
 
 #cd into the folder with your boot files, change this command to cd into the folder with your boot files  
@@ -207,7 +207,7 @@ while true; do
             break
             ;;
         [nN]*)
-echo "please run the script again"
+echo "Please run the script again"
             echo 'Exiting...'
             exit 1
             ;;
