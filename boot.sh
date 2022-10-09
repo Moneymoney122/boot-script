@@ -307,12 +307,6 @@ while true; do
            echo "---------------------------------------------------------------------------------------------------------------------"
            echo "Searching for devices in DFU/Recovery mode..."
            sudo irecovery -q
-           Mode=$(irecovery -q | grep "MODE" | sed "s/MODE //")
-           if [[ "$Mode" == *"Recovery"* ]]; then
-           echo "Your device is in recovery mode"
-           fi
-           if [[ "$Mode" == *"DFU"* ]]; then
-           "Your device is DFU mode"
            echo "---------------------------------------------------------------------------------------------------------------------"
            break
             ;;
