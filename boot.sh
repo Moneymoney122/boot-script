@@ -112,7 +112,7 @@ sudo ideviceenterrecovery $var
 
 echo "---------------------------------------------------------------------------------------------------------------------"
 
-sleep 3
+sleep 7
 
 while true; do
     read -p 'Did your device enter recovery mode (black screen if your device is tether downgraded) from normal mode? yes/no: ' input
