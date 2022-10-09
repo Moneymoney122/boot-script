@@ -184,10 +184,10 @@ HardwarePlatform=$(ideviceinfo | grep HardwarePlatform | awk '{print $NF}')
 
 if test -z "$ActivationState"
 then
-      echo ' ----------------------------------------------------------------------'
+      echo "---------------------------------------------------------------------------------------------------------------------"
       echo -e "$RED*******unable to connect to any devices in normal mode*******$NC"
 else
-      echo '----------------------------------------------------------------------'
+      echo "---------------------------------------------------------------------------------------------------------------------"
       echo -e "${IGreen}Serial Number: $SerialNumber | Device: $ProductType | Firmware: $ProductVersion | UDID: $UniqueDeviceID"
       echo -e "${IGreen}\nName: $DeviceName | Activation State: $ActivationState | ECID (Decimal): $UniqueChipID | Board ID: $HardwareModel"
       echo -e "${IGreen}\nCPU Arch: $CPUArchitecture | Hardware Platform: $HardwarePlatform"
