@@ -22,6 +22,7 @@ YELLOW="\033[1;33m"
 CYAN="\033[0;36m"
 NC="\e[0m"
 ICyan='\033[0;96m'
+IGreen='\033[0;92m'
 echo -e "${ICyan}---------------------------------------------------------------------------------------------------------------------"
 echo "Boot script for tethered downgraded A8/A9 devices, this script is made by Moneymoney122 (@chandler_hacker on twitter)."
 echo "---------------------------------------------------------------------------------------------------------------------"
@@ -88,9 +89,9 @@ then
       echo -e "$RED  *******unable to connect to any devices in normal mode*******$NC"
 else
       echo '----------------------------------------------------------------------'
-      echo -e "$GREENSerial Number: $SerialNumber | Device: $ProductType | Firmware: $ProductVersion | UDID: $UniqueDeviceID"
-      echo -e "$GREEN\nName: $DeviceName | Activation State: $ActivationState | ECID (Decimal): $UniqueChipID | Board ID: $HardwareModel"
-      echo -e "$GREEN\nCPU Arch: $CPUArchitecture | Hardware Platform: $HardwarePlatform"
+      echo -e "$IGREEN Serial Number: $SerialNumber | Device: $ProductType | Firmware: $ProductVersion | UDID: $UniqueDeviceID"
+      echo -e "$IGREEN\nName: $DeviceName | Activation State: $ActivationState | ECID (Decimal): $UniqueChipID | Board ID: $HardwareModel"
+      echo -e "$IGREEN\nCPU Arch: $CPUArchitecture | Hardware Platform: $HardwarePlatform"
 fi
 
 #cd into the folder with your boot files, change this command to cd into the folder with your boot files  
