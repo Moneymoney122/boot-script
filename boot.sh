@@ -9,9 +9,28 @@
 #GNU General Public License for more details.
 
 #You should have received a copy of the GNU General Public License
-#along with this program.  If not, see <https://www.gnu.org/licenses/>.#start of script
+#along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+#start of script
 
 #!/usr/bin/env bash
+
+clear
+
+echo  " ____   ____   ____ _______    _____  _____ _____  _____ _____ _______" 
+echo  "|  _ \ / __ \ / __ \__   __|  / ____|/ ____|  __ \|_   _|  __ \__   __|"
+echo  "| |_) | |  | | |  | | | |    | (___ | |    | |__) | | | | |__) | | |   "
+echo  "|  _ <| |  | | |  | | | |     \___ \| |    |  _  /  | | |  ___/  | |   "
+echo  "| |_) | |__| | |__| | | |     ____) | |____| | \ \ _| |_| |      | |   "
+echo  "|____/ \____/ \____/  |_|    |_____/ \_____|_|  \_\_____|_|      |_|   "
+
+echo -e "\n\n\n\n\n\n\n\n\n\n\n\n\n"
+
+echo  "_ __  ___ _____ __ __ "
+echo  "| '  \/ -_) _ \ V  V /"
+echo " |_|_|_\___\___/\_/\_/ "
+                            
+sleep 1.5
 
 clear
 
@@ -36,11 +55,15 @@ echo "if you have any issues with this script please read the README.md file inc
 echo "---------------------------------------------------------------------------------------------------------------------"
 echo "if you see any commands in quotes and you want to run them then please copy the commands without the quotes and then run them"
 echo "---------------------------------------------------------------------------------------------------------------------"
-echo "this script will be changing directory into the folder with your boot files, please change this command to match the name of the folder with your boot files by opening this script with a text editor and editing the command on line 80, if you have not already."
+echo "this script will be changing directory into the folder with your boot files, please change this command to match the name of the folder with your boot files by opening this script with a text editor and editing the command on line 115, if you have not already."
 echo "---------------------------------------------------------------------------------------------------------------------"
 echo "please ensure that the ipwndfu and gaster folders are in the home directory and that python2 is installed before continuing"
 echo "---------------------------------------------------------------------------------------------------------------------"
 echo "if your device is in DFU mode at any time and you want to exit it, hold the power button and home button for 15 seconds"
+echo "---------------------------------------------------------------------------------------------------------------------"
+echo "it is reccomended that you maximise your terminal window to ensure all text is displayed correctly"
+echo "---------------------------------------------------------------------------------------------------------------------"
+echo "you can use Ctrl+C to exit at any time"
 echo "---------------------------------------------------------------------------------------------------------------------"
 
 read -n 1 -s -r -p "------------------------------------Press any key to continue (Or Ctrl+C to Exit)------------------------------------"
@@ -69,6 +92,18 @@ clear
 
 echo "---------------------------------------------------------------------------------------------------------------------"
 
+case "$OSTYPE" in
+  solaris*) echo "Running on Solaris" ;;
+  darwin*)  echo "Running on Mac OS/iOS/iPad OS" ;; 
+  linux*)   echo "Running on Linux" ;;
+  bsd*)     echo "Running on BSD" ;;
+  msys*)    echo "Running on Windows" ;;
+  cygwin*)  echo "Running on Windows" ;;
+  *)        echo "Unknown: $OSTYPE" ;;
+esac
+
+echo "---------------------------------------------------------------------------------------------------------------------"
+
 echo "Searching for devices in normal mode..."
 
 
@@ -86,7 +121,7 @@ HardwarePlatform=$(ideviceinfo | grep HardwarePlatform | awk '{print $NF}')
 if test -z "$ActivationState"
 then
       echo ' ----------------------------------------------------------------------'
-      echo -e "$RED  *******unable to connect to any devices in normal mode*******$NC"
+      echo -e "$RED*******unable to connect to any devices in normal mode*******$NC"
 else
       echo '----------------------------------------------------------------------'
       echo -e "${IGreen}Serial Number: $SerialNumber | Device: $ProductType | Firmware: $ProductVersion | UDID: $UniqueDeviceID"
