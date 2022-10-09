@@ -352,6 +352,8 @@ echo "Running the commands for ipwndfu A8/A9..."
 
 sudo python2.7 ./ipwndfu -p --rmsigchecks
 
+echo "---------------------------------------------------------------------------------------------------------------------"
+
 echo "Changing back into the directory with the boot files..."
 
 cd -
