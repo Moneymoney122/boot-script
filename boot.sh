@@ -95,6 +95,8 @@ echo "--------------------------------------------------------------------------
 
 echo "Detecting what Operating System this script is running on..."
 
+echo "---------------------------------------------------------------------------------------------------------------------"
+
 case "$OSTYPE" in
   solaris*) echo "Running on Solaris" ;;
   darwin*)  echo "Running on Mac OS/iOS/iPad OS" ;; 
