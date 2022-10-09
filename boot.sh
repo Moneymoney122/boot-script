@@ -366,7 +366,7 @@ echo "Files have been uploaded to your device, if you do not want to boot your d
         [a]*)
 echo 'Entering advanced mode...'
 
-echo "Searching for device..."
+echo "Searching for devices in DFU/Recovery mode..."
 
 sudo irecovery -v -v -q
 
