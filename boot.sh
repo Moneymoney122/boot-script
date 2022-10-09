@@ -186,6 +186,18 @@ if test -z "$ActivationState"
 then
       echo "---------------------------------------------------------------------------------------------------------------------"
       echo -e "$RED*******unable to connect to any devices in normal mode*******$NC"
+       echo "Searching for devices in DFU/Recovery mode..."
+           sudo irecovery -q
+           Mode=$(irecovery -q | grep "MODE" | sed "s/MODE //")
+           if [[ "$Mode" == *"Recovery"* ]]; then
+           echo "Your device is in recovery mode"
+           fi
+           if [[ "$Mode" == *"DFU"* ]]; then
+          "Your device is DFU mode"
+           fi 
+           if test -z "$Mode" then
+           echo -e "$RED*******unable to connect to any devices in DFU/Recovery mode*******$NC"
+           fi
 else
       echo "---------------------------------------------------------------------------------------------------------------------"
       echo -e "${IGreen}Serial Number: $SerialNumber | Device: $ProductType | Firmware: $ProductVersion | UDID: $UniqueDeviceID"
@@ -300,18 +312,19 @@ echo "If you see [MODE]:DFU in the text above it means your device is successful
 echo "---------------------------------------------------------------------------------------------------------------------"
 
 while true; do
-    read -p 'Is your device in DFU mode now? yes/no: ' input
+    read -p 'Is your device in DFU/Recovery mode now? yes/no: ' input
     case $input in
         [yY]*)
            echo 'Continuing the script...'
            echo "---------------------------------------------------------------------------------------------------------------------"
            echo "Searching for devices in DFU/Recovery mode..."
            sudo irecovery -q
-           Mode=$(irecovery -q | grep "MODE" | sed "s/MODE: //")
+           Mode=$(irecovery -q | grep "MODE" | sed "s/MODE //")
            if [[ "$Mode" == *"Recovery"* ]]; then
-           echo "Your device is in recovery mode, not DFU mode. Please run the script again."
-           exit 1
+           echo "Your device is in recovery mode"
            fi
+           if [[ "$Mode" == *"DFU"* ]]; then
+           "Your device is DFU mode"
            echo "---------------------------------------------------------------------------------------------------------------------"
            break
             ;;
