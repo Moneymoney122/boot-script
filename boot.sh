@@ -571,7 +571,7 @@ while true; do
             echo 'Booting your device...'
 sudo irecovery -v -v -c bootx
  echo "Done, enjoy your tethered booted device OwO"
- echo "if your device failed to boot, it could have not been pwned successfully by ipwndfu or gaster, please retry ipwndfu or gaster, or if you used any other tool to pwn your device ensure that worked successfully too"
+ echo "if your device failed to boot, it could have not been pwned successfully by ipwndfu or gaster, please retry ipwndfu or gaster, or if you used any other tool to pwn your device ensure that worked successfully too, or the boot files could not have been sent or not sent correctly"
             break
             ;;
         [nN]*)
