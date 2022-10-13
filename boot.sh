@@ -328,13 +328,14 @@ while true; do
     read -p 'Do you want to jailbreak with checkra1n? yes/no: ' input
     case $input in
         [yY]*)
-           echo 'Running checkra1n in cli mode. Please ensure your device is in DFU mode and that the checkra1n executable is in your home directory...'
+           echo -e '${NC} Running checkra1n in cli mode. Please ensure your device is in DFU mode and that the checkra1n executable is in your home directory...'
            echo "when checkra1n has finished please press Ctrl+C to exit checkra1n and exit this script" 
            echo "---------------------------------------------------------------------------------------------------------------------"
            echo "Searching for devices in DFU/Recovery mode..."
            sudo irecovery -q
            echo "---------------------------------------------------------------------------------------------------------------------"
            echo "Running command \"sudo ~/checkra1n -cVv\"..."
+           echo "-c for command-line mode. -V for verbose boot on your device. -v for verbose output on checkra1n." 
            sudo ~/checkra1n -cVv
            break
             ;;
@@ -705,7 +706,7 @@ sudo irecovery -v -v -c bootx
             break
             ;;
         [nN]*)
-            echo 'Exiting...'
+            echo -e '${NC} Exiting...'
             exit 1
             ;;
          *)
