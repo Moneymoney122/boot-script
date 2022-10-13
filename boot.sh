@@ -329,7 +329,7 @@ while true; do
     case $input in
         [yY]*)
            echo 'Running checkra1n in cli mode. Please ensure your device is in DFU mode and that the checkra1n executable is in your home directory...'
-           echo "when checkra1n has finished please press Ctrl+C to exit checkra1n and this script" 
+           echo "when checkra1n has finished please press Ctrl+C to exit checkra1n and exit this script" 
            echo "---------------------------------------------------------------------------------------------------------------------"
            echo "Searching for devices in DFU/Recovery mode..."
            sudo irecovery -q
