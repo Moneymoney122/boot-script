@@ -66,6 +66,8 @@ echo "it is reccomended that you maximise your terminal window to ensure all tex
 echo "---------------------------------------------------------------------------------------------------------------------"
 echo "you can use Ctrl+C to exit the script at any time."
 echo "---------------------------------------------------------------------------------------------------------------------"
+echo "this script can also run checkra1n commands for any checkra1n compatible device. if you want to use checkra1n with this script please ensure that the checkra1n executable file is in your home directory"
+echo "---------------------------------------------------------------------------------------------------------------------"
 
 read -n 1 -s -r -p "------------------------------------Press any key to continue (Or Ctrl+C to Exit)------------------------------------"
 
@@ -321,6 +323,28 @@ echo "Please run the script again"
 done
 
 echo "---------------------------------------------------------------------------------------------------------------------"
+
+while true; do
+    read -p 'Do you want to jailbreak with checkra1n? yes/no: ' input
+    case $input in
+        [yY]*)
+           echo 'Running checkra1n in cli mode. Please ensure your device is in DFU mode and that the checkra1n executable is in your home directory...'
+           echo "when checkra1n has finished please press Ctrl+C to exit checkra1n and this script" 
+           echo "---------------------------------------------------------------------------------------------------------------------"
+           echo "Searching for devices in DFU/Recovery mode..."
+           sudo irecovery -q
+           echo "---------------------------------------------------------------------------------------------------------------------"
+           echo "Running command \"sudo ~/checkra1n -cVv\"..."
+           sudo ~/checkra1n -cVv
+           break
+            ;;
+        [nN]*)
+            echo 'Skipping...'
+            ;;
+         *)
+            echo 'Invalid input' >&2
+    esac
+done
 
 while true; do
     read -p 'Do you want to use ipwndfu or gaster to pwn your device, or is your device already done being pwned? i/g/d: ' input
