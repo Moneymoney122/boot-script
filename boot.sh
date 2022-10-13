@@ -66,7 +66,7 @@ echo "it is reccomended that you maximise your terminal window to ensure all tex
 echo "---------------------------------------------------------------------------------------------------------------------"
 echo "you can use Ctrl+C to exit the script at any time."
 echo "---------------------------------------------------------------------------------------------------------------------"
-echo "this script can also run checkra1n commands for any checkra1n compatible device. if you want to use checkra1n with this script please ensure that the checkra1n executable file is in your home directory"
+echo "this script can also run checkra1n commands to jailbreak your device for any checkra1n compatible device. if you want to use checkra1n with this script please ensure that the checkra1n executable file is in your home directory"
 echo "---------------------------------------------------------------------------------------------------------------------"
 
 read -n 1 -s -r -p "------------------------------------Press any key to continue (Or Ctrl+C to Exit)------------------------------------"
