@@ -43,7 +43,7 @@ sleep 1.5
 
 clear
 
-echo -e "${ICyan}---------------------------------------------------------------------------------------------------------------------"
+echo "---------------------------------------------------------------------------------------------------------------------"
 echo "Boot script for tethered downgraded A8/A9 devices, this script is made by Moneymoney122 (@chandler_hacker on twitter)."
 echo "---------------------------------------------------------------------------------------------------------------------"
 echo "this script is a modified version of the boot script from the sunst0rm tether downgrade tool made by mineek. (https://github.com/mineek/sunst0rm)"
@@ -328,19 +328,21 @@ while true; do
     read -p 'Do you want to jailbreak with checkra1n? yes/no: ' input
     case $input in
         [yY]*)
-           echo -e '${NC} Running checkra1n in cli mode. Please ensure your device is in DFU mode and that the checkra1n executable is in your home directory...'
-           echo "when checkra1n has finished please press Ctrl+C to exit checkra1n and exit this script" 
+           echo -e "Running checkra1n in cli mode. Please ensure your device is in DFU mode and that the checkra1n executable is in your home directory..."
+           echo "When checkra1n has finished please press Ctrl+C to exit checkra1n and exit this script" 
            echo "---------------------------------------------------------------------------------------------------------------------"
            echo "Searching for devices in DFU/Recovery mode..."
            sudo irecovery -q
            echo "---------------------------------------------------------------------------------------------------------------------"
            echo "Running command \"sudo ~/checkra1n -cVv\"..."
            echo "-c for command-line mode. -V for verbose boot on your device. -v for verbose output on checkra1n." 
+           echo -e "${NC}"
            sudo ~/checkra1n -cVv
            break
             ;;
         [nN]*)
-            echo 'Skipping...'
+            echo "Skipping..."
+            break
             ;;
          *)
             echo 'Invalid input' >&2
@@ -706,7 +708,8 @@ sudo irecovery -v -v -c bootx
             break
             ;;
         [nN]*)
-            echo -e '${NC} Exiting...'
+            echo "Exiting..."
+            echo -e "${NC}"
             exit 1
             ;;
          *)
