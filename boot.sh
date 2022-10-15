@@ -197,6 +197,8 @@ fi
 
 echo "---------------------------------------------------------------------------------------------------------------------"
 
+echo -e "$ICyan"
+
 while true; do
     read -p 'Do you want to jailbreak with checkra1n? yes/no: ' input
     case $input in
