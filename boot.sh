@@ -56,7 +56,7 @@ echo "if you have any issues with this script please read the README.md file inc
 echo "---------------------------------------------------------------------------------------------------------------------"
 echo "if you see any commands in quotes and you want to run them then please copy the commands without the quotes and then run them."
 echo "---------------------------------------------------------------------------------------------------------------------"
-echo "this script will be changing directory into the folder with your boot files, please change this command to match the name of the folder with your boot files by opening this script with a text editor and editing the command on line 197, if you have not already."
+echo "this script will be changing directory into the folder with your boot files, please change this command to match the name of the folder with your boot files by opening this script with a text editor and editing the command on line 249, if you have not already."
 echo "---------------------------------------------------------------------------------------------------------------------"
 echo "please ensure that the ipwndfu and gaster folders are in the home directory and that python2 is installed before continuing,"
 echo "---------------------------------------------------------------------------------------------------------------------"
@@ -66,7 +66,7 @@ echo "it is reccomended that you maximise your terminal window to ensure all tex
 echo "---------------------------------------------------------------------------------------------------------------------"
 echo "you can use Ctrl+C to exit the script at any time."
 echo "---------------------------------------------------------------------------------------------------------------------"
-echo "this script can also run checkra1n commands to jailbreak your device for any checkra1n compatible device. if you want to use checkra1n with this script please ensure that the checkra1n executable file is in your home directory"
+echo "this script can also run checkra1n commands to jailbreak your device for any checkra1n compatible device. if you want to use checkra1n with this script please ensure that the checkra1n executable file is in your home directory (get checkra1n at https://checkra.in)"
 echo "---------------------------------------------------------------------------------------------------------------------"
 
 read -n 1 -s -r -p "------------------------------------Press any key to continue (Or Ctrl+C to Exit)------------------------------------"
@@ -194,6 +194,54 @@ else
       echo -e "${IGreen}\nName: $DeviceName | Activation State: $ActivationState | ECID (Decimal): $UniqueChipID | Board ID: $HardwareModel"
       echo -e "${IGreen}\nCPU Arch: $CPUArchitecture | Hardware Platform: $HardwarePlatform"
 fi
+
+echo "---------------------------------------------------------------------------------------------------------------------"
+
+while true; do
+    read -p 'Do you want to jailbreak with checkra1n? yes/no: ' input
+    case $input in
+        [yY]*)
+
+while true; do
+    read -p 'Do you want to run checkra1n in GUI or CLI mode (if your device is in DFU mode you will need to run checkra1n in CLI mode)? g/c: ' input
+    case $input in
+        [c]*)
+           echo -e "Running checkra1n in CLI mode. Please ensure your device is in DFU mode and that the checkra1n executable is in your home directory..."
+           echo "When checkra1n has finished please press Ctrl+C to exit checkra1n and exit this script" 
+           echo "---------------------------------------------------------------------------------------------------------------------"
+           echo "Searching for devices in DFU/Recovery mode..."
+           sudo irecovery -q
+           echo "---------------------------------------------------------------------------------------------------------------------"
+           echo "Running command \"sudo ~/checkra1n -cVv\"..."
+           echo "-c for command-line mode. -V for verbose boot on your device. -v for verbose output on checkra1n." 
+           echo -e "${NC}"
+           sudo ~/checkra1n -cVv
+           break
+            ;;
+        [g]*)
+           echo -e "Running checkra1n in GUI mode. Please ensure your device is in normal/recovery mode and that the checkra1n executable is in your home directory..."
+           echo "When checkra1n has finished it should exit automatically and then the script will return to the jailbreak with checkra1n option so you can run checkra1n again if it failed or if you want to run it again, if it did not exit automatically then please press Ctrl+C to exit checkra1n and exit this script and then you can run the script again if you want to."
+           echo "---------------------------------------------------------------------------------------------------------------------"
+           echo "Running command \"sudo ~/checkra1n\"..."
+           echo "Running checkra1n in 3 seconds in order to give you time to read the above text because checkra1n takes up the entire terminal window..."
+           sleep 3
+           echo -e "${NC}"
+           sudo ~/checkra1n
+           break
+            ;;
+         *)
+            echo 'Invalid input' >&2
+    esac
+done
+            ;;
+        [nN]*)
+            echo "Skipping..."
+            break
+            ;;
+         *)
+            echo 'Invalid input' >&2
+    esac
+done
 
 #cd into the folder with your boot files, change this command to cd into the folder with your boot files  
 echo -e "${ICyan}---------------------------------------------------------------------------------------------------------------------"
@@ -323,31 +371,6 @@ echo "Please run the script again"
 done
 
 echo "---------------------------------------------------------------------------------------------------------------------"
-
-while true; do
-    read -p 'Do you want to jailbreak with checkra1n? yes/no: ' input
-    case $input in
-        [yY]*)
-           echo -e "Running checkra1n in cli mode. Please ensure your device is in DFU mode and that the checkra1n executable is in your home directory..."
-           echo "When checkra1n has finished please press Ctrl+C to exit checkra1n and exit this script" 
-           echo "---------------------------------------------------------------------------------------------------------------------"
-           echo "Searching for devices in DFU/Recovery mode..."
-           sudo irecovery -q
-           echo "---------------------------------------------------------------------------------------------------------------------"
-           echo "Running command \"sudo ~/checkra1n -cVv\"..."
-           echo "-c for command-line mode. -V for verbose boot on your device. -v for verbose output on checkra1n." 
-           echo -e "${NC}"
-           sudo ~/checkra1n -cVv
-           break
-            ;;
-        [nN]*)
-            echo "Skipping..."
-            break
-            ;;
-         *)
-            echo 'Invalid input' >&2
-    esac
-done
 
 while true; do
     read -p 'Do you want to use ipwndfu or gaster to pwn your device, or is your device already done being pwned? i/g/d: ' input
