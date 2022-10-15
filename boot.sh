@@ -213,7 +213,6 @@ echo "--------------------------------------------------------------------------
 while true; do
     read -p 'No devices have been deteced, do you still want to continue? (If this message is incorrect then you can just ignore it and type yes.) yes/no/: ' input
     case $input in
-    echo "---------------------------------------------------------------------------------------------------------------------"
        [yY]*)
             echo 'Continuing the script...'
             break
@@ -242,6 +241,8 @@ else
       echo -e "${IGreen}\nCPU Arch: $CPUArchitecture | Hardware Platform: $HardwarePlatform"
       echo "---------------------------------------------------------------------------------------------------------------------"
 fi
+
+echo "---------------------------------------------------------------------------------------------------------------------"
 
 echo -e "$ICyan"
 
