@@ -205,7 +205,23 @@ then
     then
 
     echo -e "$RED*******unable to connect to any devices in Recovery/DFU mode*******$NC"
-    
+
+while true; do
+    read -p 'No devices have been deteced, do you still want to continue? (If this message is incorrect then you can just ignore it and type yes.) yes/no/: ' input
+    case $input in
+        [yY]*)
+            echo 'Continuing the script...'
+            break
+            ;;
+        [nN]*)
+            echo 'Exiting...'
+            exit 1
+            ;;
+            *)
+         echo 'Invalid input' >&2
+    esac
+done
+
     else
 
     echo -e "$IGreen"
