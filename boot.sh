@@ -224,9 +224,7 @@ while true; do
            echo -e "Running checkra1n in GUI mode. Please ensure your device is in normal/recovery mode and that the checkra1n executable is in your home directory..."
            echo "When checkra1n has finished it should exit automatically and then the script will return to the jailbreak with checkra1n option so you can run checkra1n again if it failed or if you want to run it again, if it did not exit automatically then please press Ctrl+C to exit checkra1n and exit this script and then you can run the script again if you want to."
            echo "---------------------------------------------------------------------------------------------------------------------"
-           echo "Running command \"sudo ~/checkra1n\"..."
-           echo "Running checkra1n in 3 seconds in order to give you time to read the above text because checkra1n takes up the entire terminal window..."
-           sleep 3
+           read -n 1 -s -r -p "------------------------------------Press any key to start checkra1n (Or Ctrl+C to Exit)------------------------------------"        echo "Running command \"sudo ~/checkra1n\"..."
            echo -e "${NC}"
            sudo ~/checkra1n
            break
