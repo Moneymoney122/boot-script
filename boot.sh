@@ -206,10 +206,15 @@ then
 
     echo -e "$RED*******unable to connect to any devices in Recovery/DFU mode*******$NC"
 
+echo -e "$ICyan"
+
+echo "---------------------------------------------------------------------------------------------------------------------"
+
 while true; do
     read -p 'No devices have been deteced, do you still want to continue? (If this message is incorrect then you can just ignore it and type yes.) yes/no/: ' input
     case $input in
-        [yY]*)
+    echo "---------------------------------------------------------------------------------------------------------------------"
+       [yY]*)
             echo 'Continuing the script...'
             break
             ;;
@@ -235,9 +240,8 @@ else
       echo -e "${IGreen}Serial Number: $SerialNumber | Device: $ProductType | Firmware: $ProductVersion | UDID: $UniqueDeviceID"
       echo -e "${IGreen}\nName: $DeviceName | Activation State: $ActivationState | ECID (Decimal): $UniqueChipID | Board ID: $HardwareModel"
       echo -e "${IGreen}\nCPU Arch: $CPUArchitecture | Hardware Platform: $HardwarePlatform"
+      echo "---------------------------------------------------------------------------------------------------------------------"
 fi
-
-echo -e "$ICyan---------------------------------------------------------------------------------------------------------------------"
 
 echo -e "$ICyan"
 
