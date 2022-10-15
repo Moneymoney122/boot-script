@@ -204,9 +204,7 @@ then
   
     then
 
-    echo -e "$RED*******unable to connect to any devices in Recovery/DFU mode*******$NC"
-
-echo -e "$ICyan"
+    echo -e "$RED*******unable to connect to any devices in Recovery/DFU mode*******$ICyan"
 
 echo "---------------------------------------------------------------------------------------------------------------------"
 
