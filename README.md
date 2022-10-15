@@ -15,6 +15,8 @@ Table of contents:
 - This script is for tether booting A8/A9 devices that have been downgraded by [sunst0rm](https://github.com/mineek/sunst0rm)
   - It might work with devices that have been tethered downgraded by other tools.
   
+   - Also capable of running the commands for checkra1n
+  
 - I made this script for personal use, but anyone can use it
 
 - This script is not made by mineek, it is made by me (Moneymoney122)
@@ -80,6 +82,7 @@ This script will ask for your user's password, this is not intended to be anythi
 
      - if you use any other tool than ipwndfu/gaster then you will need to pwn your device with sigchecks removed and then run the script and when you get to the pwning part of the script you will need to enter the option "already pwned" 
 
+- if you want checkra1n: https://checkra.in
 
 
 - sudo
