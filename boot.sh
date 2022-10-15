@@ -252,8 +252,7 @@ while true; do
            echo "---------------------------------------------------------------------------------------------------------------------"
            read -n 1 -s -r -p "------------------------------------Press any key to start checkra1n (Or Ctrl+C to Exit)------------------------------------"        
            echo "Running command \"sudo ~/checkra1n\"..."
-           echo "Running command \"sudo ~/checkra1n\"..."
-           echo -e "${NC}"
+           echo -e "$NC"
            sudo ~/checkra1n
            echo -e "$ICyan"
            break
