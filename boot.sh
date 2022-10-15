@@ -198,7 +198,7 @@ then
     
     echo "Searching for devices in DFU/Recovery mode..."
    
-    echo "---------------------------------------------------------------------------------------------------------------------$IGreen"
+    echo -e "---------------------------------------------------------------------------------------------------------------------$IGreen"
 
     if test -z "$devicemode"
   
@@ -233,12 +233,12 @@ done
 else
       echo "---------------------------------------------------------------------------------------------------------------------"
       echo -e "${IGreen}Serial Number: $SerialNumber | Device: $ProductType | Firmware: $ProductVersion | UDID: $UniqueDeviceID\n"
-      echo "Name: $DeviceName | Activation State: $ActivationState | ECID \(Decimal\): $UniqueChipID | Board ID: $HardwareModel"
+      echo "Name: $DeviceName | Activation State: $ActivationState | ECID (Decimal): $UniqueChipID | Board ID: $HardwareModel"
       echo -e "\nCPU Arch: $CPUArchitecture | Hardware Platform: $HardwarePlatform"
       echo "---------------------------------------------------------------------------------------------------------------------"
 fi
 
-echo "$ICyan---------------------------------------------------------------------------------------------------------------------"
+echo -e "$ICyan---------------------------------------------------------------------------------------------------------------------"
 
 while true; do
     read -p 'Do you want to jailbreak with checkra1n? yes/no: ' input
