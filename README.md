@@ -90,6 +90,8 @@ This script will ask for your user's password, this is not intended to be anythi
 
 ## Issues/Contact Me:
 
+- Current issues: none
+
 - If you have any issues with this script or any of my other projects, please open a github issue or contact me on twitter (@chandler_hacker)
 
 ## Possible future updates:
