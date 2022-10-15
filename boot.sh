@@ -236,7 +236,7 @@ else
       echo "Name: $DeviceName | Activation State: $ActivationState | ECID (Decimal): $UniqueChipID | Board ID: $HardwareModel"
       echo -e "\nCPU Arch: $CPUArchitecture | Hardware Platform: $HardwarePlatform"
       echo -e "$ICyan---------------------------------------------------------------------------------------------------------------------"
-      echo "Device found in normal mode, not going to search for devices in DFU/Recovery mode"
+      echo "Device found in normal mode, not going to search for devices in DFU/Recovery mode."
 fi
 
 echo -e "$ICyan---------------------------------------------------------------------------------------------------------------------"
