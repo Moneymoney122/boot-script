@@ -73,7 +73,7 @@ read -n 1 -s -r -p "------------------------------------Press any key to continu
 
 clear
 
-    if [[ $EUID == 0 ]]; then
+if [[ $EUID == 0 ]]; then
         while true; do
     read -p 'The script is currently running as root, (If this message is incorrect then you can just ignore it and type yes.) this is not recommended but you can still continue if you want? yes/no: ' input
     case $input in
@@ -768,5 +768,18 @@ sudo irecovery -v -v -c bootx
 
    esac
 done
+
+#Continue or Exit
+function continueOrExit() {
+      echo ""
+      read -p "The script has finished, do you want to run the script again? y/n : "  CHECK
+      if [[ "$CHECK" = "Y" || "$CHECK" = "y" || "$CHECK" = "Yes" || "$CHECK" = "yes" || "$CHECK" = "YES" ]]; then
+            ./boot.sh
+      else
+            echo "No or invalid option has been entered"
+            echo "Exiting...$NC"
+            exit
+      fi
+}
 
 #end of script
