@@ -192,12 +192,12 @@ then
   
     echo -e "$RED*******unable to connect to any devices in normal mode*******$NC"
 
+    echo -e "$ICyan---------------------------------------------------------------------------------------------------------------------"
+   
+    echo "Searching for devices in DFU/Recovery mode..."
+    
     devicemode=$(irecovery -q 2>/dev/null | grep MODE: | awk '{print $NF}')
 
-    echo -e "$ICyan---------------------------------------------------------------------------------------------------------------------"
-    
-    echo "Searching for devices in DFU/Recovery mode..."
-   
     echo -e "---------------------------------------------------------------------------------------------------------------------$IGreen"
 
     if test -z "$devicemode"
