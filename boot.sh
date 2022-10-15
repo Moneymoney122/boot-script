@@ -185,9 +185,29 @@ CPUArchitecture=$(ideviceinfo | grep CPUArchitecture | awk '{print $NF}')
 HardwarePlatform=$(ideviceinfo | grep HardwarePlatform | awk '{print $NF}')
 
 if test -z "$ActivationState"
+
 then
-      echo "---------------------------------------------------------------------------------------------------------------------"
-      echo -e "$RED*******unable to connect to any devices in normal mode*******$NC"
+  
+    echo "---------------------------------------------------------------------------------------------------------------------"
+  
+    echo -e "$RED*******unable to connect to any devices in normal mode*******$NC"
+
+    devicemode=$(irecovery -q | grep MODE: | awk '{print $NF}')
+
+    if test -z "$devicemode"
+  
+    then
+
+    echo "*$RED******unable to connect to any devices in Recovery/DFU mode*******$NC"
+
+    else
+
+    echo -e "$IGreen"
+
+    irecovery -q
+  
+    fi
+
 else
       echo "---------------------------------------------------------------------------------------------------------------------"
       echo -e "${IGreen}Serial Number: $SerialNumber | Device: $ProductType | Firmware: $ProductVersion | UDID: $UniqueDeviceID"
