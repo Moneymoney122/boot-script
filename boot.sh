@@ -192,9 +192,9 @@ then
   
     echo -e "$RED*******unable to connect to any devices in normal mode*******$NC"
 
-    devicemode=$(irecovery -q | grep MODE: | awk '{print $NF}')
+    devicemode=$(irecovery -q 2>/dev/null | grep MODE: | awk '{print $NF}')
 
-    echo "---------------------------------------------------------------------------------------------------------------------"
+    echo -e "$ICyan---------------------------------------------------------------------------------------------------------------------"
     
     echo "Searching for devices in DFU/Recovery mode..."
    
@@ -204,9 +204,7 @@ then
   
     then
 
-    echo "*$RED******unable to connect to any devices in Recovery/DFU mode*******$NC"
-
-    echo "---------------------------------------------------------------------------------------------------------------------"
+    echo -e "$RED*******unable to connect to any devices in Recovery/DFU mode*******$NC"
     
     else
 
@@ -223,7 +221,7 @@ else
       echo -e "${IGreen}\nCPU Arch: $CPUArchitecture | Hardware Platform: $HardwarePlatform"
 fi
 
-echo "---------------------------------------------------------------------------------------------------------------------"
+echo -e "$ICyan---------------------------------------------------------------------------------------------------------------------"
 
 echo -e "$ICyan"
 
@@ -252,10 +250,12 @@ while true; do
            echo -e "Running checkra1n in GUI mode. Please ensure your device is in normal/recovery mode and that the checkra1n executable is in your home directory..."
            echo "When checkra1n has finished it should exit automatically and then the script will return to the jailbreak with checkra1n option so you can run checkra1n again if it failed or if you want to run it again, if it did not exit automatically then please press Ctrl+C to exit checkra1n and exit this script and then you can run the script again if you want to."
            echo "---------------------------------------------------------------------------------------------------------------------"
-           read -n 1 -s -r -p "------------------------------------Press any key to start checkra1n (Or Ctrl+C to Exit)------------------------------------"        echo "Running command \"sudo ~/checkra1n\"..."
+           read -n 1 -s -r -p "------------------------------------Press any key to start checkra1n (Or Ctrl+C to Exit)------------------------------------"        
+           echo "Running command \"sudo ~/checkra1n\"..."
            echo "Running command \"sudo ~/checkra1n\"..."
            echo -e "${NC}"
            sudo ~/checkra1n
+           echo -e "$ICyan"
            break
             ;;
          *)
