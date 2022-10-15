@@ -64,7 +64,7 @@ This script will ask for your user's password, this is not intended to be anythi
 
 ## Dependencies for this script: 
 
-- sunst0rm if you want to tether downgrade your device: https://github.com/mineek/sunst0rm
+- sunst0rm, if you want to tether downgrade your device: https://github.com/mineek/sunst0rm
 
     - linux fork of sunst0rm: https://github.com/MCApollo/sunst0rm
 
