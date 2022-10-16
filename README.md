@@ -10,9 +10,9 @@ Table of contents:
          - [Issues/Contact Me](https://github.com/Moneymoney122/boot-script#issuescontact-me)
            - [Possible future updates](https://github.com/Moneymoney122/boot-script#possible-future-updates)
              - [Images](https://github.com/Moneymoney122/boot-script#images)
-               - [Boot-script image 1](https://github.com/Moneymoney122/boot-script#boot-script-1)
-                - [Boot-script image 2](https://github.com/Moneymoney122/boot-script#boot-script-2)
-                 - [iOS 14](https://github.com/Moneymoney122/boot-script#ios-14)
+                - [Boot-script image 1](https://github.com/Moneymoney122/boot-script#boot-script-1)
+                 - [Boot-script image 2](https://github.com/Moneymoney122/boot-script#boot-script-2)
+                  - [iOS 14](https://github.com/Moneymoney122/boot-script#ios-14)
               
 ## What is this?
 
