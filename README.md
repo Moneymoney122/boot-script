@@ -12,7 +12,7 @@ Table of contents:
         - [Images](https://github.com/Moneymoney122/boot-script#images)
             - [Boot-script images:](https://github.com/Moneymoney122/boot-script#boot-script-1)
              - [Boot-script image 1:](https://github.com/Moneymoney122/boot-script/blob/main/README.md#image-1)
-               - [Boot-script image 2:](https://github.com/Moneymoney122/boot-script/blob/main/README.md#image-2)
+              - [Boot-script image 2:](https://github.com/Moneymoney122/boot-script/blob/main/README.md#image-2)
                - [iOS 14](https://github.com/Moneymoney122/boot-script#ios-14)
               
 ## What is this?
