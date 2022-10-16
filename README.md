@@ -97,7 +97,13 @@ This script will ask for your user's password, this is not intended to be anythi
    
    - gaster: https://github.com/0x7ff/gaster
   
-    - if you're using gaster please ensure that you have compiled gaster with `cd ~/gaster/ && make libusb` after that you should see a gaster executable in the gaster folder, if you get "bash: ./gaster: Permission denied" then run `chmod +x gaster`
+    - if you're using gaster please ensure that you have compiled gaster: 
+    
+    Linux: `cd ~/gaster/ && make libusb` 
+    
+    MacOS: `cd ~/gaster/ && make` 
+    
+    After that you should see a gaster executable in the gaster folder, if you get "bash: ./gaster: Permission denied" then run `chmod +x gaster`
 
      - if you use any other tool than ipwndfu/gaster then you will need to pwn your device with sigchecks removed and then run the script and when you get to the pwning part of the script you will need to enter the option "already pwned" 
 
