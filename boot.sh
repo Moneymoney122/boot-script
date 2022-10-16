@@ -24,11 +24,23 @@ NC="\e[0m"
 ICyan='\033[0;96m'
 IGreen='\033[0;92m'
 
-usage="${ICyan}Boot script by Moneymoney122 (@chandler_hacker)\nhttps://github.com/Moneymoney122/boot-script/\nOptions: --help or -h: display this help menu\nOwO: OwO\nNo arguments: run normally"
+usage="Boot script by Moneymoney122 (@chandler_hacker)\nhttps://github.com/Moneymoney122/boot-script/\nOptions:\n\n--help or -h: display this help menu\nOwO: OwO\nNo arguments: run normally$NC"
 
 case $1 in 
--h) echo -e $usage && exit ;; 
---help) echo -e $usage && exit ;;
+-h)  
+echo -e "$ICyan ___  ___   ___ _____   ___  ___ ___ ___ ___ _____ "
+echo         "| _ )/ _ \ / _ \_   _| / __|/ __| _ \_ _| _ \_   _| "
+echo         "| _ \ (_) | (_) || |   \__ \ (__|   /| ||  _/ | |  "
+echo -e      "|___/\___/ \___/ |_|   |___/\___|_|_\___|_|   |_|  \n"
+echo -e  "$usage"
+exit  ;;                                                                                                   
+--help) 
+echo -e "$ICyan ___  ___   ___ _____   ___  ___ ___ ___ ___ _____ "
+echo         "| _ )/ _ \ / _ \_   _| / __|/ __| _ \_ _| _ \_   _| "
+echo         "| _ \ (_) | (_) || |   \__ \ (__|   /| ||  _/ | |  "
+echo -e      "|___/\___/ \___/ |_|   |___/\___|_|_\___|_|   |_|  \n"
+echo -e  "$usage"
+exit ;;
 OwO) echo "OwO" && exit ;;
 esac
 
