@@ -7,8 +7,8 @@ Table of contents:
      - [How to use this script](https://github.com/Moneymoney122/boot-script#how-to-use-this-script)
        - [Dependencies for this script](https://github.com/Moneymoney122/boot-script#dependencies-for-this-script)
          - [Issues/Contact Me](https://github.com/Moneymoney122/boot-script#issuescontact-me)
-           - [Possible future updates](https://github.com/Moneymoney122/boot-scriptr#possible-future-updates)
-             - [Images, No useful reason why I want to add them](https://github.com/Moneymoney122/boot-script#images-no-useful-reason-why-i-want-to-add-them)
+           - [Possible future updates](https://github.com/Moneymoney122/boot-script#possible-future-updates)
+             - [Images](https://github.com/Moneymoney122/boot-script#images)
               
 ## What is this?
 
