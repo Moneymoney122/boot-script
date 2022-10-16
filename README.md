@@ -9,7 +9,7 @@ Table of contents:
      - [Dependencies for this script](https://github.com/Moneymoney122/boot-script#dependencies-for-this-script)
       - [Issues/Contact Me](https://github.com/Moneymoney122/boot-script#issuescontact-me)
        - [Possible future updates](https://github.com/Moneymoney122/boot-script#possible-future-updates)
-        - [Images](https://github.com/Moneymoney122/boot-script#images)
+             - [Images](https://github.com/Moneymoney122/boot-script#images)
             - [Boot-script images](https://github.com/Moneymoney122/boot-script#boot-script-1)
             - [Boot-script image 1](https://github.com/Moneymoney122/boot-script/blob/main/README.md#image-1)         
             - [Boot-script image 2](https://github.com/Moneymoney122/boot-script/blob/main/README.md#image-2)
