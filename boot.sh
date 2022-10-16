@@ -64,7 +64,7 @@ echo "if you have any issues with this script please read the README.md file inc
 echo "---------------------------------------------------------------------------------------------------------------------"
 echo "if you see any commands in quotes and you want to run them then please copy the commands without the quotes and then run them."
 echo "---------------------------------------------------------------------------------------------------------------------"
-echo "this script will be changing directory into the folder with your boot files, please change this command to match the name of the folder with your boot files by opening this script with a text editor and editing the command on line 386, if you have not already."
+echo "this script will be changing directory into the folder with your boot files, please change this command to match the name of the folder with your boot files by opening this script with a text editor and editing the command on line 385, if you have not already."
 echo "---------------------------------------------------------------------------------------------------------------------"
 echo "please ensure that the ipwndfu and gaster folders are in the home directory and that python2 is installed before continuing,"
 echo "---------------------------------------------------------------------------------------------------------------------"
