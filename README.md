@@ -112,9 +112,11 @@ This script will askbash: ./gaster: Permission denied
 
 ## Images:
 
-- boot-script
+### boot-script:
 
 ![This is an image](https://i.imgur.com/PoFYstf.png)
+
+!{This is an image](https://i.imgur.com/wyDM1jL.jpg)
 
 - iOS 14
 
