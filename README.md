@@ -63,7 +63,7 @@ If you do not have `git` installed then install it using your distribution's pac
 
 `./boot.sh` or if you want to use the old version: `./old-boot.sh` or if you want to use the test version: `./test-boot.sh`
 
-## Arguments available on the script:
+### Arguments available on the script:
 | Option (short)  | Option (long)               | Description                              |
 |-----------------|-----------------------------|------------------------------------------|
 | `-h`            | `--help`                    | Print help options                       |
