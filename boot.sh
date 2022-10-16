@@ -24,7 +24,7 @@ NC="\e[0m"
 ICyan='\033[0;96m'
 IGreen='\033[0;92m'
 
-usage="Boot script by Moneymoney122 (@chandler_hacker)\nhttps://github.com/Moneymoney122/boot-script\nOptions:\n\n--help or -h: display this help menu\nOwO: OwO\nNo arguments: run normally$NC"
+usage="Boot script by Moneymoney122 (@chandler_hacker)\nhttps://github.com/Moneymoney122/boot-script/\nOptions:\n\n--help or -h: display this help menu\nOwO: OwO\nNo arguments: run normally$NC"
 
 case $1 in 
 -h)  
@@ -43,6 +43,14 @@ echo -e  "$usage"
 exit ;;
 OwO) echo "OwO" && exit ;;
 esac
+
+# trap ctrl-c and call ctrl_c()
+trap ctrl_c INT
+
+function ctrl_c() {
+        echo -e "\nExiting..."
+        exit 1
+}
 
 clear 
 
@@ -76,7 +84,7 @@ echo "if you have any issues with this script please read the README.md file inc
 echo "---------------------------------------------------------------------------------------------------------------------"
 echo "if you see any commands in quotes and you want to run them then please copy the commands without the quotes and then run them."
 echo "---------------------------------------------------------------------------------------------------------------------"
-echo "this script will be changing directory into the folder with your boot files, please change this command to match the name of the folder with your boot files by opening this script with a text editor and editing the command on line 397, if you have not already."
+echo "this script will be changing directory into the folder with your boot files, please change this command to match the name of the folder with your boot files by opening this script with a text editor and editing the command on line 385, if you have not already."
 echo "---------------------------------------------------------------------------------------------------------------------"
 echo "please ensure that the ipwndfu and gaster folders are in the home directory and that python2 is installed before continuing,"
 echo "---------------------------------------------------------------------------------------------------------------------"
