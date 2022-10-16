@@ -66,7 +66,7 @@ If you do not have `git` installed then install it using your distribution's pac
 ## Arguments available on the script:
 | Option (short)  | Option (long)               | Description                              |
 |-----------------|-----------------------------|------------------------------------------|
-| `--help`        | `--help`                    | Print help options                       |
+| `-h`            | `--help`                    | Print help options                       |
 | `OwO`           | `OwO`                       | OwO                                      |
 
 This script will askbash: ./gaster: Permission denied
