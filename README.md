@@ -45,6 +45,8 @@ Table of contents:
 
 - Mineek for making the [sunst0rm](https://github.com/mineek/sunst0rm) script
 
+- Credits to the other people who made the projects this scripts uses (links provided in this README.md file and on the script itself)
+
 ## How to use this script:
 
  run `git clone https://github.com/Moneymoney122/boot-script` in the terminal while in your home directory or download the zip from this page and unzip the files and place them in a folder called "boot-script" (without the quotes) in your home directory
