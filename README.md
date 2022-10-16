@@ -121,7 +121,7 @@ This script will ask for your user's password, this is not intended to be anythi
 
 - Current issues: none
 
-- If you have any issues with this script or any of my other projects, please open a github issue or contact me on twitter (@chandler_hacker)
+- If you have any issues with this script or any of my other projects, please open a github issue or contact me on twitter (@chandler_hacker) or email me using the email on my profile
 
 ## Possible future updates:
 
