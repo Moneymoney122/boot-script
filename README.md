@@ -63,6 +63,12 @@ If you do not have `git` installed then install it using your distribution's pac
 
 `./boot.sh` or if you want to use the old version: `./old-boot.sh` or if you want to use the test version: `./test-boot.sh`
 
+## Arguments available on the script:
+| Option (short)  | Option (long)               | Description                              |
+|-----------------|-----------------------------|------------------------------------------|
+| `--help`        | `--help`                    | Print help options                       |
+| `OwO`           | `OwO`                       | OwO                                      |
+
 This script will askbash: ./gaster: Permission denied
  for your user's password, this is not intended to be anything malicious and you can check the code yourself if you want
 
