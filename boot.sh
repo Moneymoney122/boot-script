@@ -168,6 +168,12 @@ echo $OS
 echo $KERNEL
 echo $MACH
 
+    if [[ $(uname -m) != "x86_64" ]]; then
+      echo "---------------------------------------------------------------------------------------------------------------------"
+      echo "*******Non x86_64 system detected, you might encounter issues*******"
+    fi
+
+
 echo "---------------------------------------------------------------------------------------------------------------------"
 
 echo "Searching for devices in normal mode..."
@@ -209,22 +215,88 @@ then
 echo "---------------------------------------------------------------------------------------------------------------------"
 
 while true; do
-    read -p 'No devices have been deteced, do you still want to continue? (If this message is incorrect then you can just ignore it and type yes.) yes/no/: ' input
+    read -p 'No devices have been deteced, do you want to restart usbmuxd? (this might fix your computer not detecting your device in normal mode). (If this message is incorrect then you can just ignore it and type yes.) yes/no/: ' input
     case $input in
        [yY]*)
             echo 'Continuing the script...'
+            echo -e "Running \"sudo systemctl restart usbmuxd\", this might take a while..."
+            sudo systemctl restart usbmuxd
+           
+echo "---------------------------------------------------------------------------------------------------------------------"
+
+echo "Searching for devices in normal mode..."
+
+unset ActivationState
+unset DeviceName
+unset UniqueDeviceID
+unset SerialNumber
+unset ProductType
+unset ProductVersion
+unset UniqueChipID
+unset HardwareModel
+unset CPUArchitecture
+unset HardwarePlatform
+
+sleep 1
+
+ActivationState=$(ideviceinfo | grep ActivationState: | awk '{print $NF}')
+DeviceName=$(ideviceinfo | grep DeviceName | awk '{print $NF}')
+UniqueDeviceID=$(ideviceinfo | grep UniqueDeviceID | awk '{print $NF}')
+SerialNumber=$(ideviceinfo | grep -w SerialNumber | awk '{print $NF}')
+ProductType=$(ideviceinfo | grep ProductType | awk '{print $NF}')
+ProductVersion=$(ideviceinfo | grep ProductVersion | awk '{print $NF}')
+UniqueChipID=$(ideviceinfo | grep UniqueChipID | awk '{print $NF}')
+HardwareModel=$(ideviceinfo | grep HardwareModel | awk '{print $NF}')
+CPUArchitecture=$(ideviceinfo | grep CPUArchitecture | awk '{print $NF}')
+HardwarePlatform=$(ideviceinfo | grep HardwarePlatform | awk '{print $NF}')
+
+if test -z "$ActivationState"
+
+then
+
+echo "---------------------------------------------------------------------------------------------------------------------"   
+echo "Still unable to connect to any devices in normal mode"
+echo "---------------------------------------------------------------------------------------------------------------------"  
+while true; do
+    read -p 'Do you still want to continue? yes/no: ' input
+    case $input in
+        [yY]*)
+           echo 'Continuing the script...'
+echo "---------------------------------------------------------------------------------------------------------------------"  
+           break
+            ;;
+        [nN]*)
+echo "Please run the script again"
+            echo 'Exiting...'
+            exit 1
+            ;;
+         *)
+            echo 'Invalid input' >&2
+    esac
+done
+
+else             
+      
+      echo "---------------------------------------------------------------------------------------------------------------------"     
+      echo "Device found in normal mode"
+      echo "---------------------------------------------------------------------------------------------------------------------"
+      echo -e "${IGreen}Serial Number: $SerialNumber | Device: $ProductType | Firmware: $ProductVersion | UDID: $UniqueDeviceID\n"
+      echo "Name: $DeviceName | Activation State: $ActivationState | ECID (Decimal): $UniqueChipID | Board ID: $HardwareModel"
+      echo -e "\nCPU Arch: $CPUArchitecture | Hardware Platform: $HardwarePlatform"
+      echo -e "$ICyan---------------------------------------------------------------------------------------------------------------------"      
+fi            
             break
             ;;
         [nN]*)
-            echo 'Exiting...'
-            exit 1
+            echo 'Skipping...'
+            break
             ;;
             *)
          echo 'Invalid input' >&2
     esac
 done
 
-    else
+else
 
     irecovery -q
   
