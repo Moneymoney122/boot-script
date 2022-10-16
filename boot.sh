@@ -178,7 +178,7 @@ echo $MACH
 
     if [[ $(uname -m) != "x86_64" ]]; then
       echo "---------------------------------------------------------------------------------------------------------------------"
-      echo "*******Non x86_64 system detected, you might encounter issues*******"
+      echo "Non x86_64 system detected, you might encounter issues"
     fi
 
 
@@ -223,7 +223,7 @@ then
 echo "---------------------------------------------------------------------------------------------------------------------"
 
 while true; do
-    read -p 'No devices have been detected, do you want to restart usbmuxd? (this might fix your computer not detecting your device in normal mode). (If this message is incorrect then you can just ignore it and type yes.) yes/no/: ' input
+    read -p 'No devices have been detected, do you want to restart usbmuxd? (this might fix your computer not detecting your device in normal mode). (If this message is incorrect then you can just ignore it and type no.) yes/no/: ' input
     case $input in
        [yY]*)
             echo 'Continuing the script...'
