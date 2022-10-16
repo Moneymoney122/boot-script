@@ -265,7 +265,7 @@ if test -z "$ActivationState"
 then
 
 echo "---------------------------------------------------------------------------------------------------------------------"   
-echo -e "$RED*******Still unable to connect to any devices in normal mode*******$ICyan" 
+echo -e "$RED*******still unable to connect to any devices in normal mode*******$ICyan" 
 echo "---------------------------------------------------------------------------------------------------------------------" 
 while true; do
     read -p 'Do you still want to continue? yes/no: ' input
