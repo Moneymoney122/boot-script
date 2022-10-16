@@ -2,10 +2,10 @@
 
 Table of contents:
 
- - [What is this?](https://github.com/Moneymoney122/boot-script#what-is-this) 
-  - [Credits](https://github.com/Moneymoney122/boot-script#credits)
-    - [How to use this script](https://github.com/Moneymoney122/boot-script#how-to-use-this-script)
-       - [Arguments available on this script](https://github.com/Moneymoney122/boot-script#arguments-available-on-this-script)
+  - [What is this?](https://github.com/Moneymoney122/boot-script#what-is-this) 
+   - [Credits](https://github.com/Moneymoney122/boot-script#credits)
+     - [How to use this script](https://github.com/Moneymoney122/boot-script#how-to-use-this-script)
+        - [Arguments available on this script](https://github.com/Moneymoney122/boot-script#arguments-available-on-this-script)
      - [Dependencies for this script](https://github.com/Moneymoney122/boot-script#dependencies-for-this-script)
       - [Issues/Contact Me](https://github.com/Moneymoney122/boot-script#issuescontact-me)
        - [Possible future updates](https://github.com/Moneymoney122/boot-script#possible-future-updates)
