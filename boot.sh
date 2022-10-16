@@ -282,8 +282,7 @@ else
       echo "---------------------------------------------------------------------------------------------------------------------"
       echo -e "${IGreen}Serial Number: $SerialNumber | Device: $ProductType | Firmware: $ProductVersion | UDID: $UniqueDeviceID\n"
       echo "Name: $DeviceName | Activation State: $ActivationState | ECID (Decimal): $UniqueChipID | Board ID: $HardwareModel"
-      echo -e "\nCPU Arch: $CPUArchitecture | Hardware Platform: $HardwarePlatform"
-      echo -e "$ICyan---------------------------------------------------------------------------------------------------------------------"      
+      echo -e "\nCPU Arch: $CPUArchitecture | Hardware Platform: $HardwarePlatform"   
 fi            
             break
             ;;
