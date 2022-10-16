@@ -250,6 +250,8 @@ HardwareModel=$(ideviceinfo | grep HardwareModel | awk '{print $NF}')
 CPUArchitecture=$(ideviceinfo | grep CPUArchitecture | awk '{print $NF}')
 HardwarePlatform=$(ideviceinfo | grep HardwarePlatform | awk '{print $NF}')
 
+sleep 1
+
 if test -z "$ActivationState"
 
 then
