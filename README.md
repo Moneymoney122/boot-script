@@ -104,7 +104,11 @@ This script will ask for your user's password, this is not intended to be anythi
 
 - None at the moment, I am open to ideas on what to add.
 
-## Images, No useful reason why I want to add them:
+## Images:
+
+- boot-script
+
+![This is an image](https://imgur.com/a/SQuHq2d)
 
 - iOS 14
 
