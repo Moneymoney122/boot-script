@@ -24,6 +24,14 @@ NC="\e[0m"
 ICyan='\033[0;96m'
 IGreen='\033[0;92m'
 
+usage="${ICyan}Boot script by Moneymoney122 (@chandler_hacker)\nhttps://github.com/Moneymoney122/boot-script/\nOptions: --help or -h: display this help menu\nOwO: OwO\nNo arguments: run normally"
+
+case $1 in 
+-h) echo -e $usage && exit ;; 
+--help) echo -e $usage && exit ;;
+OwO) echo "OwO" && exit ;;
+esac
+
 clear 
 
 echo -e "$ICyan ____   ____   ____ _______    _____  _____ _____  _____ _____ _______" 
@@ -215,7 +223,7 @@ then
 echo "---------------------------------------------------------------------------------------------------------------------"
 
 while true; do
-    read -p 'No devices have been deteced, do you want to restart usbmuxd? (this might fix your computer not detecting your device in normal mode). (If this message is incorrect then you can just ignore it and type yes.) yes/no/: ' input
+    read -p 'No devices have been detected, do you want to restart usbmuxd? (this might fix your computer not detecting your device in normal mode). (If this message is incorrect then you can just ignore it and type yes.) yes/no/: ' input
     case $input in
        [yY]*)
             echo 'Continuing the script...'
@@ -250,8 +258,6 @@ HardwareModel=$(ideviceinfo | grep HardwareModel | awk '{print $NF}')
 CPUArchitecture=$(ideviceinfo | grep CPUArchitecture | awk '{print $NF}')
 HardwarePlatform=$(ideviceinfo | grep HardwarePlatform | awk '{print $NF}')
 
-sleep 1
-
 if test -z "$ActivationState"
 
 then
@@ -284,7 +290,7 @@ else
       echo "---------------------------------------------------------------------------------------------------------------------"
       echo -e "${IGreen}Serial Number: $SerialNumber | Device: $ProductType | Firmware: $ProductVersion | UDID: $UniqueDeviceID\n"
       echo "Name: $DeviceName | Activation State: $ActivationState | ECID (Decimal): $UniqueChipID | Board ID: $HardwareModel"
-      echo -e "\nCPU Arch: $CPUArchitecture | Hardware Platform: $HardwarePlatform"   
+      echo -e "\nCPU Arch: $CPUArchitecture | Hardware Platform: $HardwarePlatform"  
 fi            
             break
             ;;
@@ -313,6 +319,18 @@ else
 fi
 
 echo -e "$ICyan---------------------------------------------------------------------------------------------------------------------"
+
+    echo "Checking Internet connection... (You don't need an internet connection for this script, I'm just checking becuase I can lmao)" 
+    ping -c 3 208.67.222.222 >/dev/null 2>/dev/null
+    if [[ $? != 0 ]]; then
+       echo "No internet connection."
+
+    else
+
+       echo "You have an internet connection."
+    fi
+
+echo "---------------------------------------------------------------------------------------------------------------------"
 
 while true; do
     read -p 'Do you want to jailbreak with checkra1n? yes/no: ' input
