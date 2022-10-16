@@ -63,7 +63,8 @@ If you do not have `git` installed then install it using your distribution's pac
 
 `./boot.sh` or if you want to use the old version: `./old-boot.sh` or if you want to use the test version: `./test-boot.sh`
 
-This script will ask for your user's password, this is not intended to be anything malicious and you can check the code yourself if you want
+This script will askbash: ./gaster: Permission denied
+ for your user's password, this is not intended to be anything malicious and you can check the code yourself if you want
 
 ## Dependencies for this script: 
 
@@ -81,7 +82,7 @@ This script will ask for your user's password, this is not intended to be anythi
 
   - fork of ipwndfu for A8/A9 devices: https://github.com/exploit3dguy/ipwndfu
     
-    - python2 is required for ipwndfu
+   - python2 is required for ipwndfu
    
    - gaster: https://github.com/0x7ff/gaster
   
