@@ -49,12 +49,11 @@ Table of contents:
 
 ## How to use this script:
 
+ - *if you have already downloaded this script and you want to update it*, run: `cd ~/boot-script/ && git pull`
+
 If you do not have `git` installed then install it using your distribution's package manager
  
  run `git clone https://github.com/Moneymoney122/boot-script` in the terminal while in your home directory or download the zip from this page and unzip the files and place them in a folder called "boot-script" (without the quotes) in your home directory
-
- - *if you have already downloaded this script and you want to update it*, run: `cd ~/boot-script/ && git pull`
-
 
 - And then run:
 
