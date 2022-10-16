@@ -10,8 +10,7 @@ Table of contents:
          - [Issues/Contact Me](https://github.com/Moneymoney122/boot-script#issuescontact-me)
            - [Possible future updates](https://github.com/Moneymoney122/boot-script#possible-future-updates)
              - [Images](https://github.com/Moneymoney122/boot-script#images)
-                - [Boot-script image 1](https://github.com/Moneymoney122/boot-script#boot-script-1)
-                 - [Boot-script image 2](https://github.com/Moneymoney122/boot-script#boot-script-2)
+                - [Boot-script images](https://github.com/Moneymoney122/boot-script#boot-script-1)
                   - [iOS 14](https://github.com/Moneymoney122/boot-script#ios-14)
               
 ## What is this?
@@ -124,7 +123,11 @@ This script will askbash: ./gaster: Permission denied
 
 ### boot-script:
 
+### image 1:
+
 ![This is an image](https://i.imgur.com/PoFYstf.png)
+
+### image 2:
 
 ![This is an image](https://i.imgur.com/wyDM1jL.jpg)
 
