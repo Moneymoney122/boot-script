@@ -204,8 +204,13 @@ echo $MACH
 
 echo "---------------------------------------------------------------------------------------------------------------------"
 
-echo "Searching for devices in normal mode..."
+echo "Please connect your device now..."
 
+sleep 3
+
+echo "---------------------------------------------------------------------------------------------------------------------"
+
+echo "Searching for devices in normal mode..."
 
 ActivationState=$(ideviceinfo | grep ActivationState: | awk '{print $NF}')
 DeviceName=$(ideviceinfo | grep DeviceName | awk '{print $NF}')
@@ -392,6 +397,8 @@ done
             ;;
         [nN]*)
             echo "Skipping..."
+            sleep 3
+            clear
             break
             ;;
          *)
