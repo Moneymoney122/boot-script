@@ -37,9 +37,9 @@ echo "" > /dev/null
 
 else
 
-echo -e "$ICyan Terminal size is $terminallines x $terminalcols, it is recommended that you make you make your terminal larger"
+echo -e "$ICyanTerminal size is $terminallines x $terminalcols, it is recommended that you make you make your terminal larger"
 
-terminalwarningsent=1
+terminalwarningsent=yes
 
 sleep 3
 
@@ -51,9 +51,11 @@ echo "" > /dev/null
 
 else
 
-if [[ $terminalwarningsent!=1 ]]; then
+if test -z "$terminalwarningsent"
 
-echo -e "$ICyan Terminal size is $terminallines x $terminalcols, it is recommended that you make you make your terminal larger"
+then
+
+echo -e "$ICyanTerminal size is $terminallines x $terminalcols, it is recommended that you make you make your terminal larger"
 
 fi
 
