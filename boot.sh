@@ -24,7 +24,7 @@ NC="\e[0m"
 ICyan='\033[0;96m'
 IGreen='\033[0;92m'
 
-usage="Boot script by Moneymoney122 (@chandler_hacker)\nhttps://github.com/Moneymoney122/boot-script\n\nOptions:\n--help or -h: display this help menu\nOwO: OwO\nNo arguments: run normally$NC"
+usage="Boot script by Moneymoney122 (@chandler_hacker)\nhttps://github.com/Moneymoney122/boot-script\n\nOptions:\n-h or --help: display this help menu\nOwO: OwO\nNo arguments: run normally$NC"
 
 #check terminal size
 
@@ -37,7 +37,17 @@ echo "" > /dev/null
 
 else
 
-echo -e "$ICyanTerminal size is $terminallines x $terminalcols, it is recommended that you make you make your terminal larger"
+echo -e "${ICyan}Terminal size is ${terminalline}x${terminalcols}, it is recommended that you make you make your terminal larger"
+
+echo -e "\n"
+
+for i in {1..3}
+do
+    sleep 1
+    echo -n "$i "
+done
+
+sleep 1
 
 terminalwarningsent=yes
 
@@ -55,11 +65,19 @@ if test -z "$terminalwarningsent"
 
 then
 
-echo -e "$ICyanTerminal size is $terminallines x $terminalcols, it is recommended that you make you make your terminal larger"
+echo -e "${ICyan}Terminal size is ${terminallines}x${terminalcols}, it is recommended that you make you make your terminal larger"
 
 fi
 
-sleep 3
+echo -e "\n"
+
+for i in {1..3}
+do
+    sleep 1
+    echo -n "$i "
+done
+
+sleep 1
 
 fi
 
