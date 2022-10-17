@@ -48,7 +48,7 @@ esac
 trap ctrl_c INT
 
 function ctrl_c() {
-        echo -e "$ICyan\nExiting..."
+        echo -e "$ICyan\nExiting...$NC"
         exit 1
 }
 
