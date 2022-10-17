@@ -127,7 +127,7 @@ This script will ask for your user's password, this is not intended to be anythi
 
 - None at the moment, I am open to ideas on what to add.
 
-- This script is constantly updated with new features
+- This script is constantly being updated with new features
 
 ## Images:
 
