@@ -24,7 +24,7 @@ NC="\e[0m"
 ICyan='\033[0;96m'
 IGreen='\033[0;92m'
 
-usage="Boot script by Moneymoney122 (@chandler_hacker)\nhttps://github.com/Moneymoney122/boot-script/\n\nOptions:\n--help or -h: display this help menu\nOwO: OwO\nNo arguments: run normally$NC"
+usage="Boot script by Moneymoney122 (@chandler_hacker)\nhttps://github.com/Moneymoney122/boot-script\n\nOptions:\n--help or -h: display this help menu\nOwO: OwO\nNo arguments: run normally$NC"
 
 case $1 in 
 -h)  
