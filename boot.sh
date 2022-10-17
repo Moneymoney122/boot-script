@@ -254,6 +254,14 @@ while true; do
             echo 'Continuing the script...'
             echo -e "Running \"sudo systemctl restart usbmuxd\", this might take a while..."
             sudo systemctl restart usbmuxd
+            echo "Completed"
+            echo "---------------------------------------------------------------------------------------------------------------------"
+            echo "Please disconnect and reconnect your device..."
+            for i in {1..3}
+            do
+            sleep 1
+            echo -n "$i "
+            done
            
 echo "---------------------------------------------------------------------------------------------------------------------"
 
