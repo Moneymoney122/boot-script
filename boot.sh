@@ -33,7 +33,7 @@ terminalcols=$(tput cols)
 
 if [[ $terminallines -ge 24 ]]; then
 
-echo ""
+echo "" > /dev/null
 
 else
 
@@ -47,7 +47,7 @@ fi
 
 if [[ $terminalcols -ge 80 ]]; then
 
-echo ""
+echo "" > /dev/null
 
 else
 
