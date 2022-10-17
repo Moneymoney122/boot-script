@@ -26,6 +26,41 @@ IGreen='\033[0;92m'
 
 usage="Boot script by Moneymoney122 (@chandler_hacker)\nhttps://github.com/Moneymoney122/boot-script\n\nOptions:\n--help or -h: display this help menu\nOwO: OwO\nNo arguments: run normally$NC"
 
+#check terminal size
+
+terminallines=$(tput lines)
+terminalcols=$(tput cols)
+
+if [[ $terminallines -ge 24 ]]; then
+
+echo ""
+
+else
+
+echo -e "$ICyan Terminal size is $terminallines x $terminalcols, it is recommended that you make you make your terminal larger"
+
+terminalwarningsent=1
+
+sleep 3
+
+fi
+
+if [[ $terminalcols -ge 80 ]]; then
+
+echo ""
+
+else
+
+if [[ $terminalwarningsent!=1 ]]; then
+
+echo -e "$ICyan Terminal size is $terminallines x $terminalcols, it is recommended that you make you make your terminal larger"
+
+fi
+
+sleep 3
+
+fi
+
 case $1 in 
 -h)  
 echo -e "$ICyan ___  ___   ___ _____   ___  ___ ___ ___ ___ _____ "
