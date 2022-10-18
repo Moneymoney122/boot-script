@@ -112,6 +112,8 @@ This script will ask for your user's password, this is not intended to be anythi
 
 - if you want checkra1n: https://checkra.in
 
+- sshpass is required if you're going to use the ssh feature of this script
+
 - sudo
 
 - git
