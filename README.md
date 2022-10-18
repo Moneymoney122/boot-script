@@ -160,5 +160,7 @@ This script will ask for your user's password, this is not intended to be anythi
 
 ### iOS 14:
 
+- iOS 14
+
 ![This is an image](https://images.idgesg.net/images/article/2020/06/ios14-logo-100849580-large.3x2.jpg)
 
