@@ -107,7 +107,7 @@ exit ;;
 OwO) echo "OwO" && exit ;;
 ssh)
 echo -e "${ICyan}ssh into a root shell for your device, your device must be jailbroken and have OpenSSH installed.\nThe default password for your device if you have not changed it is: alpine.\nEnter your device's IP Address.\nYou can find this in Settings > WiFi > Click on your WiFi Network and scroll down and find your IP Address.\nWhen you have finished in the shell type \"exit\" or \"logout\"\nRemember, you are logging in as root, the most powerfull user and it can be dangerous if you don't know what you're doing.\nProcceed at your own risk, I am not responsible for any damage you may cause. To exit at anytime press Ctrl+C.\n${NC}"
-read -p "Enter IP: " IPADDRESS
+read -p "Enter IP Address: " IPADDRESS
 sudo ssh root@$IPADDRESS
 exit ;;
 esac
