@@ -54,6 +54,8 @@ Table of contents:
 
 ## How to use this script:
 
+ - No compiling or installation necessary
+ 
  - *if you have already downloaded this script and you want to update it*, run: `cd ~/boot-script/ && git pull`
 
 If you do not have `git` installed then install it using your distribution's package manager
@@ -131,7 +133,7 @@ This script will ask for your user's password, this is not intended to be anythi
 
 ## Images:
 
-*Images shown may vary from the latest version of the script*
+*Images shown may vary from the latest version of the script.*
 
 ### boot-script:
 
