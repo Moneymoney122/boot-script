@@ -110,6 +110,7 @@ echo -e "${ICyan}ssh into a root shell for your device, your device must be jail
 read -p "Enter IP Address: " IPADDRESS
 read -sp "Enter Password: " PASSWORD
 sudo sshpass -p "$PASSWORD" ssh root@$IPADDRESS
+echo -e "\n"
 exit ;;
 esac
 
