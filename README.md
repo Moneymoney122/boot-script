@@ -75,6 +75,7 @@ If you do not have `git` installed then install it using your distribution's pac
 |-----------------|-----------------------------|------------------------------------------|
 | `-h`            | `--help`                    | Prints help options                      |
 | `OwO`           | `OwO`                       | OwO                                      |
+| `ssh`           | `ssh`                       | ssh into your device                     |
 
 
 This script will ask for your user's password, this is not intended to be anything malicious and you can check the code yourself if you want
