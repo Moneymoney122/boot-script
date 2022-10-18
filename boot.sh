@@ -32,7 +32,7 @@ function ctrl_c() {
         exit 1
 }
 
-usage="Boot script by Moneymoney122 (@chandler_hacker)\nhttps://github.com/Moneymoney122/boot-script\n\nOptions:\n-h or --help: display this help menu\nOwO: OwO\nNo arguments: run normally\nssh: ssh into a root shell for your device, your device must be jailbroken and have OpenSSH installed.\nThe default password for your device if you have not changed it is: alpine$NC"
+usage="Boot script by Moneymoney122 (@chandler_hacker)\nhttps://github.com/Moneymoney122/boot-script\n\nOptions:\n-h or --help: display this help menu\nOwO: OwO\nNo arguments: run normally\nssh: ssh into a root shell for your device, your device must be jailbroken and have OpenSSH installed.${NC}"
 
 #check terminal size
 
@@ -106,7 +106,7 @@ echo -e  "$usage"
 exit ;;
 OwO) echo "OwO" && exit ;;
 ssh)
-echo -e "${ICyan}ssh into a root shell for your device, your device must be jailbroken and have OpenSSH installed.\nThe default password for your device if you have not changed it is: alpine.\nEnter your device's IP Address.\nYou can find this in Settings > WiFi > Click on your WiFi Network and scroll down and find your IP Address.\nWhen you have finished in the shell type \"exit\" or \"logout\"\nRemember, you are logging in as root, the most powerfull user and it can be dangerous if you don't know what you're doing.\nProcceed at your own risk, I am not responsible for any damage you may cause. To exit at anytime press Ctrl+C.\nWhen entering your password it will be hidden but will still be registered\n"
+echo -e "${ICyan}ssh into a root shell for your device, your device must be jailbroken and have OpenSSH installed.\nThe default password for your device if you have not changed it is: alpine.\nEnter your device's local IP Address.\nYou can find this in Settings > WiFi > Click on your WiFi Network and scroll down and find your local IP Address.\nWhen you have finished in the shell type \"exit\" or \"logout\"\nRemember, you are logging in as root, the most powerfull user and it can be dangerous if you don't know what you're doing.\nProcceed at your own risk, I am not responsible for any damage you may cause. To exit at anytime press Ctrl+C.\nWhen entering your password it will be hidden but will still be registered\n"
 read -p "Enter IP Address: " IPADDRESS
 read -sp "Enter Password: " PASSWORD
 echo -e "${NC}"
