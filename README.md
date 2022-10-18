@@ -142,11 +142,21 @@ This script will ask for your user's password, this is not intended to be anythi
 
 ### image 1:
 
+- start of script
+
 ![This is an image](https://i.imgur.com/PoFYstf.png)
 
 ### image 2:
 
+- main menu
+
 ![This is an image](https://i.imgur.com/wyDM1jL.jpg)
+
+### image 3:
+
+- ssh
+
+![This is an image](https://i.imgur.com/G8xCyKt.jpg)
 
 ### iOS 14:
 
