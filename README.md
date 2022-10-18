@@ -54,8 +54,7 @@ Table of contents:
 
 ## How to use this script:
 
- - No compiling or installation necessary
- 
+ ### No compiling or installation necessary
  
  - *if you have already downloaded this script and you want to update it*, run: `cd ~/boot-script/ && git pull`
 
