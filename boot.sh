@@ -111,7 +111,6 @@ read -p "Enter IP Address: " IPADDRESS
 read -sp "Enter Password: " PASSWORD
 echo -e "${NC}"
 sudo sshpass -p "$PASSWORD" ssh root@$IPADDRESS
-echo -e "\n"
 exit ;;
 esac
 
