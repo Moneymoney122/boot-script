@@ -24,7 +24,15 @@ NC="\e[0m"
 ICyan='\033[0;96m'
 IGreen='\033[0;92m'
 
-usage="Boot script by Moneymoney122 (@chandler_hacker)\nhttps://github.com/Moneymoney122/boot-script\n\nOptions:\n-h or --help: display this help menu\nOwO: OwO\nNo arguments: run normally$NC"
+# trap ctrl-c and call ctrl_c()
+trap ctrl_c INT
+
+function ctrl_c() {
+        echo -e "$ICyan\nExiting...$NC"
+        exit 1
+}
+
+usage="Boot script by Moneymoney122 (@chandler_hacker)\nhttps://github.com/Moneymoney122/boot-script\n\nOptions:\n-h or --help: display this help menu\nOwO: OwO\nNo arguments: run normally\nssh: ssh into a root shell for your device, your device must be jailbroken and have OpenSSH installed.\nThe default password for your device if you have not changed it is: alpine$NC"
 
 #check terminal size
 
@@ -88,7 +96,7 @@ echo         "| _ )/ _ \ / _ \_   _| / __|/ __| _ \_ _| _ \_   _| "
 echo         "| _ \ (_) | (_) || |   \__ \ (__|   /| ||  _/ | |  "
 echo -e      "|___/\___/ \___/ |_|   |___/\___|_|_\___|_|   |_|  \n"
 echo -e  "$usage"
-exit  ;;                                                                                                   
+exit ;;                                                                                                   
 --help) 
 echo -e "$ICyan ___  ___   ___ _____   ___  ___ ___ ___ ___ _____ "
 echo         "| _ )/ _ \ / _ \_   _| / __|/ __| _ \_ _| _ \_   _| "
@@ -97,15 +105,12 @@ echo -e      "|___/\___/ \___/ |_|   |___/\___|_|_\___|_|   |_|  \n"
 echo -e  "$usage"
 exit ;;
 OwO) echo "OwO" && exit ;;
+ssh)
+echo -e "${ICyan}ssh into a root shell for your device, your device must be jailbroken and have OpenSSH installed.\nThe default password for your device if you have not changed it is: alpine.\nEnter your device's IP Address.\nYou can find this in Settings > WiFi > Click on your WiFi Network and scroll down and find your IP Address.\nWhen you have finished in the shell type \"exit\" or \"logout\"\nRemember, you are logging in as root, the most powerfull user and it can be dangerous if you don't know what you're doing.\nProcceed at your own risk, I am not responsible for any damage you may cause. To exit at anytime press Ctrl+C.\n${NC}"
+read -p "Enter IP: " IPADDRESS
+sudo ssh root@$IPADDRESS
+exit ;;
 esac
-
-# trap ctrl-c and call ctrl_c()
-trap ctrl_c INT
-
-function ctrl_c() {
-        echo -e "$ICyan\nExiting...$NC"
-        exit 1
-}
 
 clear 
 
