@@ -310,7 +310,7 @@ then
 echo "---------------------------------------------------------------------------------------------------------------------"
 
 while true; do
-    read -p 'No devices have been detected, do you want to restart usbmuxd? (this might fix your computer not detecting your device in normal mode). (If this message is incorrect then you can just ignore it and type no.) yes/no/: ' input
+    read -p 'No devices have been detected, do you want to restart usbmuxd? (this might fix your computer not detecting your device in normal mode). (If this message is incorrect then you can just ignore it and type no.) yes/no: ' input
     case $input in
        [yY]*)
             echo 'Continuing the script...'
@@ -589,6 +589,7 @@ while true; do
            echo 'Continuing the script...'
            echo "---------------------------------------------------------------------------------------------------------------------"
            echo "Searching for devices in DFU/Recovery mode..."
+           echo "---------------------------------------------------------------------------------------------------------------------"
            sudo irecovery -q
            break
             ;;
@@ -682,7 +683,7 @@ done
 echo "---------------------------------------------------------------------------------------------------------------------"
 
 while true; do
-    read -p 'Did ipwndfu/gaster work succefully? If it did not then please type no and then please force restart your device and put it back into DFU mode and then run the script again, if one tool failed you can try the other one, or if ipwndfu/gaster worked succesfully and you just want to put your device into PwnedDFU mode with sigchecks removed then you can type no and exit the script too or if you have already successfuly pwned your device and skipped pwning your device this time then type yes. if it did then please type yes. Or if you are not sure then type imunsure if you are not sure and you want to check if it worked correctly yes/no/imunsure: ' input
+    read -p 'Did ipwndfu/gaster work succefully? If it did not then please type no and then please force restart your device and put it back into DFU mode and then run the script again, if one tool failed you can try the other one, or if ipwndfu/gaster worked succesfully and you just want to put your device into Pwned DFU mode with sigchecks removed then you can type no and exit the script too or if you have already successfuly pwned your device and skipped pwning your device this time then type yes. if it did then please type yes. Or if you are not sure then type imunsure if you are not sure and you want to check if it worked correctly yes/no/imunsure: ' input
     case $input in
         [yY]*)
             echo 'Continuing the script...'
