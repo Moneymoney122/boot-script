@@ -697,7 +697,8 @@ while true; do
            sudo irecovery -q
        echo "---------------------------------------------------------------------------------------------------------------------"
    echo "If that command prints [MODE]: DFU and [PWND]: CHECKM8/[PWND]: gaster and ipwndfu said patched mapping and signature checks or gaster said Now you can boot untrusted images. then it was successful, if it says anything different then it most likely wasn't successful and you should force restart your device run the script again."
-            ;;
+  echo "---------------------------------------------------------------------------------------------------------------------"
+          ;;
             *)
          echo 'Invalid input' >&2
     esac
