@@ -55,6 +55,8 @@ do
     echo -n "$i "
 done
 
+echo -e "\n"
+
 sleep 1
 
 terminalwarningsent=yes
@@ -84,6 +86,8 @@ do
     sleep 1
     echo -n "$i "
 done
+
+echo -e "\n"
 
 sleep 1
 
