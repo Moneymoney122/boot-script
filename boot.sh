@@ -113,11 +113,11 @@ echo -e "${ICyan}ssh into a root shell for your device, your device must be jail
    
    echo "No internet connection."
    
-   echo -e "\nYou might encounter issues"
+   echo -e "You might encounter issues sshing into your device\n"
    
     else
 
-       echo "You have an internet connection."
+       echo -e "You have an internet connection."
     
    fi
 
