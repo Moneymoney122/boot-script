@@ -1,6 +1,6 @@
 # boot-script
 
-*the ssh feature of this script is broken at the moment*
+*the ssh feature of this script is broken at the moment.*
 
 Table of contents:
 
