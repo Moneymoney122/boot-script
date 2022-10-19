@@ -1,5 +1,7 @@
 # boot-script
 
+*the ssh feature of this script is broken at the moment*
+
 Table of contents:
 
   - [What is this?](https://github.com/Moneymoney122/boot-script#what-is-this) 
