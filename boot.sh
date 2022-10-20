@@ -122,7 +122,7 @@ echo "Checking Internet connection..."
    echo -e "You might encounter issues sshing into your device.\n"
    echo "---------------------------------------------------------------------------------------------------------------------"
     else
-       echo "You have an internet connection."
+       echo -e "You have an internet connection.\n"
        echo "---------------------------------------------------------------------------------------------------------------------"
    fi
 
