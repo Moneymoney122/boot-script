@@ -26,7 +26,7 @@ Table of contents:
 
 - This script is not made by mineek, it is made by me (Moneymoney122)
 
-- It is intended for use on Linux (only tested on Arch Linux, but should work on every distro)
+- It is intended for use on Linux (only tested on Arch Linux and Debian 11, but should work on every distro)
 
    - ~~it might work on Mac OS, but I don't know~~
 
