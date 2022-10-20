@@ -994,9 +994,13 @@ sudo irecovery -v -v -c bootx
    esac
 done
 
+echo -e "${ICyan}"
+
 read -p "The script has completed. Do you want to run the script again? yes/no: "  CHECK
 
 if [[ "$CHECK" = "Y" || "$CHECK" = "y" || "$CHECK" = "Yes" || "$CHECK" = "yes" || "$CHECK" = "YES" ]]; then
+
+cd ~/boot-script/
 
 bash boot.sh
 
