@@ -108,21 +108,23 @@ echo         "| _ \ (_) | (_) || |   \__ \ (__|   /| ||  _/ | |  "
 echo -e      "|___/\___/ \___/ |_|   |___/\___|_|_\___|_|   |_|  \n"
 echo -e  "$usage"
 exit ;;
-OwO) echo "OwO" && exit ;;
+OwO) echo -e "${ICyan}OwO${NC}" && exit ;;
 ssh)
-echo -e "${ICyan}ssh into a root shell for your device, your device must be jailbroken and have OpenSSH installed.\nYour device and computer must be on the same WiFi network,\nand there must not be anything stopping your devices from connecting to each other.\nThe default password for your device if you have not changed it is: alpine.\nEnter your device's local IP Address.\nYou can find this in Settings > WiFi > Click on your WiFi Network and scroll down and find your local IP Address.\nWhen you have finished in the shell type \"exit\" or \"logout\".\nRemember, you are logging in as root, the most powerfull user and it can be dangerous if you don't know what you're doing.\nProcceed at your own risk, I am not responsible for any damage you may cause. To exit at anytime press Ctrl+C.\nWhen entering your password it will be hidden but will still be registered.\n"
- echo "Checking Internet connection..." 
+echo -e "${ICyan}---------------------------------------------------------------------------------------------------------------------"
+echo "ssh into a root shell for your device, your device must be jailbroken and have OpenSSH installed.\nYour device and computer must be on the same WiFi network,\nand there must not be anything stopping your devices from connecting to each other.\nThe default password for your device if you have not changed it is: alpine.\nEnter your device's local IP Address.\nYou can find this in Settings > WiFi > Click on your WiFi Network and scroll down and find your local IP Address.\nWhen you have finished in the shell type \"exit\" or \"logout\".\nRemember, you are logging in as root, the most powerfull user and it can be dangerous if you don't know what you're doing.\nProcceed at your own risk, I am not responsible for any damage you may cause. To exit at anytime press Ctrl+C.\nWhen entering your password it will be hidden but will still be registered.\n"
+echo "---------------------------------------------------------------------------------------------------------------------"
+echo "Checking Internet connection..." 
     ping -c 3 208.67.222.222 >/dev/null 2>/dev/null
     if [[ $? != 0 ]]; then
    
    echo "No internet connection."
    
    echo -e "You might encounter issues sshing into your device.\n"
-   
+   echo "---------------------------------------------------------------------------------------------------------------------"
     else
 
        echo -e "You have an internet connection.\n"
-    
+       echo "---------------------------------------------------------------------------------------------------------------------"
    fi
 
 read -p "Enter local IP Address: " IPADDRESS
@@ -992,5 +994,17 @@ sudo irecovery -v -v -c bootx
 
    esac
 done
+
+read -p "The script has completed. Do you want to run the script again? yes/no: "  CHECK
+
+if [[ "$CHECK" = "Y" || "$CHECK" = "y" || "$CHECK" = "Yes" || "$CHECK" = "yes" || "$CHECK" = "YES" ]]; then
+
+bash boot.sh
+
+else
+
+echo -e "Exiting...$NC"
+exit
+fi
 
 #end of script
