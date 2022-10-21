@@ -312,17 +312,14 @@ while true; do
        [yY]*)
             echo 'Continuing the script...'
             echo -e "Running \"sudo systemctl restart usbmuxd\", this might take a while..."
+            T="$(date +%s)"
             sudo systemctl restart usbmuxd
-            echo "Completed"
+            T="$(($(date +%s)-T))"
+            echo "Completed, It took ${T} seconds."
             echo "---------------------------------------------------------------------------------------------------------------------"
             echo "Please disconnect and reconnect your device..."
-            for i in {1..3}
-            do
-            sleep 1
-            echo -n "$i "
-            done
            
-echo -e "\n---------------------------------------------------------------------------------------------------------------------"
+echo "---------------------------------------------------------------------------------------------------------------------"
 
 echo "Searching for devices in normal mode..."
 
