@@ -49,19 +49,9 @@ echo -e "${ICyan}Terminal size is ${terminallines}x${terminalcols}, it is recomm
 
 echo -e "\n"
 
-for i in {1..3}
-do
-    sleep 1
-    echo -n "$i "
-done
-
-echo -e "\n"
-
-sleep 1
+sleep 3
 
 terminalwarningsent=yes
-
-sleep 3
 
 fi
 
@@ -79,17 +69,7 @@ echo -e "${ICyan}Terminal size is ${terminallines}x${terminalcols}, it is recomm
 
 fi
 
-echo -e "\n"
-
-for i in {1..3}
-do
-    sleep 1
-    echo -n "$i "
-done
-
-echo -e "\n"
-
-sleep 1
+sleep 3
 
 fi
 
