@@ -444,16 +444,15 @@ while true; do
     read -p 'Do you want to run checkra1n in GUI or CLI mode (if your device is in DFU mode you will need to run checkra1n in CLI mode)? g/c: ' input
     case $input in
         [c]*)
+           read -p "Do you want to add any arguments to checkra1n? if yes then please type them here, if you don't know what these are or you don't want to add any then just press enter to leave this blank. " ARGUMENTS
            echo -e "Running checkra1n in CLI mode. Please ensure your device is in DFU mode and that the checkra1n executable is in your home directory..."
            echo "When checkra1n has finished please press Ctrl+C to exit checkra1n and exit this script" 
            echo "---------------------------------------------------------------------------------------------------------------------"
            echo "Searching for devices in DFU/Recovery mode..."
            sudo irecovery -q
            echo "---------------------------------------------------------------------------------------------------------------------"
-           echo "Running command \"sudo ~/checkra1n -cVv\"..."
-           echo "-c for command-line mode. -V for verbose boot on your device. -v for verbose output on checkra1n." 
            echo -e "${NC}"
-           sudo ~/checkra1n -cVv
+           sudo ~/checkra1n -c $ARGUMENTS
            break
             ;;
         [g]*)
