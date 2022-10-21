@@ -47,8 +47,6 @@ else
 
 echo -e "${ICyan}Terminal size is ${terminallines}x${terminalcols}, it is recommended that you make you make your terminal larger"
 
-echo -e "\n"
-
 sleep 3
 
 terminalwarningsent=yes
