@@ -456,12 +456,14 @@ while true; do
            break
             ;;
         [g]*)
-           echo -e "Running checkra1n in GUI mode. Please ensure your device is in normal/recovery mode and that the checkra1n executable is in your home directory..."
-           echo "When checkra1n has finished it should exit automatically and then the script will return to the jailbreak with checkra1n option so you can run checkra1n again if it failed or if you want to run it again, if it did not exit automatically then please press Ctrl+C to exit checkra1n and exit this script and then you can run the script again if you want to."
+           echo "---------------------------------------------------------------------------------------------------------------------"   
+           read -p "Do you want to add any arguments to checkra1n? if yes then please type them here, if you don't know what these are or you don't want to add any then just press enter to leave this blank: " ARGUMENTS
+           echo -e "Running checkra1n in GUI mode. Please ensure your device is in normal or recovery mode and that the checkra1n executable is in your home directory..."
+           echo -e "When checkra1n has finished it should exit automatically and then the script will return to the jailbreak with checkra1n option\nso you can run checkra1n again if it failed or if you want to run it again, if it did not exit automatically then please press Ctrl+C to exit checkra1n and exit this script and then you can run the script again if you want to."
            echo "---------------------------------------------------------------------------------------------------------------------"
            read -n 1 -s -r -p "------------------------------------Press any key to start checkra1n or Ctrl+C to Exit------------------------------------"        
            echo -e "$NC"
-           sudo ~/checkra1n
+           sudo ~/checkra1n $ARGUMENTS
            echo -e "$ICyan"
            break
             ;;
