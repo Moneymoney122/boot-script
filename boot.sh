@@ -143,7 +143,7 @@ echo "if you have any issues with this script please read the README.md file inc
 echo "---------------------------------------------------------------------------------------------------------------------"
 echo "if you see any commands in quotes and you want to run them then please copy the commands without the quotes and then run them."
 echo "---------------------------------------------------------------------------------------------------------------------"
-echo "this script will be changing directory into the folder with your boot files, please change this command to match the name of the folder with your boot files by opening this script with a text editor and editing the command on line 489, if you have not already."
+echo "this script will be changing directory into the folder with your boot files, please change this command to match the name of the folder with your boot files by opening this script with a text editor and editing the command on line 506, if you have not already."
 echo "---------------------------------------------------------------------------------------------------------------------"
 echo "please ensure that the ipwndfu and gaster folders are in the home directory and that python2 is installed before continuing,"
 echo "---------------------------------------------------------------------------------------------------------------------"
@@ -186,7 +186,24 @@ date=$(date "+%A, %d %B %Y %H:%M:%S")
 
 echo "---------------------------------------------------------------------------------------------------------------------"
 
-echo "Welcome $name    The current date and time is: $date" 
+echo -en "Welcome $name, "     
+
+  hour=$(date +%H)
+  greet="It's"
+
+  if [ $hour -le 11 ] && [ $hour -gt 6 ]; then
+    echo -en "$greet morning. "
+  elif [ $hour -eq 12 ]; then
+    echo -en "$greet noon."
+  elif [ $hour -le 17 ] && [ $hour -gt 12 ]; then
+    echo -en "$greet afternoon. "
+  elif [ $hour -le 19 ] && [ $hour -gt 17 ]; then
+    echo -en "$greet evening. "
+  else
+    echo -en "$greet night. "
+  fi
+ 
+echo "The current date and time is: $date"  
 
 echo "---------------------------------------------------------------------------------------------------------------------"
 
@@ -394,6 +411,7 @@ else
       echo -e "${IGreen}Serial Number: $SerialNumber | Device: $ProductType | Firmware: $ProductVersion | UDID: $UniqueDeviceID\n"
       echo "Name: $DeviceName | Activation State: $ActivationState | ECID (Decimal): $UniqueChipID | Board ID: $HardwareModel"
       echo -e "\nCPU Arch: $CPUArchitecture | Hardware Platform: $HardwarePlatform"  
+
 fi            
             break
             ;;
@@ -419,6 +437,29 @@ else
       echo -e "\nCPU Arch: $CPUArchitecture | Hardware Platform: $HardwarePlatform"
       echo -e "$ICyan---------------------------------------------------------------------------------------------------------------------"
       echo "Device found in normal mode, not going to search for devices in DFU/Recovery mode."
+
+#why did i write this all out manually...
+
+ProductType=$(ideviceinfo | grep ProductType | awk '{print $NF}')
+
+if [[ $ProductType == iPhone1,1 || $ProductType ==  iPhone1,2 || $ProductType == iPhone2,1 || $ProductType == iPhone3,1 || $ProductType == iPhone3,2 || $ProductType == iPhone3,3 || $ProductType == iPhone11,8 || $ProductType == iPhone11,2 || $ProductType == iPhone11,4 || $ProductType == iPhone11,6 || $ProductType == iPhone12,1 || $ProductType == iPhone12,3 || $ProductType == iPhone12,5 || $ProductType == iPhone12,8 || $ProductType == iPhone13,1 || $ProductType == iPhone13,2 || $ProductType == iPhone13,3 || $ProductType == iPhone13,4 || $ProductType == iPhone14,4 || $ProductType == iPhone14,5 || i$ProductType == Phone14,2 || $ProductType == iPhone14,3 || i$ProductType == Phone14,6 || $ProductType == iPhone14,7 || $ProductType == iPhone14,8 || $ProductType == iPhone15,2 || $ProductType == iPhone15,3 || $ProductType == iPod1,1 || $ProductType == iPod2,1 || $ProductType == iPod3,1 || $ProductType == iPod4,1 || $ProductType == iPad1,1 || $ProductType == iPad11,6 || $ProductType == iPad11,7 || $ProductType == iPad12,1 || $ProductType == iPad12,2 || $ProductType == iPad8,1 || $ProductType == iPad8,2 || $ProductType == iPad8,3 || $ProductType == iPad8,4 || $ProductType == iPad8,5 || $ProductType == iPad8,6 || $ProductType == iPad8,7 || $ProductType == iPad8,8 || $ProductType == iPad8,9 || $ProductType == iPad8,10 || $ProductType == iPad8,11 || $ProductType == iPad8,12 || $ProductType == iPad13,4 || $ProductType == iPad13,5 || $ProductType == iPad13,6 || $ProductType == iPad13,7 || $ProductType == iPad13,8 || $ProductType == iPad13,9 || $ProductType == iPad13,10 || $ProductType == iPad13,11 || $ProductType == iPad11,3 || $ProductType == iPad11,4 || $ProductType == iPad13,1 || $ProductType == iPad13,2 || $ProductType == iPad13,16 || $ProductType == iPad13,17 || $ProductType == iPad11,1 || $ProductType == iPad11,2 || $ProductType == iPad14,1 || $ProductType == iPad14,2 ]]; then
+
+echo "---------------------------------------------------------------------------------------------------------------------" 
+
+echo -e "${YELLOW}checkm8 incompatible device detected, you won't be able to use parts of this script that require checkm8 to be used. Your device may be compatible with other BootROM exploits, please check online${ICyan}"
+
+checkm8compatible=no
+
+else 
+
+echo "---------------------------------------------------------------------------------------------------------------------" 
+
+echo -e "${YELLOW}Your device is compatible with checkm8${ICyan}"
+
+checkm8compatible=yes
+
+fi
+
 fi
 
 echo -e "$ICyan---------------------------------------------------------------------------------------------------------------------"
