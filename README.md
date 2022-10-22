@@ -102,9 +102,9 @@ This script will ask for your user's password, this is not intended to be anythi
   
     - if you're using gaster please ensure that you have compiled gaster: 
     
-    Linux: `cd ~/gaster/ && make libusb` 
+     - Linux: `cd ~/gaster/ && make libusb` 
     
-    MacOS: `cd ~/gaster/ && make` 
+     - MacOS: `cd ~/gaster/ && make` 
     
     After that you should see a gaster executable in the gaster folder, if you get "bash: ./gaster: Permission denied" then run `chmod +x gaster` and try again
 
