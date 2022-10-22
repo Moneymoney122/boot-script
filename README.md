@@ -120,6 +120,8 @@ This script will ask for your user's password, this is not intended to be anythi
 
 - awk
 
+- lolcat
+
 - some features of this script requires a system with systemd
 
 ## Issues/Contact Me:
