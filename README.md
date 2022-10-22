@@ -62,7 +62,7 @@ If you do not have `git` installed then install it using your distribution's pac
  
  run `git clone https://github.com/Moneymoney122/boot-script` in the terminal while in your home directory or download the zip from this page and unzip the files and place them in a folder called "boot-script" (without the quotes) in your home directory
 
-- And then run:
+And then run:
 
 `cd ~/boot-script/`
 
