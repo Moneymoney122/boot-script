@@ -24,6 +24,9 @@ NC="\e[0m"
 ICyan='\033[0;96m'
 IGreen='\033[0;92m'
 
+#Background
+On_Black='\033[40m'
+
 # trap ctrl-c and call ctrl_c()
 trap ctrl_c INT
 
@@ -184,28 +187,26 @@ name=$(whoami)
 
 date=$(date "+%A, %d %B %Y %H:%M:%S")
 
-echo "---------------------------------------------------------------------------------------------------------------------"
-
-echo -en "Welcome $name, "     
-
   hour=$(date +%H)
   greet="It's"
 
   if [ $hour -le 11 ] && [ $hour -gt 6 ]; then
-    echo -en "$greet morning. "
+    timeofday=morning
   elif [ $hour -eq 12 ]; then
-    echo -en "$greet noon."
+    timeofday=noon
   elif [ $hour -le 17 ] && [ $hour -gt 12 ]; then
-    echo -en "$greet afternoon. "
+    timeofday=afternoon
   elif [ $hour -le 19 ] && [ $hour -gt 17 ]; then
-    echo -en "$greet evening. "
+    timeofday=evening
   else
-    echo -en "$greet night. "
+    timeofday=night
   fi
- 
-echo "The current date and time is: $date"  
 
 echo "---------------------------------------------------------------------------------------------------------------------"
+
+echo -e "${On_Black}Welcome $name, $greet $timeofday. The current date and time is: $date${NC}" | lolcat  -a -d 60  
+
+echo -e "${ICyan}---------------------------------------------------------------------------------------------------------------------"
 
 echo "Detecting what Operating System this script is running on..."
 
@@ -224,6 +225,22 @@ esac
 lowercase(){
     echo "$1" | sed "y/ABCDEFGHIJKLMNOPQRSTUVWXYZ/abcdefghijklmnopqrstuvwxyz/"
 }
+
+HardwareModel=$(hostnamectl | grep "Hardware Model")
+
+echo $HardwareModel
+
+OSNAME=$(lsb_release -d | cut -f 2-)
+
+if [[ $OSNAME == "Arch Linux" ]]; then
+
+echo "You use Arch Linux btw"
+
+else
+
+echo $OSNAME
+
+fi
 
 OS=`lowercase \`uname\``
 KERNEL=`uname -r`
