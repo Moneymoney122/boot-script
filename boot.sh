@@ -76,18 +76,18 @@ fi
 
 case $1 in 
 -h)  
-echo -e "$ICyan ___  ___   ___ _____   ___  ___ ___ ___ ___ _____ "
-echo         "| _ )/ _ \ / _ \_   _| / __|/ __| _ \_ _| _ \_   _| "
-echo         "| _ \ (_) | (_) || |   \__ \ (__|   /| ||  _/ | |  "
-echo -e      "|___/\___/ \___/ |_|   |___/\___|_|_\___|_|   |_|  \n"
-echo -e  "$usage"
+echo -e "$ICyan ___  ___   ___ _____   ___  ___ ___ ___ ___ _____ " | lolcat -p 0.1
+echo         "| _ )/ _ \ / _ \_   _| / __|/ __| _ \_ _| _ \_   _| " | lolcat -p 0.1
+echo         "| _ \ (_) | (_) || |   \__ \ (__|   /| ||  _/ | |  "  | lolcat -p 0.1
+echo -e      "|___/\___/ \___/ |_|   |___/\___|_|_\___|_|   |_|  \n" | lolcat -p 0.1
+echo -e  "${ICyan}$usage"
 exit ;;                                                                                                   
 --help) 
-echo -e "$ICyan ___  ___   ___ _____   ___  ___ ___ ___ ___ _____ "
-echo         "| _ )/ _ \ / _ \_   _| / __|/ __| _ \_ _| _ \_   _| "
-echo         "| _ \ (_) | (_) || |   \__ \ (__|   /| ||  _/ | |  "
-echo -e      "|___/\___/ \___/ |_|   |___/\___|_|_\___|_|   |_|  \n"
-echo -e  "$usage"
+echo -e "$ICyan ___  ___   ___ _____   ___  ___ ___ ___ ___ _____ " | lolcat -p 0.1
+echo         "| _ )/ _ \ / _ \_   _| / __|/ __| _ \_ _| _ \_   _| " | lolcat -p 0.1
+echo         "| _ \ (_) | (_) || |   \__ \ (__|   /| ||  _/ | |  "  | lolcat -p 0.1
+echo -e      "|___/\___/ \___/ |_|   |___/\___|_|_\___|_|   |_|  \n" | lolcat -p 0.1
+echo -e  "${ICyan}$usage"
 exit ;;
 OwO) echo -e "${ICyan}OwO${NC}" && exit ;;
 ssh)
@@ -113,6 +113,24 @@ echo -e "${NC}"
 sudo sshpass -v -p "$PASSWORD" ssh root@$IPADDRESS
 exit ;;
 esac
+
+
+if test -z "$1"
+
+then
+
+echo "" > /dev/null
+
+else
+
+echo -e "$ICyan ___  ___   ___ _____   ___  ___ ___ ___ ___ _____ " | lolcat -p 0.1
+echo         "| _ )/ _ \ / _ \_   _| / __|/ __| _ \_ _| _ \_   _| " | lolcat -p 0.1
+echo         "| _ \ (_) | (_) || |   \__ \ (__|   /| ||  _/ | |  "  | lolcat -p 0.1
+echo -e      "|___/\___/ \___/ |_|   |___/\___|_|_\___|_|   |_|  \n" | lolcat -p 0.1
+echo -e  "${ICyan}$usage"
+exit
+
+fi
 
 clear 
 
