@@ -100,7 +100,7 @@ echo "Checking Internet connection..."
    
    echo "No internet connection."
    
-   echo -e "You might encounter issues sshing into your device.\n"
+   echo "You might encounter issues sshing into your device."
    echo "---------------------------------------------------------------------------------------------------------------------"
     else
        echo -e "You have an internet connection."
