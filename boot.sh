@@ -238,6 +238,8 @@ echo "You use Arch Linux btw"
 
 else
 
+echo "You do not use Arch Linux btw"
+
 echo $OSNAME
 
 fi
