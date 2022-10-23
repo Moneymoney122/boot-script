@@ -230,6 +230,12 @@ HardwareModel=$(hostnamectl | grep "Hardware Model")
 
 echo $HardwareModel
 
+if test -z $HardwareModel then
+
+sudo /usr/sbin/dmidecode -s system-product-name
+
+fi
+
 OSNAME=$(lsb_release -d | cut -f 2-)
 
 if [[ $OSNAME == "Arch Linux" ]]; then
