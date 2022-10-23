@@ -208,7 +208,7 @@ echo -e "${On_Black}Welcome $name, $greet $timeofday. The current date and time 
 
 echo -e "${ICyan}---------------------------------------------------------------------------------------------------------------------"
 
-echo "Detecting what Operating System this script is running on..."
+echo "Detecting what Operating System and Hardware this script is running on..."
 
 echo "---------------------------------------------------------------------------------------------------------------------"
 
