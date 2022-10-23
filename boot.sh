@@ -230,7 +230,7 @@ HardwareModel=$(hostnamectl | grep "Hardware Model")
 
 echo $HardwareModel
 
-if test -z $HardwareModel 
+if test -z "$HardwareModel" 
 
 then
 
