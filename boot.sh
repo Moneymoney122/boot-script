@@ -98,6 +98,20 @@ read -sp "Enter Password: " PASSWORD
 echo -e "${NC}"
 sudo sshpass -v -p "$PASSWORD" ssh root@$IPADDRESS
 exit ;;
+-h)
+echo -e "$ICyan ___  ___   ___ _____   ___  ___ ___ ___ ___ _____ " | lolcat -p 0.1
+echo         "| _ )/ _ \ / _ \_   _| / __|/ __| _ \_ _| _ \_   _| " | lolcat -p 0.1
+echo         "| _ \ (_) | (_) || |   \__ \ (__|   /| ||  _/ | |  "  | lolcat -p 0.1
+echo -e      "|___/\___/ \___/ |_|   |___/\___|_|_\___|_|   |_|  \n" | lolcat -p 0.1
+echo -e  "${ICyan}$usage"
+exit ;;
+--help)
+echo -e "$ICyan ___  ___   ___ _____   ___  ___ ___ ___ ___ _____ " | lolcat -p 0.1
+echo         "| _ )/ _ \ / _ \_   _| / __|/ __| _ \_ _| _ \_   _| " | lolcat -p 0.1
+echo         "| _ \ (_) | (_) || |   \__ \ (__|   /| ||  _/ | |  "  | lolcat -p 0.1
+echo -e      "|___/\___/ \___/ |_|   |___/\___|_|_\___|_|   |_|  \n" | lolcat -p 0.1
+echo -e  "${ICyan}$usage"
+exit ;;
 esac
 
 
@@ -108,6 +122,8 @@ then
 echo "" > /dev/null
 
 else
+
+echo "\"$1\" : Invalid option"
 
 echo -e "$ICyan ___  ___   ___ _____   ___  ___ ___ ___ ___ _____ " | lolcat -p 0.1
 echo         "| _ )/ _ \ / _ \_   _| / __|/ __| _ \_ _| _ \_   _| " | lolcat -p 0.1
