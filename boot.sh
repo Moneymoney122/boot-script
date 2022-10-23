@@ -35,7 +35,7 @@ function ctrl_c() {
         exit 1
 }
 
-usage="Boot script by Moneymoney122 (@chandler_hacker)\nhttps://github.com/Moneymoney122/boot-script\n\nOptions:\n-h or --help: display this help menu\nOwO: OwO\nNo arguments: run normally\nssh: ssh into a root shell for your device, your device must be jailbroken and have OpenSSH installed.${NC}"
+usage="Boot script by Moneymoney122 (@chandler_hacker)\nhttps://github.com/Moneymoney122/boot-script\n\nOptions:\n-h or --help or an invalid option: display this help menu\nOwO: OwO\nNo arguments: run normally\nssh: ssh into a root shell for your device, your device must be jailbroken and have OpenSSH installed.${NC}"
 
 #check terminal size
 
@@ -123,7 +123,7 @@ echo "" > /dev/null
 
 else
 
-echo "\"$1\" : Invalid option"
+echo -e "${ICyan}\"$1\": Invalid option"
 
 echo -e "$ICyan ___  ___   ___ _____   ___  ___ ___ ___ ___ _____ " | lolcat -p 0.1
 echo         "| _ )/ _ \ / _ \_   _| / __|/ __| _ \_ _| _ \_   _| " | lolcat -p 0.1
