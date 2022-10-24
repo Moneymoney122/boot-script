@@ -123,7 +123,7 @@ echo "" > /dev/null
 
 else
 
-echo -e "${ICyan}\"$1\": Invalid option."
+echo -e "${ICyan}Invalid option: \"$1\""
 
 echo -e "$ICyan ___  ___   ___ _____   ___  ___ ___ ___ ___ _____ " | lolcat -p 0.1
 echo         "| _ )/ _ \ / _ \_   _| / __|/ __| _ \_ _| _ \_   _| " | lolcat -p 0.1
