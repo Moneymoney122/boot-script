@@ -264,6 +264,8 @@ if [[ $OSNAME == "Arch Linux" ]]; then
 
 echo "You use Arch Linux btw"
 
+echo $OSNAME
+
 else
 
 echo "You do not use Arch Linux btw"
@@ -1058,7 +1060,7 @@ while true; do
             echo 'Booting your device...'
 sudo irecovery -v -v -c bootx
  echo "Done, enjoy your tethered booted device OwO"
- echo -e "if your device failed to boot, it could have not been pwned successfully by ipwndfu or gaster, please retry ipwndfu or gaster, or if you used any other tool to pwn your device ensure that worked successfully too, or the boot files could not have been sent or not sent correctly$NC"
+ echo -e "if your device failed to boot, it could have not been pwned successfully by ipwndfu or gaster, please retry ipwndfu or gaster, or if you used any other tool to pwn your device ensure that worked successfully too, or the boot files could not have been sent or not sent correctly"
             break
             ;;
         [nN]*)
@@ -1071,7 +1073,7 @@ sudo irecovery -v -v -c bootx
    esac
 done
 
-echo -e "${ICyan}"
+echo "---------------------------------------------------------------------------------------------------------------------"
 
 read -p "The script has completed. Do you want to run the script again? yes/no: "  CHECK
 
