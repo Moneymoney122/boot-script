@@ -269,13 +269,15 @@ lowercase(){
 
 HardwareModel=$(hostnamectl | grep "Hardware Model")
 
-echo $HardwareModel
-
 if test -z "$HardwareModel" 
 
 then
 
 sudo /usr/sbin/dmidecode -s system-product-name
+
+else 
+
+echo "$HardwareModel"
 
 fi
 
