@@ -210,6 +210,8 @@ if [[ $EUID == 0 ]]; then
     case $input in
         [yY]*)
             echo 'Continuing the script...'
+            sleep 3
+            clear
             break
             ;;
         [nN]*)
@@ -221,8 +223,6 @@ if [[ $EUID == 0 ]]; then
     esac
 done
 fi
-
-clear
 
 name=$(whoami)
 
