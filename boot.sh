@@ -40,17 +40,17 @@ linelength=$(tput lines)
 
 if [[ $linelength == 24 ]]; then
 
-echolines="-------------------------------------------------------------------------------"
+line_length="-------------------------------------------------------------------------------"
 
 else
 
  if [[ $linelength -gt 24 ]]; then
 
- echolines="---------------------------------------------------------------------------------------------------------------------"
+ line_length="---------------------------------------------------------------------------------------------------------------------"
 
  else
 
- echolines="-----------------------------------------------------------"
+ line_length="-----------------------------------------------------------"
 
  fi
 
@@ -98,9 +98,9 @@ fi
 case $1 in 
 OwO) echo -e "${ICyan}OwO${NC}" && exit ;;
 ssh)
-echo -e "${ICyan} $echolines"
+echo -e "${ICyan} $line_length"
 echo -e "ssh into a root shell for your device, your device must be jailbroken and have OpenSSH installed.\nYour device and computer must be on the same WiFi network,\nand there must not be anything stopping your devices from connecting to each other.\nThe default password for your device if you have not changed it is: alpine.\nEnter your device's local IP Address.\nYou can find this in Settings > WiFi > Click on your WiFi Network and scroll down and find your local IP Address.\nWhen you have finished in the shell type \"exit\" or \"logout\".\nRemember, you are logging in as root, the most powerfull user and it can be dangerous if you don't know what you're doing.\nProcceed at your own risk, I am not responsible for any damage you may cause. To exit at anytime press Ctrl+C.\nWhen entering your password it will be hidden but will still be registered."
-echo "$echolines"
+echo "line_length"
 echo "Checking Internet connection..." 
     ping -c 3 208.67.222.222 >/dev/null 2>/dev/null
     if [[ $? != 0 ]]; then
@@ -108,10 +108,10 @@ echo "Checking Internet connection..."
    echo "No internet connection."
    
    echo "You might encounter issues sshing into your device."
-   echo "$echolines"
+   echo "$line_length"
     else
        echo -e "You have an internet connection."
-       echo "$echolines"
+       echo "$line_length"
    fi
 
 read -p "Enter local IP Address: " IPADDRESS
@@ -174,31 +174,31 @@ sleep 1.5
 
 clear
 
-echo "$echolines"
+echo "$line_length"
 echo "Boot script for tethered downgraded A8/A9 devices, this script is made by Moneymoney122 (@chandler_hacker on twitter)."
-echo "$echolines"
+echo "$line_length"
 echo "this script is a modified version of the boot script from the sunst0rm tether downgrade tool made by mineek. (https://github.com/mineek/sunst0rm)"
-echo "$echolines"
+echo "$line_length"
 echo "verbose output is enabled by default in this script, so you will see a lot of text in the terminal."
-echo "$echolines"
+echo "$line_length"
 echo "this script will also ask for your user's password, it is completly safe and you can check the code if you want to be sure."
-echo "$echolines"
+echo "$line_length"
 echo "if you have any issues with this script please read the README.md file included with this script or on the github repo before opening an issue on github or contacting me."
-echo "$echolines"
+echo "$line_length"
 echo "if you see any commands in quotes and you want to run them then please copy the commands without the quotes and then run them."
-echo "$echolines"
+echo "$line_length"
 echo "this script will be changing directory into the folder with your boot files, please change this command to match the name of the folder with your boot files by opening this script with a text editor and editing the command on line 506, if you have not already."
-echo "$echolines"
+echo "$line_length"
 echo "please ensure that the ipwndfu and gaster folders are in the home directory and that python2 is installed before continuing,"
-echo "$echolines"
+echo "$line_length"
 echo "if your device is in DFU mode at any time and you want to exit it, hold the power button and home button for 15 seconds."
-echo "$echolines"
+echo "$line_length"
 echo "it is reccomended that you maximise your terminal window to ensure all text is displayed correctly."
-echo "$echolines"
+echo "$line_length"
 echo "you can use Ctrl+C to exit the script at any time."
-echo "$echolines"
+echo "$line_length"
 echo "this script can also run checkra1n commands to jailbreak your device for any checkra1n compatible device. if you want to use checkra1n with this script please ensure that the checkra1n executable file is in your home directory (get checkra1n at https://checkra.in)"
-echo "$echolines"
+echo "$line_length"
 
 read -n 1 -s -r -p "----------------Press any key to continue (Or Ctrl+C to Exit)---------------"
 
@@ -243,15 +243,15 @@ date=$(date "+%A, %d %B %Y %H:%M:%S")
     timeofday=night
   fi
 
-echo "$echolines"
+echo "$line_length"
 
 echo -e "${On_Black}Welcome $name, $greet $timeofday. The current date and time is: $date${NC}" | lolcat  -a -d 60  
 
-echo -e "${ICyan} $echolines"
+echo -e "${ICyan} $line_length"
 
 echo "Detecting what Operating System and Hardware this script is running on..."
 
-echo "$echolines"
+echo "$line_length"
 
 case "$OSTYPE" in
   solaris*) echo "Running on Solaris" ;;
@@ -277,7 +277,7 @@ sudo /usr/sbin/dmidecode -s system-product-name
 
 else 
 
-echo "$HardwareModel"
+echo $HardwareModel
 
 fi
 
@@ -353,18 +353,18 @@ echo $KERNEL
 echo $MACH
 
     if [[ $(uname -m) != "x86_64" ]]; then
-      echo "$echolines"
+      echo "$line_length"
       echo "Non x86_64 system detected, you might encounter issues"
     fi
 
 
-echo "$echolines"
+echo "$line_length"
 
 echo "Please connect your device now..."
 
 sleep 3
 
-echo "$echolines"
+echo "$line_length"
 
 echo "Searching for devices in normal mode..."
 
@@ -383,17 +383,17 @@ if test -z "$ActivationState"
 
 then
   
-    echo "$echolines"
+    echo "$line_length"
   
     echo -e "$RED*******unable to connect to any devices in normal mode*******$NC"
 
-    echo -e "$ICyan $echolines"
+    echo -e "$ICyan $line_length"
    
     echo "Searching for devices in DFU/Recovery mode..."
     
     devicemode=$(irecovery -q 2>/dev/null | grep MODE: | awk '{print $NF}')
 
-    echo -e "$echolines $IGreen"
+    echo -e "$line_length $IGreen"
 
     if test -z "$devicemode"
   
@@ -401,7 +401,7 @@ then
 
     echo -e "$RED*******unable to connect to any devices in Recovery/DFU mode*******$ICyan"
 
-echo "$echolines"
+echo "$line_length"
 
 while true; do
     read -p 'No devices have been detected, do you want to restart usbmuxd? (this might fix your computer not detecting your device in normal mode). (If this message is incorrect then you can just ignore it and type no.) yes/no: ' input
@@ -413,7 +413,7 @@ while true; do
             sudo systemctl restart usbmuxd
             T="$(($(date +%s)-T))"
             echo "Completed, It took ${T} seconds."
-            echo "$echolines"
+            echo "$line_length"
             echo "Please disconnect and reconnect your device..."
             for i in {1..3}
             do
@@ -421,7 +421,7 @@ while true; do
             echo -n "$i "
             done
 
-echo -e "\n $echolines"
+echo -e "\n $line_length"
 
 echo "Searching for devices in normal mode..."
 
@@ -455,9 +455,9 @@ if test -z "$ActivationState"
 
 then
 
-echo "$echolines"   
+echo "$line_length"   
 echo -e "$RED*******still unable to connect to any devices in normal mode*******$ICyan" 
-echo "$echolines" 
+echo "$line_length" 
 while true; do
     read -p 'Do you still want to continue? yes/no: ' input
     case $input in
@@ -477,9 +477,9 @@ done
 
 else             
       
-      echo "$echolines"     
+      echo "$line_length"     
       echo "Device found in normal mode"
-      echo "$echolines"
+      echo "$line_length"
       echo -e "${IGreen}Serial Number: $SerialNumber | Device: $ProductType | Firmware: $ProductVersion | UDID: $UniqueDeviceID\n"
       echo "Name: $DeviceName | Activation State: $ActivationState | ECID (Decimal): $UniqueChipID | Board ID: $HardwareModel"
       echo -e "\nCPU Arch: $CPUArchitecture | Hardware Platform: $HardwarePlatform"  
@@ -503,11 +503,11 @@ else
     fi
 
 else
-      echo "$echolines"
+      echo "$line_length"
       echo -e "${IGreen}Serial Number: $SerialNumber | Device: $ProductType | Firmware: $ProductVersion | UDID: $UniqueDeviceID\n"
       echo "Name: $DeviceName | Activation State: $ActivationState | ECID (Decimal): $UniqueChipID | Board ID: $HardwareModel"
       echo -e "\nCPU Arch: $CPUArchitecture | Hardware Platform: $HardwarePlatform"
-      echo -e "$ICyan $echolines"
+      echo -e "$ICyan $line_length"
       echo "Device found in normal mode, not going to search for devices in DFU/Recovery mode."
 
 #why did i write this all out manually...
@@ -516,7 +516,7 @@ ProductType=$(ideviceinfo | grep ProductType | awk '{print $NF}')
 
 if [[ $ProductType == iPhone1,1 || $ProductType ==  iPhone1,2 || $ProductType == iPhone2,1 || $ProductType == iPhone3,1 || $ProductType == iPhone3,2 || $ProductType == iPhone3,3 || $ProductType == iPhone11,8 || $ProductType == iPhone11,2 || $ProductType == iPhone11,4 || $ProductType == iPhone11,6 || $ProductType == iPhone12,1 || $ProductType == iPhone12,3 || $ProductType == iPhone12,5 || $ProductType == iPhone12,8 || $ProductType == iPhone13,1 || $ProductType == iPhone13,2 || $ProductType == iPhone13,3 || $ProductType == iPhone13,4 || $ProductType == iPhone14,4 || $ProductType == iPhone14,5 || i$ProductType == Phone14,2 || $ProductType == iPhone14,3 || i$ProductType == Phone14,6 || $ProductType == iPhone14,7 || $ProductType == iPhone14,8 || $ProductType == iPhone15,2 || $ProductType == iPhone15,3 || $ProductType == iPod1,1 || $ProductType == iPod2,1 || $ProductType == iPod3,1 || $ProductType == iPod4,1 || $ProductType == iPad1,1 || $ProductType == iPad11,6 || $ProductType == iPad11,7 || $ProductType == iPad12,1 || $ProductType == iPad12,2 || $ProductType == iPad8,1 || $ProductType == iPad8,2 || $ProductType == iPad8,3 || $ProductType == iPad8,4 || $ProductType == iPad8,5 || $ProductType == iPad8,6 || $ProductType == iPad8,7 || $ProductType == iPad8,8 || $ProductType == iPad8,9 || $ProductType == iPad8,10 || $ProductType == iPad8,11 || $ProductType == iPad8,12 || $ProductType == iPad13,4 || $ProductType == iPad13,5 || $ProductType == iPad13,6 || $ProductType == iPad13,7 || $ProductType == iPad13,8 || $ProductType == iPad13,9 || $ProductType == iPad13,10 || $ProductType == iPad13,11 || $ProductType == iPad11,3 || $ProductType == iPad11,4 || $ProductType == iPad13,1 || $ProductType == iPad13,2 || $ProductType == iPad13,16 || $ProductType == iPad13,17 || $ProductType == iPad11,1 || $ProductType == iPad11,2 || $ProductType == iPad14,1 || $ProductType == iPad14,2 ]]; then
 
-echo "$echollines" 
+echo "$line_length" 
 
 echo -e "${YELLOW}checkm8 incompatible device detected, you won't be able to use parts of this script that require checkm8 to be used. Your device may be compatible with other BootROM exploits, please check online${ICyan}"
 
@@ -524,7 +524,7 @@ checkm8compatible=no
 
 else 
 
-echo "$echolines" 
+echo "$line_length" 
 
 echo -e "${YELLOW}Your device is compatible with checkm8${ICyan}"
 
@@ -534,7 +534,7 @@ fi
 
 fi
 
-echo -e "$ICyan $echolines"
+echo -e "$ICyan $line_length"
 
     echo "Checking Internet connection... (You don't need an internet connection for this script, I'm just checking becuase I can lmao)" 
     ping -c 3 208.67.222.222 >/dev/null 2>/dev/null
@@ -546,7 +546,7 @@ echo -e "$ICyan $echolines"
        echo "You have an internet connection."
     fi
 
-echo "$echolines"
+echo "$line_length"
 
 while true; do
     read -p 'Do you want to jailbreak with checkra1n? yes/no: ' input
@@ -560,20 +560,20 @@ while true; do
            read -p "Do you want to add any arguments to checkra1n? if yes then please type them here, if you don't know what these are or you don't want to add any then just press enter to leave this blank: " ARGUMENTS
            echo -e "Running checkra1n in CLI mode. Please ensure your device is in DFU mode and that the checkra1n executable is in your home directory..."
            echo "When checkra1n has finished please press Ctrl+C to exit checkra1n and exit this script" 
-           echo "$echolines"
+           echo "$line_length"
            echo "Searching for devices in DFU/Recovery mode..."
            sudo irecovery -q
-           echo "$echolines"
+           echo "$line_length"
            echo -e "${NC}"
            sudo ~/checkra1n -c $ARGUMENTS
            break
             ;;
         [g]*)
-           echo "$echolines"   
+           echo "$line_length"   
            read -p "Do you want to add any arguments to checkra1n? if yes then please type them here, if you don't know what these are or you don't want to add any then just press enter to leave this blank: " ARGUMENTS
            echo -e "Running checkra1n in GUI mode. Please ensure your device is in normal or recovery mode and that the checkra1n executable is in your home directory..."
            echo -e "When checkra1n has finished it should exit automatically and then the script will return to the jailbreak with checkra1n option\nso you can run checkra1n again if it failed or if you want to run it again, if it did not exit automatically then please press Ctrl+C to exit checkra1n and exit this script and then you can run the script again if you want to."
-           echo "$echolines"
+           echo "$line_length"
            read -n 1 -s -r -p "--------------Press any key to start checkra1n or Ctrl+C to Exit-----------"        
            echo -e "$NC"
            sudo ~/checkra1n $ARGUMENTS
@@ -597,12 +597,12 @@ done
 done
 
 #cd into the folder with your boot files, change this command to cd into the folder with your boot files  
-echo -e "${ICyan} $echolines"
+echo -e "${ICyan} $line_length"
 echo "Changing into the folder with your boot files..."
 cd ~/sunst0rm/boot-ixbugnoe/
 pwd
 
-echo "$echolines"
+echo "$line_length"
 
 while true; do
     read -p 'If your device is currently in normal mode and you want to reboot it, this script can enter recovery mode (it will be a black screen but it will be in recovery mode.) for you and then you can enter DFU mode from there, this is a safer option if your device is already in normal mode. Is your device is currently in normal mode? yes/no: ' input
@@ -614,7 +614,7 @@ var=`ideviceinfo | grep "UniqueDeviceID" | grep -wv "UniqueDeviceID: "`
 
 sudo ideviceenterrecovery $var
 
-echo "$echolines"
+echo "$line_length"
 
 sleep 7
 
@@ -627,9 +627,9 @@ while true; do
             ;;
         [nN]*)
             
-echo "$echolines"
+echo "$line_length"
 echo "if you device did not enter recovery mode (black screen if your device is tether downgraded) from normal mode then your device probably was not detected by the computer, you could try to run \"sudo systemctl restart usbmuxd\" in the terminal to restart usbmuxd and then try running the script again or if that fails then you could try to run sudo \"systemctl stop usbmuxd\" and then \"sudo usbmuxd -p -f\" or you could put your device into DFU mode manually, if you want to do that please power off your device and then power it back on by holding the power button like normal but you will see a black screen until you have tether booted your device if your device is tether downgraded and then run the script again until you reach the entering DFU mode tutorial (input no when asked if you want to enter recovery mode from normal mode) and then follow the tutorial to enter DFU mode"
-echo "$echolines"
+echo "$line_length"
 
 echo 'Exiting...'
             exit 1
@@ -651,9 +651,9 @@ done
 
 clear
 
-echo "$echolines"
+echo "$line_length"
 echo -e "${ICyan}if you chose to put your device into recovery mode from normal mode, please now put your device into DFU mode"
-echo "$echolines"
+echo "$line_length"
 echo "Please make sure your device is in DFU mode now, and make sure you are curently in the directory where the boot files are stored"
   read -p 'Do you want help entering DFU mode? yes/no: ' input
     case $input in
@@ -686,11 +686,11 @@ done
 
 echo -e "\nYour device should now be in DFU mode"
 
-echo "$echolines"
+echo "$line_length"
 
 sudo irecovery -q
       
-echo "$echolines"
+echo "$line_length"
 
 echo "If you see [MODE]:DFU in the text above it means your device is successfully in DFU mode, if you do not see that it could mean your device is not in DFU mode or you computer is having trouble detecting it."
             ;;
@@ -701,16 +701,16 @@ echo "If you see [MODE]:DFU in the text above it means your device is successful
             echo 'Invalid input' >&2
     esac
 
-echo "$echolines"
+echo "$line_length"
 
 while true; do
     read -p 'Is your device in DFU/Recovery mode now? yes/no: ' input
     case $input in
         [yY]*)
            echo 'Continuing the script...'
-           echo "$echolines"
+           echo "$line_length"
            echo "Searching for devices in DFU/Recovery mode..."
-           echo "$echolines"
+           echo "$line_length"
            sudo irecovery -q
            break
             ;;
@@ -724,7 +724,7 @@ echo "Please run the script again"
     esac
 done
 
-echo "$echolines"
+echo "$line_length"
 
 while true; do
     read -p 'Do you want to use ipwndfu or gaster to pwn your device, or is your device already done being pwned? i/g/d: ' input
@@ -739,13 +739,13 @@ echo "Running the commands for ipwndfu A8/A9..."
 
 sudo python2.7 ./ipwndfu -p --rmsigchecks
 
-echo "$echolines"
+echo "$line_length"
 
 echo "Changing back into the directory with the boot files..."
 
 cd -
 
-echo "$echolines"
+echo "$line_length"
 
 while true; do
     read -p 'did you get the "ValueError: The device has no langid" error, if you did this can usually be fixed by running ipwndfu again without restarting your device, or you can use this as an opportunity to force restart your device and put it back into DFU mode and then run ipwndfu again if it failed with an error other than "ValueError: The device has no langid" without having to run the script again. yes/no: ' input
@@ -760,12 +760,11 @@ echo "Running the commands for ipwndfu A8/A9..."
 
 sudo python2.7 ./ipwndfu -p --rmsigchecks
 
-echo "$echolines"
+echo "$line_length"
 
 echo "Changing back into the directory with the boot files..."
 
 cd -
-
 
     break
             ;;
@@ -801,7 +800,7 @@ echo "Skipping pwning your device..."
    esac
 done
 
-echo "$echolines"
+echo "$line_length"
 
 while true; do
     read -p 'Did ipwndfu/gaster work succefully? If it did not then please type no and then please force restart your device and put it back into DFU mode and then run the script again, if one tool failed you can try the other one, or if ipwndfu/gaster worked succesfully and you just want to put your device into Pwned DFU mode with sigchecks removed then you can type no and exit the script too or if you have already successfuly pwned your device and skipped pwning your device this time then type yes. if it did then please type yes. Or if you are not sure then type imunsure if you are not sure and you want to check if it worked correctly yes/no/imunsure: ' input
@@ -815,11 +814,11 @@ while true; do
             exit 1
             ;;
           [imunsure]*)
-       echo "$echolines"   
+       echo "$line_length"   
            sudo irecovery -q
-       echo "-$echolines"
+       echo "-$line_length"
    echo "If that command prints [MODE]: DFU and [PWND]: CHECKM8/[PWND]: gaster and ipwndfu said patched mapping and signature checks or gaster said Now you can boot untrusted images. then it was successful, if it says anything different then it most likely wasn't successful and you should force restart your device run the script again."
-  echo "$echolines"
+  echo "$line_length"
           ;;
             *)
          echo 'Invalid input' >&2
@@ -828,7 +827,7 @@ done
 
 sleep 1
 
-echo "$echolines"
+echo "$line_length"
 
 while true; do
     read -p 'Do you want to send all the files to boot your device now (easy), or do you want to choose which files to send and enable verbose mode (advanced), or have the files already been sent(s)? e/a/s: ' input
@@ -1072,7 +1071,7 @@ echo "Continuing to the boot part of this script..."
     esac
 done
 
-echo "$echolines"
+echo "$line_length"
 
 echo "Files have been uploaded to your device, if you do not want to boot your device now (idk why you would not want to because this is a boot script lmao, but I'm adding the option not to anyway.) then you can use the following command to boot your device later: sudo irecovery -v -v -c bootx" 
 
@@ -1096,7 +1095,7 @@ sudo irecovery -v -v -c bootx
    esac
 done
 
-echo "$echolines"
+echo "$line_length"
 
 read -p "The script has completed. Do you want to run the script again? yes/no: "  CHECK
 
