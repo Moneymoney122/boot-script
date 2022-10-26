@@ -138,7 +138,7 @@ james@moneymoney122-hp-compaq-nc6000:~/boot-script$ sudo ./boot.sh
 james@moneymoney122-hp-compaq-nc6000:~/boot-script$
 ```
 
-then try `sudo bash ./boot.sh` instead
+then run `sudo bash ./boot.sh` instead
 
 ## Issues/Contact Me:
 
