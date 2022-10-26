@@ -215,7 +215,7 @@ if [[ $EUID == 0 ]]; then
             break
             ;;
         [nN]*)
-            echo 'Exiting...'
+            echo 'Exiting...$NC'
             exit 1
             ;;
          *)
