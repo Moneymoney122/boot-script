@@ -132,9 +132,9 @@ This script will ask for your user's password, this is not intended to be anythi
 
 - if you run it as root, not recommended, but if you do and you get:
 
-`james@moneymoney122-hp-compaq-nc6000:~/boot-script$ sudo ./boot.sh 
+```james@moneymoney122-hp-compaq-nc6000:~/boot-script$ sudo ./boot.sh 
 ./boot.sh: 33: Syntax error: "(" unexpected
-james@moneymoney122-hp-compaq-nc6000:~/boot-script$`
+james@moneymoney122-hp-compaq-nc6000:~/boot-script$```
 
 then run `sudo bash ./boot.sh` instead
 
