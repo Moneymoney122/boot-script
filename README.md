@@ -130,7 +130,7 @@ This script will ask for your user's password, this is not intended to be anythi
 
 - not recommended to run it as root
 
-- if you run it as root, not recommended, but if you do and you get:
+- if you run it as root, not recommended, but if you do and you get this error or some similar error:
 
 ```
 james@moneymoney122-hp-compaq-nc6000:~/boot-script$ sudo ./boot.sh 
@@ -138,7 +138,7 @@ james@moneymoney122-hp-compaq-nc6000:~/boot-script$ sudo ./boot.sh
 james@moneymoney122-hp-compaq-nc6000:~/boot-script$
 ```
 
-then run `sudo bash ./boot.sh` instead
+then try `sudo bash ./boot.sh` instead
 
 ## Issues/Contact Me:
 
