@@ -63,11 +63,7 @@ usage="Boot script by Moneymoney122 (@chandler_hacker)\nhttps://github.com/Money
 terminallines=$(tput lines)
 terminalcols=$(tput cols)
 
-if [[ $terminallines -ge 24 ]]; then
-
-echo "" > /dev/null
-
-else
+if [[ $terminallines -lt 24 ]]; then
 
 echo -e "${ICyan}Terminal size is ${terminallines}x${terminalcols}, it is recommended that you make you make your terminal larger."
 
@@ -77,21 +73,17 @@ terminalwarningsent=yes
 
 fi
 
-if [[ $terminalcols -ge 80 ]]; then
+if [[ $terminalcols -lt 80 ]]; then
 
-echo "" > /dev/null
+ if test -z "$terminalwarningsent"
 
-else
+ then
 
-if test -z "$terminalwarningsent"
+ echo -e "${ICyan}Terminal size is ${terminallines}x${terminalcols}, it is recommended that you make you make your terminal larger."
 
-then
-
-echo -e "${ICyan}Terminal size is ${terminallines}x${terminalcols}, it is recommended that you make you make your terminal larger."
-
-fi
-
-sleep 3
+ sleep 3
+ 
+ fi
 
 fi
 
@@ -136,13 +128,9 @@ exit ;;
 esac
 
 
-if test -z "$1"
+if test -n "$1"
 
 then
-
-echo "" > /dev/null
-
-else
 
 echo -e "${ICyan}Invalid option: \"$1\""
 
@@ -692,7 +680,7 @@ sudo irecovery -q
       
 echo "$line_length"
 
-echo "If you see [MODE]:DFU in the text above it means your device is successfully in DFU mode, if you do not see that it could mean your device is not in DFU mode or you computer is having trouble detecting it."
+echo "If you see MODE:DFU in the text above it means your device is successfully in DFU mode, if you do not see that it could mean your device is not in DFU mode or you computer is having trouble detecting it."
             ;;
         [nN]*)
             echo 'Skipping...'
