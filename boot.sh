@@ -375,7 +375,7 @@ then
   
     echo -e "$RED*******unable to connect to any devices in normal mode*******$NC"
 
-    echo -e "$ICyan $line_length"
+    echo -e "${ICyan}${line_length}"
    
     echo "Searching for devices in DFU/Recovery mode..."
     
