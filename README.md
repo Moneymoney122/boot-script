@@ -42,6 +42,8 @@ Table of contents:
 
 - License: GPL-3.0 license
 
+### Proudly written in gedit
+
 ## Credits:
 
 - Me (Moneymoney122) for making this script
