@@ -42,7 +42,7 @@ Table of contents:
 
 - License: GPL-3.0 license
 
-### Proudly written in gedit
+##### Proudly written in gedit
 
 ## Credits:
 
