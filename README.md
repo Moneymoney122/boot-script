@@ -110,7 +110,7 @@ This script will ask for your user's password, this is not intended to be anythi
 
     - if you use any other tool than ipwndfu/gaster then you will need to pwn your device with sigchecks removed and then run the script and when you get to the pwning part of the script you will need to enter the option "already pwned" 
 
-- if you want checkra1n: https://checkra.in
+- if you want to get checkra1n: https://checkra.in
 
 - sshpass is required if you're going to use the ssh feature of this script
 
