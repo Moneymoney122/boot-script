@@ -216,7 +216,7 @@ name=$(whoami)
 
 date=$(date "+%A, %d %B %Y %H:%M:%S")
 
-uptime=$(uptime -p)
+uptime=$(uptime -p | sed 's/u//' | sed 's/p//')
 
   hour=$(date +%H)
   greet="It's"
@@ -235,7 +235,7 @@ uptime=$(uptime -p)
 
 echo "$line_length"
 
-echo -e "${On_Black}Welcome $name, $greet $timeofday. The current date and time is: $date System uptime is $uptime ${NC}" | lolcat  -a -d 60  
+echo -e "${On_Black}Welcome $name, $greet $timeofday. The current date and time is: $date. System uptime is $uptime. ${NC}" | lolcat  -a -d 60  
 
 echo -e "${ICyan}${line_length}"
 
