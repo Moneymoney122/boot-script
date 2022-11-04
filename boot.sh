@@ -235,7 +235,7 @@ uptime=$(uptime -p | sed 's/u//' | sed 's/p//')
 
 echo "$line_length"
 
-echo -e "${On_Black}Welcome $name, $greet $timeofday. The current date and time is: $date. System uptime is $uptime. ${NC}" | lolcat  -a -d 60  
+echo -e "${On_Black}Welcome $name, $greet $timeofday. The current date and time is: $date. System uptime is$uptime. ${NC}" | lolcat  -a -d 60  
 
 echo -e "${ICyan}${line_length}"
 
