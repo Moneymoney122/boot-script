@@ -216,6 +216,8 @@ name=$(whoami)
 
 date=$(date "+%A, %d %B %Y %H:%M:%S")
 
+uptime=$(uptime -p)
+
   hour=$(date +%H)
   greet="It's"
 
@@ -233,9 +235,9 @@ date=$(date "+%A, %d %B %Y %H:%M:%S")
 
 echo "$line_length"
 
-echo -e "${On_Black}Welcome $name, $greet $timeofday. The current date and time is: $date${NC}" | lolcat  -a -d 60  
+echo -e "${On_Black}Welcome $name, $greet $timeofday. The current date and time is: $date System uptime is $uptime ${NC}" | lolcat  -a -d 60  
 
-echo -e "${ICyan} $line_length"
+echo -e "${ICyan}${line_length}"
 
 echo "Detecting what Operating System and Hardware this script is running on..."
 
