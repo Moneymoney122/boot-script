@@ -500,6 +500,7 @@ IMEI=$(irecovery -q | grep IMEI: | awk '{print $NF}')
 NONC=$(irecovery -q | grep NONC: | awk '{print $NF}')
 SNON=$(irecovery -q | grep SNON: | awk '{print $NF}')
 MODE=$(irecovery -q | grep MODE: | awk '{print $NF}')
+PWND=$(irecovery -q | grep PWND: | awk '{print $NF}')
 
  if [[ $SRNM == N/A ]]; then
  
@@ -517,15 +518,29 @@ MODE=$(irecovery -q | grep MODE: | awk '{print $NF}')
     
  echo -e "Device found in DFU mode:\n"
     
+ if test -n "$PWND"
+
+ then
+
+ PWND="| Pwned: $PWND"
+
+ else
+
+ PWND="| Pwned: Not Pwned" 
+ 
+ fi
+
  else
 
  echo -e "Device found in Recovery Mode:\n"
  
+ PWND="\n| Device is in Recovery Mode, Unable to check whether Pwned or not."  
+
  fi
  
- echo -e "Chip ID: $CPID | ECID: $ECID | $SRTG | Serial Number: $SRNM | IMEI: $IMEI \n \b | Nonce: $NONC | SEP Nonce: $SNON"
+ echo -e "Chip ID: $CPID | ECID: $ECID | $SRTG | Serial Number: $SRNM | IMEI: $IMEI \n| Nonce: $NONC | SEP Nonce: $SNON $PWND"
   
-    fi
+ fi
 
 else
       echo -e "${line_length}${IGreen}"
@@ -712,11 +727,19 @@ echo -e "\nYour device should now be in DFU mode"
 
 echo "$line_length"
 
-sudo irecovery -q
+mode=$(irecovery -q 2>/dev/null | grep MODE: | awk '{print $NF}')
       
-echo "$line_length"
+if [[ $mode == DFU ]]; then
 
-echo "If you see MODE:DFU in the text above it means your device is successfully in DFU mode, if you do not see that it could mean your device is not in DFU mode or you computer is having trouble detecting it."
+echo -e "Your device is now in DFU mode.\nContinuing..."
+
+else
+
+echo -e "Your device is not in DFU mode, Please run the script again.\nExiting...$NC"
+
+exit 1
+
+fi
             ;;
         [nN]*)
             echo 'Skipping...'
@@ -724,29 +747,6 @@ echo "If you see MODE:DFU in the text above it means your device is successfully
          *)
             echo 'Invalid input' >&2
     esac
-
-echo "$line_length"
-
-while true; do
-    read -p 'Is your device in DFU/Recovery mode now? yes/no: ' input
-    case $input in
-        [yY]*)
-           echo 'Continuing the script...'
-           echo "$line_length"
-           echo "Searching for devices in DFU/Recovery mode..."
-           echo "$line_length"
-           sudo irecovery -q
-           break
-            ;;
-        [nN]*)
-echo "Please run the script again"
-            echo 'Exiting...'
-            exit 1
-            ;;
-         *)
-            echo 'Invalid input' >&2
-    esac
-done
 
 echo "$line_length"
 
