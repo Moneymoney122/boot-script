@@ -56,7 +56,7 @@ else
 
 fi
 
-usage="Boot script by Moneymoney122 (@chandler_hacker)\nhttps://github.com/Moneymoney122/boot-script\n\nOptions:\n-h or --help or an invalid option: display this help menu\nOwO: OwO\nNo arguments: run normally\nssh: ssh into a root shell for your device, your device must be jailbroken and have OpenSSH installed.${NC}"
+usage="Boot script by Moneymoney122 (@chandler_hacker)\nhttps://github.com/Moneymoney122/boot-script\nProudly written in gedit\n2022\n\nOptions:\n-h or --help or an invalid option: display this help menu\nOwO: OwO\nNo arguments: run normally\nssh: ssh into a root shell for your device, your device must be jailbroken and have OpenSSH installed.${NC}"
 
 #check terminal size
 
@@ -411,7 +411,7 @@ while true; do
             echo -n "$i "
             done
 
-echo -e "\n $line_length"
+echo -e "\n$line_length"
 
 echo "Searching for devices in normal mode..."
 
@@ -466,10 +466,9 @@ echo "Please run the script again"
 done
 
 else             
-      
-      echo "$line_length"     
-      echo "Device found in normal mode"
-      echo "$line_length"
+  
+      echo -e "${line_length}${IGreen}"
+      echo -e "Device found in normal mode, not going to search for devices in DFU/Recovery mode:\n"
       echo -e "${IGreen}Serial Number: $SerialNumber | Device: $ProductType | Firmware: $ProductVersion | UDID: $UniqueDeviceID\n"
       echo "Name: $DeviceName | Activation State: $ActivationState | ECID (Decimal): $UniqueChipID | Board ID: $HardwareModel"
       echo -e "\nCPU Arch: $CPUArchitecture | Hardware Platform: $HardwarePlatform"  
@@ -488,17 +487,52 @@ done
 
 else
 
-    irecovery -q
+CPID=$(irecovery -q | grep CPID: | awk '{print $NF}')
+CPRV=$(irecovery -q | grep CPRV: | awk '{print $NF}')
+BDID=$(irecovery -q | grep BDID: | awk '{print $NF}')
+ECID=$(irecovery -q | grep ECID: | awk '{print $NF}')
+CPFM=$(irecovery -q | grep CPFM: | awk '{print $NF}')
+SCEP=$(irecovery -q | grep SCEP: | awk '{print $NF}')
+IBFL=$(irecovery -q | grep IBFL: | awk '{print $NF}')
+SRTG=$(irecovery -q | grep SRTG: | awk '{print $NF}')
+SRNM=$(irecovery -q | grep SRNM: | awk '{print $NF}')
+IMEI=$(irecovery -q | grep IMEI: | awk '{print $NF}')
+NONC=$(irecovery -q | grep NONC: | awk '{print $NF}')
+SNON=$(irecovery -q | grep SNON: | awk '{print $NF}')
+MODE=$(irecovery -q | grep MODE: | awk '{print $NF}')
+
+ if [[ $SRNM == N/A ]]; then
+ 
+ SRNM="Not Available"
+ 
+ fi
+ 
+ if [[ $IMEI == N/A ]]; then
+ 
+ IMEI="Not Available"
+ 
+ fi
+ 
+ if [[ $MODE == DFU ]]; then   
+    
+ echo -e "Device found in DFU mode:\n"
+    
+ else
+
+ echo -e "Device found in Recovery Mode:\n"
+ 
+ fi
+ 
+ echo -e "Chip ID: $CPID | ECID: $ECID | $SRTG | Serial Number: $SRNM | IMEI: $IMEI \n \b | Nonce: $NONC | SEP Nonce: $SNON"
   
     fi
 
 else
-      echo "$line_length"
+      echo -e "${line_length}${IGreen}"
+      echo -e "Device found in normal mode, not going to search for devices in DFU/Recovery mode:\n"
       echo -e "${IGreen}Serial Number: $SerialNumber | Device: $ProductType | Firmware: $ProductVersion | UDID: $UniqueDeviceID\n"
       echo "Name: $DeviceName | Activation State: $ActivationState | ECID (Decimal): $UniqueChipID | Board ID: $HardwareModel"
       echo -e "\nCPU Arch: $CPUArchitecture | Hardware Platform: $HardwarePlatform"
-      echo -e "$ICyan $line_length"
-      echo "Device found in normal mode, not going to search for devices in DFU/Recovery mode."
 
 #why did i write this all out manually...
 
@@ -524,7 +558,7 @@ fi
 
 fi
 
-echo -e "$ICyan $line_length"
+echo -e "${ICyan}${line_length}"
 
     echo "Checking Internet connection... (You don't need an internet connection for this script, I'm just checking becuase I can lmao)" 
     ping -c 3 208.67.222.222 >/dev/null 2>/dev/null
