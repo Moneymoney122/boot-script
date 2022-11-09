@@ -235,7 +235,7 @@ uptime=$(uptime -p | sed 's/u//' | sed 's/p//')
 
 echo "$line_length"
 
-echo -e "${On_Black}Welcome $name, $greet $timeofday. The current date and time is: $date. System uptime is$uptime. ${NC}" | lolcat  -a -d 60  
+echo -e "${On_Black}Welcome $name, $greet $timeofday. The current date and time is: $date. System uptime is$uptime.${NC}" | lolcat  -a -d 60  
 
 echo -e "${ICyan}${line_length}"
 
@@ -550,7 +550,7 @@ Decimal=$(printf '%d\n' $ECID)
 
  fi
  
- echo -e "Chip ID: $CPID | ECID (Decimal/Hexadecimal): $Decimal / $UniqueChipID | SRTG: $SRTG | Serial Number: $SRNM | IMEI: $IMEI \n| Nonce: $NONC | SEP Nonce: $SNON $PWND"
+ echo -e "Chip ID: $CPID | ECID (Decimal/Hexadecimal): $Decimal / $ECID | SRTG: $SRTG | Serial Number: $SRNM\n| IMEI: $IMEI \n| Nonce: $NONC | SEP Nonce: $SNON $PWND"
   
  fi
 
