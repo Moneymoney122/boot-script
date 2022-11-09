@@ -540,7 +540,7 @@ PWND=$(irecovery -q | grep PWND: | awk '{print $NF}')
 
  echo -e "Device found in Recovery Mode:\n"
  
- PWND="\n| Device is in Recovery Mode, Unable to check whether Pwned or not."  
+ PWND="\n| Device is in Recovery Mode, unable to check whether Pwned or not."  
 
  fi
  
