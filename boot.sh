@@ -471,7 +471,7 @@ else
       echo -e "Device found in normal mode, not going to search for devices in DFU/Recovery mode:\n"
       echo -e "${IGreen}Serial Number: $SerialNumber | Device: $ProductType | Firmware: $ProductVersion | UDID: $UniqueDeviceID\n"
       echo "Name: $DeviceName | Activation State: $ActivationState | ECID (Decimal): $UniqueChipID | Board ID: $HardwareModel"
-      echo -e "\nCPU Arch: $CPUArchitecture | Hardware Platform: $HardwarePlatform"  
+      echo -e "\nCPU Arch: $CPUArchitecture | Hardware Platform: ${HardwarePlatform}${ICyan}"  
 
 fi            
             break
@@ -553,7 +553,7 @@ else
       echo -e "Device found in normal mode, not going to search for devices in DFU/Recovery mode:\n"
       echo -e "${IGreen}Serial Number: $SerialNumber | Device: $ProductType | Firmware: $ProductVersion | UDID: $UniqueDeviceID\n"
       echo "Name: $DeviceName | Activation State: $ActivationState | ECID (Decimal): $UniqueChipID | Board ID: $HardwareModel"
-      echo -e "\nCPU Arch: $CPUArchitecture | Hardware Platform: $HardwarePlatform"
+      echo -e "\nCPU Arch: $CPUArchitecture | Hardware Platform: ${HardwarePlatform}${ICyan}"
 
 #why did i write this all out manually...
 
