@@ -188,7 +188,7 @@ echo "$line_length"
 echo "this script can also run checkra1n commands to jailbreak your device for any checkra1n compatible device. if you want to use checkra1n with this script please ensure that the checkra1n executable file is in your home directory (get checkra1n at https://checkra.in)"
 echo "$line_length"
 
-read -n 1 -s -r -p "----------------Press any key to continue (Or Ctrl+C to Exit)---------------"
+read -n 1 -s -r -p "----------------Press any key to continue (Or Ctrl+C to Exit)----------------"
 
 clear
 
@@ -866,11 +866,14 @@ while true; do
 echo "Entering easy mode..."
 cpid=$(irecovery -q | grep "CPID" | sed "s/CPID: //")
 sleep 1
+echo "-----------------------------------------------------------"
 echo "Sending iBSS..."
 sudo irecovery -f ./ibss.img4
+echo "-----------------------------------------------------------"
 #send iBSS again.
 echo "Sending iBSS again..."
 sudo irecovery -f ./ibss.img4
+echo "-----------------------------------------------------------"
 echo "Sending iBEC..."
 sudo irecovery -f ./ibec.img4
 if [[ "$cpid" == *"0x80"* ]]; then
@@ -879,29 +882,36 @@ if [[ "$cpid" == *"0x80"* ]]; then
     irecovery -c "go"
     sleep 5
 fi
+echo "-----------------------------------------------------------"
 echo "Sending BootLogo..."
 sudo irecovery -f ./bootlogo.img4
+echo "-----------------------------------------------------------"
 echo "Running display commands..."
 sudo irecovery -c "setpicture 0"
 sudo irecovery -c "bgcolor 0 0 0"
 sleep 3
 if [[ -f "./ramdisk.img4" ]]; then
+  echo "-----------------------------------------------------------"
   sudo irecovery -f ./ramdisk.img4
   sudo irecovery -c ramdisk
+  echo "-----------------------------------------------------------"
 fi
+echo "-----------------------------------------------------------"
 echo "Sending DeviceTree..."
 sudo irecovery -f ./devicetree.img4
 echo "Running command \"devicetree\" on the device"
 sudo irecovery -c devicetree
+echo "-----------------------------------------------------------"
 echo "Sending TrustCache..."
 sudo irecovery -f ./trustcache.img4
 echo "Running command \"firmware\" on the device"
 sudo irecovery -c firmware
+echo "-----------------------------------------------------------"
 echo "Sending Kernel..."
 sudo irecovery -f ./krnlboot.img4
-        
+echo "-----------------------------------------------------------"
 echo "Files have been uploaded to your device, if you do not want to boot your device now (idk why you would not want to because this is a boot script lmao, but I'm adding the option not to anyway.) then you can use the following command to boot your device later: sudo irecovery -v -v -c bootx" 
-
+echo "-----------------------------------------------------------"
         break
         ;;
         [a]*)
