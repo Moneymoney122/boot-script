@@ -369,6 +369,8 @@ HardwareModel=$(ideviceinfo | grep HardwareModel | awk '{print $NF}')
 CPUArchitecture=$(ideviceinfo | grep CPUArchitecture | awk '{print $NF}')
 HardwarePlatform=$(ideviceinfo | grep HardwarePlatform | awk '{print $NF}')
 
+Hex=$(printf '%x\n' $UniqueChipID)
+
 if test -z "$ActivationState"
 
 then
@@ -441,6 +443,8 @@ HardwareModel=$(ideviceinfo | grep HardwareModel | awk '{print $NF}')
 CPUArchitecture=$(ideviceinfo | grep CPUArchitecture | awk '{print $NF}')
 HardwarePlatform=$(ideviceinfo | grep HardwarePlatform | awk '{print $NF}')
 
+Hex=$(printf '%x\n' $UniqueChipID)
+
 if test -z "$ActivationState"
 
 then
@@ -470,7 +474,7 @@ else
       echo -e "${line_length}${IGreen}"
       echo -e "Device found in normal mode, not going to search for devices in DFU/Recovery mode:\n"
       echo -e "${IGreen}Serial Number: $SerialNumber | Device: $ProductType | Firmware: $ProductVersion | UDID: $UniqueDeviceID\n"
-      echo "Name: $DeviceName | Activation State: $ActivationState | ECID (Decimal): $UniqueChipID | Board ID: $HardwareModel"
+      echo "Name: $DeviceName | Activation State: $ActivationState | ECID (Decimal/Hexadecimal): $UniqueChipID / $Hex | Board ID: $HardwareModel"
       echo -e "\nCPU Arch: $CPUArchitecture | Hardware Platform: ${HardwarePlatform}${ICyan}"  
 
 fi            
@@ -552,7 +556,7 @@ else
       echo -e "${line_length}${IGreen}"
       echo -e "Device found in normal mode, not going to search for devices in DFU/Recovery mode:\n"
       echo -e "${IGreen}Serial Number: $SerialNumber | Device: $ProductType | Firmware: $ProductVersion | UDID: $UniqueDeviceID\n"
-      echo "Name: $DeviceName | Activation State: $ActivationState | ECID (Decimal): $UniqueChipID | Board ID: $HardwareModel"
+      echo "Name: $DeviceName | Activation State: $ActivationState | ECID (Decimal/Hexadecimal): $UniqueChipID / $Hex | Board ID: $HardwareModel"
       echo -e "\nCPU Arch: $CPUArchitecture | Hardware Platform: ${HardwarePlatform}${ICyan}"
 
 #why did i write this all out manually...
