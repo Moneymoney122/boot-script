@@ -506,6 +506,8 @@ SNON=$(irecovery -q | grep SNON: | awk '{print $NF}')
 MODE=$(irecovery -q | grep MODE: | awk '{print $NF}')
 PWND=$(irecovery -q | grep PWND: | awk '{print $NF}')
 
+Decimal=$(printf '%d\n' $ECID)
+
  if [[ $SRTG == N/A ]]; then
  
  SRTG="Not Available"
@@ -548,7 +550,7 @@ PWND=$(irecovery -q | grep PWND: | awk '{print $NF}')
 
  fi
  
- echo -e "Chip ID: $CPID | ECID: $ECID | SRTG: $SRTG | Serial Number: $SRNM | IMEI: $IMEI \n| Nonce: $NONC | SEP Nonce: $SNON $PWND"
+ echo -e "Chip ID: $CPID | ECID (Decimal/Hexadecimal): $Decimal / $UniqueChipID | SRTG: $SRTG | Serial Number: $SRNM | IMEI: $IMEI \n| Nonce: $NONC | SEP Nonce: $SNON $PWND"
   
  fi
 
