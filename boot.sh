@@ -119,18 +119,64 @@ echo -e "\nIf the error is \"ssh: connect to host *your device's IP Address* por
 fi
 exit ;;
 -h)
+echo "hello" | lolcat >/dev/null
+ 
+if [[ $? != 0 ]]; then
+
+ echo -e "${ICyan}\nlolcat is not installed, printing art in regular colours.\n"
+
+echo -e "${ICyan}Invalid option: \"$1\""
+
+echo -e "$ICyan ___  ___   ___ _____   ___  ___ ___ ___ ___ _____ " 
+echo         "| _ )/ _ \ / _ \_   _| / __|/ __| _ \_ _| _ \_   _| " 
+echo         "| _ \ (_) | (_) || |   \__ \ (__|   /| ||  _/ | |  " 
+echo -e      "|___/\___/ \___/ |_|   |___/\___|_|_\___|_|   |_|  \n" 
+echo -e  "${ICyan}$usage"
+ 
+exit
+ 
+else
+ 
+echo -e "${ICyan}Invalid option: \"$1\""
+
 echo -e "$ICyan ___  ___   ___ _____   ___  ___ ___ ___ ___ _____ " | lolcat -p 0.1
 echo         "| _ )/ _ \ / _ \_   _| / __|/ __| _ \_ _| _ \_   _| " | lolcat -p 0.1
 echo         "| _ \ (_) | (_) || |   \__ \ (__|   /| ||  _/ | |  "  | lolcat -p 0.1
 echo -e      "|___/\___/ \___/ |_|   |___/\___|_|_\___|_|   |_|  \n" | lolcat -p 0.1
 echo -e  "${ICyan}$usage"
+
+fi
+
 exit ;;
 --help)
+echo "hello" | lolcat >/dev/null
+ 
+if [[ $? != 0 ]]; then
+
+echo -e "${ICyan}\nlolcat is not installed, printing art in regular colours.\n"
+
+echo -e "${ICyan}Invalid option: \"$1\""
+
+echo -e "$ICyan ___  ___   ___ _____   ___  ___ ___ ___ ___ _____ " 
+echo         "| _ )/ _ \ / _ \_   _| / __|/ __| _ \_ _| _ \_   _| " 
+echo         "| _ \ (_) | (_) || |   \__ \ (__|   /| ||  _/ | |  " 
+echo -e      "|___/\___/ \___/ |_|   |___/\___|_|_\___|_|   |_|  \n" 
+echo -e  "${ICyan}$usage"
+ 
+exit
+ 
+else
+ 
+echo -e "${ICyan}Invalid option: \"$1\""
+
 echo -e "$ICyan ___  ___   ___ _____   ___  ___ ___ ___ ___ _____ " | lolcat -p 0.1
 echo         "| _ )/ _ \ / _ \_   _| / __|/ __| _ \_ _| _ \_   _| " | lolcat -p 0.1
 echo         "| _ \ (_) | (_) || |   \__ \ (__|   /| ||  _/ | |  "  | lolcat -p 0.1
 echo -e      "|___/\___/ \___/ |_|   |___/\___|_|_\___|_|   |_|  \n" | lolcat -p 0.1
 echo -e  "${ICyan}$usage"
+
+fi
+
 exit ;;
 esac
 
@@ -139,14 +185,35 @@ if test -n "$1"
 
 then
 
-echo -e "${ICyan}Invalid option: \"$1\""
+echo "hello" | lolcat >/dev/null
+ 
+ if [[ $? != 0 ]]; then
 
-echo -e "$ICyan ___  ___   ___ _____   ___  ___ ___ ___ ___ _____ " | lolcat -p 0.1
-echo         "| _ )/ _ \ / _ \_   _| / __|/ __| _ \_ _| _ \_   _| " | lolcat -p 0.1
-echo         "| _ \ (_) | (_) || |   \__ \ (__|   /| ||  _/ | |  "  | lolcat -p 0.1
-echo -e      "|___/\___/ \___/ |_|   |___/\___|_|_\___|_|   |_|  \n" | lolcat -p 0.1
-echo -e  "${ICyan}$usage"
-exit
+ echo -e "${ICyan}\nlolcat is not installed, printing art in regular colours.\n"
+
+ echo -e "${ICyan}Invalid option: \"$1\""
+
+ echo -e "$ICyan ___  ___   ___ _____   ___  ___ ___ ___ ___ _____ " 
+ echo         "| _ )/ _ \ / _ \_   _| / __|/ __| _ \_ _| _ \_   _| " 
+ echo         "| _ \ (_) | (_) || |   \__ \ (__|   /| ||  _/ | |  " 
+ echo -e      "|___/\___/ \___/ |_|   |___/\___|_|_\___|_|   |_|  \n" 
+ echo -e  "${ICyan}$usage"
+ 
+ exit
+ 
+ else
+ 
+ echo -e "${ICyan}Invalid option: \"$1\""
+
+ echo -e "$ICyan ___  ___   ___ _____   ___  ___ ___ ___ ___ _____ " | lolcat -p 0.1
+ echo         "| _ )/ _ \ / _ \_   _| / __|/ __| _ \_ _| _ \_   _| " | lolcat -p 0.1
+ echo         "| _ \ (_) | (_) || |   \__ \ (__|   /| ||  _/ | |  "  | lolcat -p 0.1
+ echo -e      "|___/\___/ \___/ |_|   |___/\___|_|_\___|_|   |_|  \n" | lolcat -p 0.1
+ echo -e  "${ICyan}$usage"
+ 
+ exit
+
+ fi
 
 fi
 
