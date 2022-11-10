@@ -99,7 +99,7 @@ echo "Checking Internet connection..."
    
    echo "No internet connection."
    
-   echo "You might encounter issues sshing into your device."
+   echo "You might encounter issues connecting via ssh to your device."
    echo "$line_length"
     else
        echo -e "You have an internet connection."
@@ -110,6 +110,13 @@ read -p "Enter local IP Address: " IPADDRESS
 read -sp "Enter Password: " PASSWORD
 echo -e "${NC}"
 sudo sshpass -v -p "$PASSWORD" ssh root@$IPADDRESS
+if [[ $? != 0 ]]; then
+
+echo -e "${ICyan}An error occured connecting to your device, if you need help please check online for a solution\nto your specific error or contact me if you need to. Some common errors include:"
+
+echo -e "\nIf the error is \"ssh: connect to host *your device's IP Address* port 22: Connection refused\" \nthen your device doesn't have OpenSSH installed or the password is incorrect\n\nif the error is \"ssh: connect to host *your device's IP Address* port 22: No route to host\" \nthen your device could not be found on your network\n\nIf the error is \"ssh: Could not resolve hostname *your device's IP Address*: Name or service not known\"\nthen the IP Adress you typed for your device is invalid$NC"
+
+fi
 exit ;;
 -h)
 echo -e "$ICyan ___  ___   ___ _____   ___  ___ ___ ___ ___ _____ " | lolcat -p 0.1
