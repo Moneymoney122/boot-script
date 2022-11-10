@@ -58,7 +58,7 @@ Table of contents:
 
  - No compiling or installation necessary, just download and run it.
  
- - *if you have already downloaded this script and you want to update it*, run: `cd ~/boot-script/ && git pull`
+ - *if you have already downloaded this script and you want to update it, run:* `cd ~/boot-script/ && git pull`
 
 If you do not have `git` installed then install it using your distribution's package manager
  
