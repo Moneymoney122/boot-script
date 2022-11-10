@@ -76,6 +76,8 @@ And then run:
 
 old version: `chmod +x old-boot.sh` then `./old-boot.sh`
 
+- -------------------------------------------------------------------------
+
 ### Arguments available on this script:
 | Option (short)  | Option (long)               | Description                              |
 |-----------------|-----------------------------|------------------------------------------|
