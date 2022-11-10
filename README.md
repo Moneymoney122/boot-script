@@ -60,7 +60,7 @@ Table of contents:
  
  - *if you have already downloaded this script and you want to update it, run:* `cd ~/boot-script/ && git pull`
 
-If you do not have `git` installed then install it using your distribution's package manager, or use method 2 to download it.
+If you do not have `git` installed then install it using your distribution's package manager, or use method two to download it.
  
  run `git clone https://github.com/Moneymoney122/boot-script` in the terminal while in your home directory or download the zip from this page and unzip the files and place them in a folder called "boot-script" (without the quotes) in your home directory
 
