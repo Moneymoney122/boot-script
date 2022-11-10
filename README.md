@@ -56,7 +56,7 @@ Table of contents:
 
 ## How to use this script:
 
- ##### No compiling or installation necessary, just download and run it.
+ - No compiling or installation necessary, just download and run it.
  
  - *if you have already downloaded this script and you want to update it*, run: `cd ~/boot-script/ && git pull`
 
@@ -68,9 +68,13 @@ And then run:
 
 `cd ~/boot-script/`
 
-`chmod +x boot.sh` or if you want to use the other versions of this script: `chmod +x boot.sh old-boot.sh test-boot.sh`
+- main version: `chmod +x boot.sh` then `./boot.sh`
 
-`./boot.sh` or if you want to use the old version: `./old-boot.sh` or if you want to use the test version: `./test-boot.sh`
+- test version: `chmod +x test-boot.sh` then `./test-boot.sh`
+
+- I don't really update the test version anymore, If you want the latest version with the most features use the main version.
+
+old version: `chmod +x old-boot.sh` then `./old-boot.sh`
 
 ### Arguments available on this script:
 | Option (short)  | Option (long)               | Description                              |
