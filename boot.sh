@@ -620,7 +620,7 @@ Decimal=$(printf '%d\n' $ECID)
 
  echo -e "Device found in Recovery Mode:\n"
  
- PWND="\n| Device is in Recovery Mode, unable to check whether Pwned or not."  
+ PWND="| Recovery Mode, so unable to check whether Pwned or not."  
 
  fi
  
