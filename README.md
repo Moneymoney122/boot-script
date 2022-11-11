@@ -156,7 +156,7 @@ then run `sudo bash ./boot.sh` instead
 
 - ~~Current issues: none~~ 
 
-- update the list of checkm8 incompatible devices to list checkm8 compatible devices instead so that I don't have to update the list everytime Apple releases new devices
+- ~~update the list of checkm8 incompatible devices to list checkm8 compatible devices instead so that I don't have to update the list everytime Apple releases new devices - done~~
 
 - If you have any issues with this script or any of my other projects, please open a github issue or contact me on twitter (@chandler_hacker) or contact me using the email on my profile
 
