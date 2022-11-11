@@ -311,7 +311,7 @@ uptime=$(uptime -p | sed 's/u//' | sed 's/p//')
 
 echo "$line_length"
 
-echo -e "${On_Black}Welcome $name, $greet $timeofday. The current date and time is: $date. System uptime is$uptime.${NC}" | lolcat  -a -d 60  
+echo -e "${On_Black}Welcome $name, $greet $timeofday. The current date and time is: $date. Uptime is$uptime.${NC}" | lolcat  -a -d 60
 
 echo -e "${ICyan}${line_length}"
 
@@ -352,8 +352,6 @@ OSNAME=$(lsb_release -d | cut -f 2-)
 if [[ $OSNAME == "Arch Linux" ]]; then
 
 echo "You use Arch Linux btw"
-
-echo $OSNAME
 
 else
 
@@ -626,7 +624,7 @@ Decimal=$(printf '%d\n' $ECID)
 
  fi
  
- echo -e "Chip ID: $CPID | ECID (Decimal/Hexadecimal): $Decimal / $ECID | SRTG: $SRTG | Serial Number: $SRNM\n| IMEI: $IMEI \n| Nonce: $NONC | SEP Nonce: $SNON $PWND"
+ echo -e "Chip ID: $CPID | Chip Revision: $CPRV | Board ID: $BDID | ECID (Decimal/Hexadecimal): $Decimal / $ECID\n\nSRTG: $SRTG $PWND | Serial Number: $SRNM | IMEI: $IMEI\n\nNonce: $NONC | SEP Nonce: $SNON"
   
  fi
 
@@ -641,21 +639,21 @@ else
 
 ProductType=$(ideviceinfo | grep ProductType | awk '{print $NF}')
 
-if [[ $ProductType == iPhone1,1 || $ProductType ==  iPhone1,2 || $ProductType == iPhone2,1 || $ProductType == iPhone3,1 || $ProductType == iPhone3,2 || $ProductType == iPhone3,3 || $ProductType == iPhone11,8 || $ProductType == iPhone11,2 || $ProductType == iPhone11,4 || $ProductType == iPhone11,6 || $ProductType == iPhone12,1 || $ProductType == iPhone12,3 || $ProductType == iPhone12,5 || $ProductType == iPhone12,8 || $ProductType == iPhone13,1 || $ProductType == iPhone13,2 || $ProductType == iPhone13,3 || $ProductType == iPhone13,4 || $ProductType == iPhone14,4 || $ProductType == iPhone14,5 || i$ProductType == Phone14,2 || $ProductType == iPhone14,3 || i$ProductType == Phone14,6 || $ProductType == iPhone14,7 || $ProductType == iPhone14,8 || $ProductType == iPhone15,2 || $ProductType == iPhone15,3 || $ProductType == iPod1,1 || $ProductType == iPod2,1 || $ProductType == iPod3,1 || $ProductType == iPod4,1 || $ProductType == iPad1,1 || $ProductType == iPad11,6 || $ProductType == iPad11,7 || $ProductType == iPad12,1 || $ProductType == iPad12,2 || $ProductType == iPad8,1 || $ProductType == iPad8,2 || $ProductType == iPad8,3 || $ProductType == iPad8,4 || $ProductType == iPad8,5 || $ProductType == iPad8,6 || $ProductType == iPad8,7 || $ProductType == iPad8,8 || $ProductType == iPad8,9 || $ProductType == iPad8,10 || $ProductType == iPad8,11 || $ProductType == iPad8,12 || $ProductType == iPad13,4 || $ProductType == iPad13,5 || $ProductType == iPad13,6 || $ProductType == iPad13,7 || $ProductType == iPad13,8 || $ProductType == iPad13,9 || $ProductType == iPad13,10 || $ProductType == iPad13,11 || $ProductType == iPad11,3 || $ProductType == iPad11,4 || $ProductType == iPad13,1 || $ProductType == iPad13,2 || $ProductType == iPad13,16 || $ProductType == iPad13,17 || $ProductType == iPad11,1 || $ProductType == iPad11,2 || $ProductType == iPad14,1 || $ProductType == iPad14,2 ]]; then
+if [[ $ProductType == iPhone4,1 || $ProductType ==  iPhone5,1 || $ProductType == iPhone5,2 || $ProductType == iPhone5,3 || $ProductType == iPhone5,4 || $ProductType == iPhone6,1 || $ProductType == iPhone6,2 || $ProductType == iPhone7,1 || $ProductType == iPhone7,2 || $ProductType == iPhone8,1 || $ProductType == iPhone8,2 || $ProductType == iPhone8,4 || $ProductType == iPhone9,1 || $ProductType == iPhone9,2 || $ProductType == iPhone9,3 || $ProductType == iPhone9,4 || $ProductType == iPhone10,1 || $ProductType == iPhone10,2 || $ProductType == iPhone10,3 || $ProductType == iPhone10,4 || i$ProductType == iPhone10,5 || $ProductType == iPhone10,6 ||$ProductType = iPod5,1 || $ProductType == iPod6,1 || $ProductType == iPod7,1 || $ProductType == iPad2,1 || $ProductType == iPad2,2 || $ProductType == iPad2,3 || $ProductType == iPad2,4 || $ProductType == iPad3,1 || $ProductType == iPad3,2 || $ProductType == iPad3,3 || $ProductType == iPad3,4 || $ProductType == iPad3,5 || $ProductType == iPad3,6 || $ProductType == iPad6,11 || $ProductType == iPad6,12 || $ProductType == iPad7,5 || $ProductType == iPad7,6 || $ProductType == iPad7,11 || $ProductType == iPad7,12 || $ProductType == iPad2,5 || $ProductType == iPad2,6 || $ProductType == iPad2,7 || $ProductType == iPad4,4 || $ProductType == iPad4,5 || $ProductType == iPad4,6 || $ProductType == iPad4,7 || $ProductType == iPad4,8 || $ProductType == iPad4,9 || $ProductType == iPad5,1 || $ProductType == iPad5,2 || $ProductType == iPad6,7 || $ProductType == iPad6,8 || $ProductType == iPad6,3 || $ProductType == iPad6,4 || $ProductType == iPad7,1 || $ProductType == iPad7,2 || $ProductType == iPad7,3 || $ProductType == iPad7,4 || $ProductType == iPad4,1 || $ProductType == iPad4,2 || $ProductType == iPad4,3 || $ProductType == iPad5,3 || $ProductType == iPad5,4 ]]; then
+
+echo "$line_length" 
+
+echo -e "echo ${line_length}\n${YELLOW}Your device is compatible with checkm8${ICyan}"
+
+checkm8compatible=yes
+
+else
 
 echo "$line_length" 
 
 echo -e "${YELLOW}checkm8 incompatible device detected, you won't be able to use parts of this script that require checkm8 to be used. Your device may be compatible with other BootROM exploits, please check online${ICyan}"
 
 checkm8compatible=no
-
-else 
-
-echo "$line_length" 
-
-echo -e "${YELLOW}Your device is compatible with checkm8${ICyan}"
-
-checkm8compatible=yes
 
 fi
 
