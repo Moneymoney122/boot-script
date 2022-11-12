@@ -251,7 +251,7 @@ echo "if you have any issues with this script please read the README.md file inc
 echo "$line_length"
 echo "if you see any commands in quotes and you want to run them then please copy the commands without the quotes and then run them."
 echo "$line_length"
-echo "this script will be changing directory into the folder with your boot files, please change this command to match the name of the folder with your boot files by opening this script with a text editor and editing the command on line 506, if you have not already."
+echo "this script will be changing directory into the folder with your boot files, please change this command to match the name of the folder with your boot files by opening this script with a text editor and editing the command on line 725, if you have not already."
 echo "$line_length"
 echo "please ensure that the ipwndfu and gaster folders are in the home directory and that python2 is installed before continuing,"
 echo "$line_length"
@@ -641,9 +641,7 @@ ProductType=$(ideviceinfo | grep ProductType | awk '{print $NF}')
 
 if [[ $ProductType == iPhone4,1 || $ProductType ==  iPhone5,1 || $ProductType == iPhone5,2 || $ProductType == iPhone5,3 || $ProductType == iPhone5,4 || $ProductType == iPhone6,1 || $ProductType == iPhone6,2 || $ProductType == iPhone7,1 || $ProductType == iPhone7,2 || $ProductType == iPhone8,1 || $ProductType == iPhone8,2 || $ProductType == iPhone8,4 || $ProductType == iPhone9,1 || $ProductType == iPhone9,2 || $ProductType == iPhone9,3 || $ProductType == iPhone9,4 || $ProductType == iPhone10,1 || $ProductType == iPhone10,2 || $ProductType == iPhone10,3 || $ProductType == iPhone10,4 || i$ProductType == iPhone10,5 || $ProductType == iPhone10,6 ||$ProductType = iPod5,1 || $ProductType == iPod6,1 || $ProductType == iPod7,1 || $ProductType == iPad2,1 || $ProductType == iPad2,2 || $ProductType == iPad2,3 || $ProductType == iPad2,4 || $ProductType == iPad3,1 || $ProductType == iPad3,2 || $ProductType == iPad3,3 || $ProductType == iPad3,4 || $ProductType == iPad3,5 || $ProductType == iPad3,6 || $ProductType == iPad6,11 || $ProductType == iPad6,12 || $ProductType == iPad7,5 || $ProductType == iPad7,6 || $ProductType == iPad7,11 || $ProductType == iPad7,12 || $ProductType == iPad2,5 || $ProductType == iPad2,6 || $ProductType == iPad2,7 || $ProductType == iPad4,4 || $ProductType == iPad4,5 || $ProductType == iPad4,6 || $ProductType == iPad4,7 || $ProductType == iPad4,8 || $ProductType == iPad4,9 || $ProductType == iPad5,1 || $ProductType == iPad5,2 || $ProductType == iPad6,7 || $ProductType == iPad6,8 || $ProductType == iPad6,3 || $ProductType == iPad6,4 || $ProductType == iPad7,1 || $ProductType == iPad7,2 || $ProductType == iPad7,3 || $ProductType == iPad7,4 || $ProductType == iPad4,1 || $ProductType == iPad4,2 || $ProductType == iPad4,3 || $ProductType == iPad5,3 || $ProductType == iPad5,4 ]]; then
 
-echo "$line_length" 
-
-echo -e "echo ${line_length}\n${YELLOW}Your device is compatible with checkm8${ICyan}"
+echo -e "${line_length}\n${YELLOW}Your device is compatible with checkm8${ICyan}"
 
 checkm8compatible=yes
 
@@ -712,7 +710,7 @@ done
             ;;
         [nN]*)
             echo "Skipping..."
-            sleep 3
+            sleep 1
             clear
             break
             ;;
@@ -721,16 +719,20 @@ done
     esac
 done
 
-#cd into the folder with your boot files, change this command to cd into the folder with your boot files  
-echo -e "${ICyan} $line_length"
+#cd into the folder with your boot files, change this command to cd into the folder with your boot files.
+echo -e "${ICyan}${line_length}"
 echo "Changing into the folder with your boot files..."
 cd ~/sunst0rm/boot-ixbugnoe/
 pwd
 
 echo "$line_length"
 
+if test -n "$ActivationState"
+
+then
+
 while true; do
-    read -p 'If your device is currently in normal mode and you want to reboot it, this script can enter recovery mode (it will be a black screen but it will be in recovery mode.) for you and then you can enter DFU mode from there, this is a safer option if your device is already in normal mode. Is your device is currently in normal mode? yes/no: ' input
+    read -p 'Your device is currently in normal mode, this script can enter recovery mode (it will be a black screen but it will be in recovery mode.) for you and then you can enter DFU mode from there, this is a safer option if your device is already in normal mode. Do you want to enter recovery mode? yes/no: ' input
     case $input in
         [yY]*)
             echo 'Entering recovery mode...'
@@ -743,27 +745,7 @@ echo "$line_length"
 
 sleep 7
 
-while true; do
-    read -p 'Did your device enter recovery mode (black screen if your device is tether downgraded) from normal mode? yes/no: ' input
-    case $input in
-        [yY]*)
-            echo 'Continuing the script...'
-            break
-            ;;
-        [nN]*)
-            
-echo "$line_length"
-echo "if you device did not enter recovery mode (black screen if your device is tether downgraded) from normal mode then your device probably was not detected by the computer, you could try to run \"sudo systemctl restart usbmuxd\" in the terminal to restart usbmuxd and then try running the script again or if that fails then you could try to run sudo \"systemctl stop usbmuxd\" and then \"sudo usbmuxd -p -f\" or you could put your device into DFU mode manually, if you want to do that please power off your device and then power it back on by holding the power button like normal but you will see a black screen until you have tether booted your device if your device is tether downgraded and then run the script again until you reach the entering DFU mode tutorial (input no when asked if you want to enter recovery mode from normal mode) and then follow the tutorial to enter DFU mode"
-echo "$line_length"
-
-echo 'Exiting...'
-            exit 1
-            ;;
-         *)
-            echo 'Invalid input' >&2
-    esac
-done
-            break
+       break
             ;;
         [nN]*)
             echo 'Skipping...'
@@ -774,12 +756,44 @@ done
     esac
 done
 
+
+echo "Searching for devices in Recovery Mode..."
+
+sleep 1
+
+RECOVERYMODE=$(sudo irecovery -q 2>/dev/null | grep MODE: | awk '{print $NF}')
+
+if [[ $RECOVERYMODE == "Recovery" ]]; then
+
+echo "Device found in Recovery Mode."
+
+echo "Continuing..."
+
+unset RECOVERYMODE
+
+sleep 3
+
+else
+
+echo -e "No devices found in Recovery Mode\n$line_length"
+
+echo -e "if you device did not enter recovery mode (black screen if your device is tether downgraded) from normal mode then your device probably was not detected by the computer, you could try to run \"sudo systemctl restart usbmuxd\" in the terminal to restart usbmuxd and then try running the script again or if that fails then you could try to run sudo \"systemctl stop usbmuxd\" and then \"sudo usbmuxd -p -f\" or you could put your device into DFU mode manually, if you want to do that please power off your device and then power it back on by holding the power button like normal but you will see a black screen until you have tether booted your device if your device is tether downgraded and then run the script again until you reach the entering DFU mode tutorial (input no when asked if you want to enter recovery mode from normal mode) and then follow the tutorial to enter DFU mode\n$line_length"
+
+echo -e "Exiting...$NC"
+
+exit 1
+
+fi
+
 clear
 
 echo "$line_length"
 echo -e "${ICyan}if you chose to put your device into recovery mode from normal mode, please now put your device into DFU mode"
-echo "$line_length"
+
+fi
+
 echo "Please make sure your device is in DFU mode now, and make sure you are curently in the directory where the boot files are stored"
+echo -e "If you device is in normal mode and the script did not recognise it please pres Ctrl+C and run the script again,\nor you can put your device in DFU mode manually (unsafe)."
   read -p 'Do you want help entering DFU mode? yes/no: ' input
     case $input in
         [yY]*)
@@ -956,12 +970,14 @@ sudo irecovery -f ./ibss.img4
 echo "-----------------------------------------------------------"
 echo "Sending iBEC..."
 sudo irecovery -f ./ibec.img4
+
 if [[ "$cpid" == *"0x80"* ]]; then
     irecovery -f ibec.img4
     sleep 2
     irecovery -c "go"
     sleep 5
 fi
+
 echo "-----------------------------------------------------------"
 echo "Sending BootLogo..."
 sudo irecovery -f ./bootlogo.img4
@@ -990,7 +1006,8 @@ echo "-----------------------------------------------------------"
 echo "Sending Kernel..."
 sudo irecovery -f ./krnlboot.img4
 echo "-----------------------------------------------------------"
-echo "Files have been uploaded to your device, if you do not want to boot your device now (idk why you would not want to because this is a boot script lmao, but I'm adding the option not to anyway.) then you can use the following command to boot your device later: sudo irecovery -v -v -c bootx" 
+echo "Booting device..."
+echo "Running command \bootx\" on the device" 
 echo "-----------------------------------------------------------"
         break
         ;;
@@ -1193,14 +1210,15 @@ done
 
 echo "$line_length"
 
-echo "Files have been uploaded to your device, if you do not want to boot your device now (idk why you would not want to because this is a boot script lmao, but I'm adding the option not to anyway.) then you can use the following command to boot your device later: sudo irecovery -v -v -c bootx" 
+echo "Files have been uploaded to your device, if you do not want to boot your device now (idk why you would not want to because this is a boot script lmao, but I'm adding the option not to anyway.) then you can use the following command to boot your device later: sudo irecovery -c bootx" 
 
 while true; do
     read -p 'Do you want to boot your device now? yes/no: ' input
     case $input in
         [yY]*)
             echo 'Booting your device...'
-sudo irecovery -v -v -c bootx
+sudo irecovery -c bootx
+ echo "$line_length"
  echo "Done, enjoy your tethered booted device OwO"
  echo -e "if your device failed to boot, it could have not been pwned successfully by ipwndfu or gaster, please retry ipwndfu or gaster, or if you used any other tool to pwn your device ensure that worked successfully too, or the boot files could not have been sent or not sent correctly"
             break
