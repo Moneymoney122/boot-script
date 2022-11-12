@@ -263,7 +263,7 @@ echo "you can use Ctrl+C to exit the script at any time."
 echo "$line_length"
 echo "this script can also run checkra1n commands to jailbreak your device for any checkra1n compatible device. if you want to use checkra1n with this script please ensure that the checkra1n executable file is in your home directory (get checkra1n at https://checkra.in)"
 echo "$line_length"
-echo "Please keep your device connected at all times while this script runs, unless asked otherwise."
+echo "Please connect your device before running the script and keep your device connected at all times while this running this script, unless asked otherwise."
 
 echo "$line_length"
 
@@ -645,7 +645,6 @@ ProductType=$(ideviceinfo | grep ProductType | awk '{print $NF}')
 if [[ $ProductType == iPhone4,1 || $ProductType ==  iPhone5,1 || $ProductType == iPhone5,2 || $ProductType == iPhone5,3 || $ProductType == iPhone5,4 || $ProductType == iPhone6,1 || $ProductType == iPhone6,2 || $ProductType == iPhone7,1 || $ProductType == iPhone7,2 || $ProductType == iPhone8,1 || $ProductType == iPhone8,2 || $ProductType == iPhone8,4 || $ProductType == iPhone9,1 || $ProductType == iPhone9,2 || $ProductType == iPhone9,3 || $ProductType == iPhone9,4 || $ProductType == iPhone10,1 || $ProductType == iPhone10,2 || $ProductType == iPhone10,3 || $ProductType == iPhone10,4 || i$ProductType == iPhone10,5 || $ProductType == iPhone10,6 ||$ProductType = iPod5,1 || $ProductType == iPod6,1 || $ProductType == iPod7,1 || $ProductType == iPad2,1 || $ProductType == iPad2,2 || $ProductType == iPad2,3 || $ProductType == iPad2,4 || $ProductType == iPad3,1 || $ProductType == iPad3,2 || $ProductType == iPad3,3 || $ProductType == iPad3,4 || $ProductType == iPad3,5 || $ProductType == iPad3,6 || $ProductType == iPad6,11 || $ProductType == iPad6,12 || $ProductType == iPad7,5 || $ProductType == iPad7,6 || $ProductType == iPad7,11 || $ProductType == iPad7,12 || $ProductType == iPad2,5 || $ProductType == iPad2,6 || $ProductType == iPad2,7 || $ProductType == iPad4,4 || $ProductType == iPad4,5 || $ProductType == iPad4,6 || $ProductType == iPad4,7 || $ProductType == iPad4,8 || $ProductType == iPad4,9 || $ProductType == iPad5,1 || $ProductType == iPad5,2 || $ProductType == iPad6,7 || $ProductType == iPad6,8 || $ProductType == iPad6,3 || $ProductType == iPad6,4 || $ProductType == iPad7,1 || $ProductType == iPad7,2 || $ProductType == iPad7,3 || $ProductType == iPad7,4 || $ProductType == iPad4,1 || $ProductType == iPad4,2 || $ProductType == iPad4,3 || $ProductType == iPad5,3 || $ProductType == iPad5,4 ]]; then
 
 echo -e "${line_length}\n${YELLOW}Your device is compatible with checkm8${ICyan}"
-
 checkm8compatible=yes
 
 else
@@ -795,8 +794,19 @@ echo -e "${ICyan}if you chose to put your device into recovery mode from normal 
 
 fi
 
+unset MODE
+
+MODE=$(irecovery -q | grep MODE: | awk '{print $NF}')
+
+if [[ $MODE == "DFU" ]]; then
+
+echo "Device found in DFU mode, Skipping entering DFU mode tutorial."
+
+else
+
 echo "Please make sure your device is in DFU mode now, and make sure you are curently in the directory where the boot files are stored"
 echo -e "If you device is in normal mode and the script did not recognise it please pres Ctrl+C and run the script again,\nor you can put your device in DFU mode manually (unsafe)."
+  while true; do  
   read -p 'Do you want help entering DFU mode? yes/no: ' input
     case $input in
         [yY]*)
@@ -850,6 +860,8 @@ fi
          *)
             echo 'Invalid input' >&2
     esac
+done
+fi
 
 echo "$line_length"
 
@@ -866,26 +878,17 @@ echo "Running the commands for ipwndfu A8/A9..."
 
 sudo python2.7 ./ipwndfu -p --rmsigchecks
 
-echo "$line_length"
+if [[ $? != 0 ]]; then
 
-echo "Changing back into the directory with the boot files..."
+echo "ipwndfu returned a non 0 exit code, meaning it failed. Please run the script again."
 
-cd -
+echo -e "Exiting...$NC"
 
-echo "$line_length"
+cd ~/boot-script/
 
-while true; do
-    read -p 'did you get the "ValueError: The device has no langid" error, if you did this can usually be fixed by running ipwndfu again without restarting your device, or you can use this as an opportunity to force restart your device and put it back into DFU mode and then run ipwndfu again if it failed with an error other than "ValueError: The device has no langid" without having to run the script again. yes/no: ' input
-    case $input in
-        [yY]*)
-            echo 'Running ipwndfu again...'
-echo "Changing into the ipwndfu directory..."
+exit 1
 
-cd ~/ipwndfu/
-
-echo "Running the commands for ipwndfu A8/A9..."
-
-sudo python2.7 ./ipwndfu -p --rmsigchecks
+fi
 
 echo "$line_length"
 
@@ -893,17 +896,8 @@ echo "Changing back into the directory with the boot files..."
 
 cd -
 
-    break
-            ;;
-        [nN]*)
-            echo 'Skipping...'
-            break
-            ;;
-         *)
-            echo 'Invalid input' >&2
-
-   esac
-done        
+echo "$line_length"
+        
           break
           ;;
         [g]*) 
@@ -912,6 +906,18 @@ cd ~/gaster/
 echo "Running the commands for gaster..."
 
 ./gaster pwn
+
+if [[ $? != 0 ]]; then
+
+echo "gaster returned a non 0 exit code, meaning it failed. Please run the script again."
+
+echo -e "Exiting...$NC"
+
+cd ~/boot-script/
+
+exit 1
+
+fi
 
 echo "Changing back into the directory with the boot files..."
 
@@ -927,35 +933,6 @@ echo "Skipping pwning your device..."
    esac
 done
 
-echo "$line_length"
-
-while true; do
-    read -p 'Did ipwndfu/gaster work succefully? If it did not then please type no and then please force restart your device and put it back into DFU mode and then run the script again, if one tool failed you can try the other one, or if ipwndfu/gaster worked succesfully and you just want to put your device into Pwned DFU mode with sigchecks removed then you can type no and exit the script too or if you have already successfuly pwned your device and skipped pwning your device this time then type yes. if it did then please type yes. Or if you are not sure then type imunsure if you are not sure and you want to check if it worked correctly yes/no/imunsure: ' input
-    case $input in
-        [yY]*)
-            echo 'Continuing the script...'
-            break
-            ;;
-        [nN]*)
-            echo 'Exiting...'
-            exit 1
-            ;;
-          [imunsure]*)
-       echo "$line_length"   
-           sudo irecovery -q
-       echo "-$line_length"
-   echo "If that command prints [MODE]: DFU and [PWND]: CHECKM8/[PWND]: gaster and ipwndfu said patched mapping and signature checks or gaster said Now you can boot untrusted images. then it was successful, if it says anything different then it most likely wasn't successful and you should force restart your device run the script again."
-  echo "$line_length"
-          ;;
-            *)
-         echo 'Invalid input' >&2
-    esac
-done
-
-sleep 1
-
-echo "$line_length"
-
 while true; do
     read -p 'Do you want to send all the files to boot your device now (easy), or do you want to choose which files to send and enable verbose mode (advanced), or have the files already been sent(s)? e/a/s: ' input
     case $input in
@@ -965,13 +942,18 @@ cpid=$(irecovery -q | grep "CPID" | sed "s/CPID: //")
 sleep 1
 echo "-----------------------------------------------------------"
 echo "Sending iBSS..."
+
 sudo irecovery -f ./ibss.img4
+
 echo "-----------------------------------------------------------"
 #send iBSS again.
 echo "Sending iBSS again..."
+
 sudo irecovery -f ./ibss.img4
+
 echo "-----------------------------------------------------------"
 echo "Sending iBEC..."
+
 sudo irecovery -f ./ibec.img4
 
 if [[ "$cpid" == *"0x80"* ]]; then
@@ -1010,7 +992,8 @@ echo "Sending Kernel..."
 sudo irecovery -f ./krnlboot.img4
 echo "-----------------------------------------------------------"
 echo "Booting device..."
-echo "Running command \bootx\" on the device" 
+echo "Running command \"bootx\" on the device" 
+sudo irecovery -c bootx
 echo "-----------------------------------------------------------"
         break
         ;;
@@ -1201,15 +1184,6 @@ echo 'Skipping sending Kernel...'
             echo 'Invalid input' >&2
     esac
 done
-  
-  ;;
-  [s]*)
-echo "Continuing to the boot part of this script..."
-  break
-
-
-    esac
-done
 
 echo "$line_length"
 
@@ -1221,9 +1195,6 @@ while true; do
         [yY]*)
             echo 'Booting your device...'
 sudo irecovery -c bootx
- echo "$line_length"
- echo "Done, enjoy your tethered booted device OwO"
- echo -e "if your device failed to boot, it could have not been pwned successfully by ipwndfu or gaster, please retry ipwndfu or gaster, or if you used any other tool to pwn your device ensure that worked successfully too, or the boot files could not have been sent or not sent correctly"
             break
             ;;
         [nN]*)
@@ -1237,13 +1208,50 @@ sudo irecovery -c bootx
 done
 
 echo "$line_length"
+echo "Done, enjoy your tethered booted device OwO"
+echo -e "if your device failed to boot, it could have not been pwned successfully by ipwndfu or gaster, please retry ipwndfu or gaster, or if you used any other tool to pwn your device ensure that worked successfully too, or the boot files could not have been sent or not sent correctly"
+
+break  
+  ;;
+  [s]*)
+echo "Continuing to the boot part of this script..."
+
+echo "$line_length"
+
+echo "Files have been uploaded to your device, if you do not want to boot your device now (idk why you would not want to because this is a boot script lmao, but I'm adding the option not to anyway.) then you can use the following command to boot your device later: sudo irecovery -c bootx" 
+
+while true; do
+    read -p 'Do you want to boot your device now? yes/no: ' input
+    case $input in
+        [yY]*)
+            echo 'Booting your device...'
+sudo irecovery -c bootx
+            break
+            ;;
+        [nN]*)
+            echo -e "Exiting...$NC"
+            exit
+            ;;
+         *)
+            echo 'Invalid input' >&2
+
+   esac
+done
+
+ echo "$line_length"
+ echo "Done, enjoy your tethered booted device OwO"
+ echo -e "if your device failed to boot, it could have not been pwned successfully by ipwndfu or gaster, please retry ipwndfu or gaster, or if you used any other tool to pwn your device ensure that worked successfully too, or the boot files could not have been sent or not sent correctly"
+
+    esac
+done
+
+echo "$line_length"
 
 read -p "The script has completed. Do you want to run the script again? yes/no: "  CHECK
 
 if [[ "$CHECK" = "Y" || "$CHECK" = "y" || "$CHECK" = "Yes" || "$CHECK" = "yes" || "$CHECK" = "YES" ]]; then
 
 cd ~/boot-script/
-
 bash boot.sh
 
 else
