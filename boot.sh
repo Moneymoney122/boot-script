@@ -111,7 +111,7 @@ echo "Checking Internet connection..."
 read -p "Enter local IP Address: " IPADDRESS
 read -sp "Enter Password: " PASSWORD
 echo -e "${NC}"
-sudo sshpass -v -p "$PASSWORD" ssh root@$IPADDRESS
+sshpass -v -p "$PASSWORD" ssh root@$IPADDRESS
 if [[ $? != 0 ]]; then
 
 echo -e "${ICyan}An error occured connecting to your device, if you need help please check online for a solution\nto your specific error or contact me if you need to. Some common errors include:"
