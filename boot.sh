@@ -882,7 +882,7 @@ sudo python2.7 ./ipwndfu -p --rmsigchecks
 
 if [[ $? != 0 ]]; then
 
-echo "ipwndfu returned a non 0 exit code, meaning it failed. Please run the script again."
+echo -e "ipwndfu returned a non 0 exit code, meaning it failed.\nPlease force restart your device and run the script again."
 
 echo -e "Exiting...$NC"
 
@@ -911,7 +911,7 @@ echo "Running the commands for gaster..."
 
 if [[ $? != 0 ]]; then
 
-echo "gaster returned a non 0 exit code, meaning it failed. Please run the script again."
+echo -e "gaster returned a non 0 exit code, meaning it failed.\nPlease force restart your device and run the script again."
 
 echo -e "Exiting...$NC"
 
