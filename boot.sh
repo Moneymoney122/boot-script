@@ -834,6 +834,15 @@ for i in {1..10}
 do
     sleep 1
     echo -n "$i "
+    break
+    ;;
+    [nN]*)
+    echo "Skipping..."
+       break
+       ;;
+      *)
+            echo 'Invalid input' >&2
+   esac
 done
 
 echo -e "\nYour device should now be in DFU mode"
@@ -853,14 +862,7 @@ echo -e "Your device is not in DFU mode, Please run the script again.\nExiting..
 exit 1
 
 fi
-            ;;
-        [nN]*)
-            echo 'Skipping...'
-            ;;
-         *)
-            echo 'Invalid input' >&2
-    esac
-done
+
 fi
 
 echo "$line_length"
