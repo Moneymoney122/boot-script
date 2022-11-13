@@ -125,9 +125,7 @@ echo "hello" | lolcat >/dev/null
  
 if [[ $? != 0 ]]; then
 
- echo -e "${ICyan}\nlolcat is not installed, printing art in regular colours.\n"
-
-echo -e "${ICyan}Invalid option: \"$1\""
+echo -e "${ICyan}\nlolcat is not installed, printing art in regular colours.\n."
 
 echo -e "$ICyan ___  ___   ___ _____   ___  ___ ___ ___ ___ _____ " 
 echo         "| _ )/ _ \ / _ \_   _| / __|/ __| _ \_ _| _ \_   _| " 
@@ -138,8 +136,6 @@ echo -e  "${ICyan}$usage"
 exit
  
 else
- 
-echo -e "${ICyan}Invalid option: \"$1\""
 
 echo -e "$ICyan ___  ___   ___ _____   ___  ___ ___ ___ ___ _____ " | lolcat -p 0.1
 echo         "| _ )/ _ \ / _ \_   _| / __|/ __| _ \_ _| _ \_   _| " | lolcat -p 0.1
@@ -157,8 +153,6 @@ if [[ $? != 0 ]]; then
 
 echo -e "${ICyan}\nlolcat is not installed, printing art in regular colours.\n"
 
-echo -e "${ICyan}Invalid option: \"$1\""
-
 echo -e "$ICyan ___  ___   ___ _____   ___  ___ ___ ___ ___ _____ " 
 echo         "| _ )/ _ \ / _ \_   _| / __|/ __| _ \_ _| _ \_   _| " 
 echo         "| _ \ (_) | (_) || |   \__ \ (__|   /| ||  _/ | |  " 
@@ -168,8 +162,6 @@ echo -e  "${ICyan}$usage"
 exit
  
 else
- 
-echo -e "${ICyan}Invalid option: \"$1\""
 
 echo -e "$ICyan ___  ___   ___ _____   ___  ___ ___ ___ ___ _____ " | lolcat -p 0.1
 echo         "| _ )/ _ \ / _ \_   _| / __|/ __| _ \_ _| _ \_   _| " | lolcat -p 0.1
