@@ -116,7 +116,7 @@ if [[ $? != 0 ]]; then
 
 echo -e "${ICyan}An error occured connecting to your device, if you need help please check online for a solution\nto your specific error or contact me if you need to. Some common errors include:"
 
-echo -e "\nIf the error is \"ssh: connect to host *your device's IP Address* port 22: Connection refused\" \nthen your device doesn't have OpenSSH installed or the password is incorrect\n\nif the error is \"ssh: connect to host *your device's IP Address* port 22: No route to host\" \nthen your device could not be found on your network\n\nIf the error is \"ssh: Could not resolve hostname *your device's IP Address*: Name or service not known\"\nthen the IP Adress you typed for your device is invalid$NC"
+echo -e "\n\"ssh: connect to host *your device's IP Address* port 22: Connection refused\" \nYour device doesn't have OpenSSH installed or the password is incorrect\n\n\"ssh: connect to host *your device's IP Address* port 22: No route to host\"\nYour device could not be found on your network.\n\n\"ssh: Could not resolve hostname *your device's IP Address*: Name or service not known.\"\nThe IP Adress you typed for your device is invalid.\n\"SSHPASS: detected host authentication prompt. Exiting.\"\nThis is the first time  connecting to your device via ssh, please run\n\"ssh root@*your IP Address*\" (without the quotes) and confirm the host authentication prompt,\nenter your device's password (default is alpine) and then logout then run the script again.$NC"
 
 fi
 exit ;;
