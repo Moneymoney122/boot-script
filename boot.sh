@@ -58,7 +58,7 @@ else
 
 fi
 
-usage="Boot script by Moneymoney122 (@chandler_hacker)\nhttps://github.com/Moneymoney122/boot-script\nProudly written in gedit\n2022\n\nOptions:\n-h or --help or an invalid option: display this help menu\nOwO: OwO\nNo arguments: run normally\nssh: ssh into a root shell for your device, your device must be jailbroken and have OpenSSH installed.${NC}"
+usage="Boot script by Moneymoney122 (@chandler_hacker)\nhttps://github.com/Moneymoney122/boot-script\nProudly written in gedit\n2022\n\nOptions:\n-h or --help or an invalid option: display this help menu\n-d or --debug: output extra information (coming sooon).\nOwO: OwO\nNo arguments: run normally\nssh: ssh into a root shell for your device, your device must be jailbroken and have OpenSSH installed.${NC}"
 
 #check terminal size
 
@@ -719,76 +719,69 @@ echo "Changing into the folder with your boot files..."
 cd ~/sunst0rm/boot-ixbugnoe/
 pwd
 
-echo "$line_length"
-
 if test -n "$ActivationState"
 
 then
 
-while true; do
-    read -p 'Your device is currently in normal mode, this script can enter recovery mode (it will be a black screen but it will be in recovery mode.) for you and then you can enter DFU mode from there, this is a safer option if your device is already in normal mode. Do you want to enter recovery mode? yes/no: ' input
-    case $input in
-        [yY]*)
-            echo 'Entering recovery mode...'
-
-var=`ideviceinfo | grep "UniqueDeviceID" | grep -wv "UniqueDeviceID: "`
-
-sudo ideviceenterrecovery $var
-
 echo "$line_length"
 
-sleep 7
+read -p "Your device is currently in normal mode, this script can enter recovery mode (it will be a black screen but it will be in recovery mode.) for you and then you can enter DFU mode from there, this is a safer option if your device is already in normal mode. Do you want to enter recovery mode? yes/no: "  CHECK
 
-       break
-            ;;
-        [nN]*)
-            echo 'Skipping...'
-            break
-            ;;
-         *)
-            echo 'Invalid input' >&2
-    esac
-done
+ if [[ "$CHECK" = "Y" || "$CHECK" = "y" || "$CHECK" = "Yes" || "$CHECK" = "yes" || "$CHECK" = "YES" ]]; then
 
+ echo 'Entering recovery mode...'
 
-echo "Searching for devices in Recovery Mode..."
+ var=`ideviceinfo | grep "UniqueDeviceID" | grep -wv "UniqueDeviceID: "`
 
-sleep 1
+ sudo ideviceenterrecovery $var
 
-RECOVERYMODE=$(sudo irecovery -q 2>/dev/null | grep MODE: | awk '{print $NF}')
+ echo "$line_length"
 
-if [[ $RECOVERYMODE == "Recovery" ]]; then
+ sleep 7
+ 
+ echo "Searching for devices in Recovery Mode..."
 
-echo "Device found in Recovery Mode."
+ sleep 1
 
-echo "Continuing..."
+ RECOVERYMODE=$(sudo irecovery -q 2>/dev/null | grep MODE: | awk '{print $NF}')
 
-unset RECOVERYMODE
+  if [[ $RECOVERYMODE == "Recovery" ]]; then
 
-sleep 3
+  echo "Device found in Recovery Mode."
+
+  echo "Continuing..."
+
+  unset RECOVERYMODE
+
+  sleep 3
+
+  else
+
+  echo -e "No devices found in Recovery Mode\n$line_length"
+
+  echo -e "if you device did not enter recovery mode (black screen if your device is tether downgraded) from normal mode then your device probably was not detected by the computer, you could try to run \"sudo systemctl restart usbmuxd\" in the terminal to restart usbmuxd and then try running the script again or if that fails then you could try to run sudo \"systemctl stop usbmuxd\" and then \"sudo usbmuxd -p -f\" or you could put your device into DFU mode manually, if you want to do that please power off your device and then power it back on by holding the power button like normal but you will see a black screen until you have tether booted your device if your device is tether downgraded and then run the script again until you reach the entering DFU mode tutorial (input no when asked if you want to enter recovery mode from normal mode) and then follow the tutorial to enter DFU mode\n$line_length"
+
+  echo -e "Exiting...$NC"
+
+  exit 1
+
+  fi
 
 else
 
-echo -e "No devices found in Recovery Mode\n$line_length"
-
-echo -e "if you device did not enter recovery mode (black screen if your device is tether downgraded) from normal mode then your device probably was not detected by the computer, you could try to run \"sudo systemctl restart usbmuxd\" in the terminal to restart usbmuxd and then try running the script again or if that fails then you could try to run sudo \"systemctl stop usbmuxd\" and then \"sudo usbmuxd -p -f\" or you could put your device into DFU mode manually, if you want to do that please power off your device and then power it back on by holding the power button like normal but you will see a black screen until you have tether booted your device if your device is tether downgraded and then run the script again until you reach the entering DFU mode tutorial (input no when asked if you want to enter recovery mode from normal mode) and then follow the tutorial to enter DFU mode\n$line_length"
-
-echo -e "Exiting...$NC"
-
-exit 1
+echo -e "Skipping..."
 
 fi
 
 clear
 
-echo "$line_length"
-echo -e "${ICyan}if you chose to put your device into recovery mode from normal mode, please now put your device into DFU mode"
-
 fi
 
 unset MODE
 
-MODE=$(irecovery -q | grep MODE: | awk '{print $NF}')
+echo -e "$line_length\nSearching for devices in DFU mode..."
+
+MODE=$(irecovery -q 2>/dev/null | grep MODE: | awk '{print $NF}')
 
 if [[ $MODE == "DFU" ]]; then
 
@@ -796,13 +789,22 @@ echo "Device found in DFU mode, Skipping entering DFU mode tutorial."
 
 else
 
+echo "No devices in DFU mode found."
+
+echo "$line_length"
+echo -e "${ICyan}if you chose to put your device into recovery mode from normal mode, please now put your device into DFU mode"
 echo "Please make sure your device is in DFU mode now, and make sure you are curently in the directory where the boot files are stored"
 echo -e "If you device is in normal mode and the script did not recognise it please pres Ctrl+C and run the script again,\nor you can put your device in DFU mode manually (unsafe)."
-  while true; do  
-  read -p 'Do you want help entering DFU mode? yes/no: ' input
-    case $input in
-        [yY]*)
-            echo 'Continuing to the entering DFU tutorial...'
+ 
+unset CHECK
+ 
+echo "$line_length"
+  
+read -p 'Do you want help entering DFU mode? yes/no: ' CHECK
+
+if [[ "$CHECK" = "Y" || "$CHECK" = "y" || "$CHECK" = "Yes" || "$CHECK" = "yes" || "$CHECK" = "YES" ]]; then
+  
+echo 'Continuing to the entering DFU tutorial...'
 
 echo "Get ready to hold the power button and home button for 10 seconds..."
 
@@ -814,7 +816,15 @@ done
 
 echo -e "\nHold the power button and home button for 10 seconds..."
 
-for i in {1..10}
+for i in {1..5}
+do
+    sleep 1
+    echo -n "$i "
+done
+
+irecovery -n 2>/dev/null
+
+for i in {6..10}
 do
     sleep 1
     echo -n "$i "
@@ -826,15 +836,6 @@ for i in {1..10}
 do
     sleep 1
     echo -n "$i "
-    break
-    ;;
-    [nN]*)
-    echo "Skipping..."
-       break
-       ;;
-      *)
-            echo 'Invalid input' >&2
-   esac
 done
 
 echo -e "\nYour device should now be in DFU mode"
@@ -843,21 +844,27 @@ echo "$line_length"
 
 mode=$(irecovery -q 2>/dev/null | grep MODE: | awk '{print $NF}')
       
-if [[ $mode == DFU ]]; then
+ if [[ $mode == DFU ]]; then
 
-echo -e "Your device is now in DFU mode.\nContinuing..."
+ echo -e "Your device is now in DFU mode.\nContinuing..."
+
+ else
+
+ echo -e "Your device is not in DFU mode, Please run the script again.\nExiting...$NC"
+
+ exit 1
+
+ fi
+
+echo "$line_length"
 
 else
 
-echo -e "Your device is not in DFU mode, Please run the script again.\nExiting...$NC"
-
-exit 1
+    echo "Skipping..."
 
 fi
 
 fi
-
-echo "$line_length"
 
 while true; do
     read -p 'Do you want to use ipwndfu or gaster to pwn your device, or is your device already done being pwned? i/g/d: ' input
@@ -936,33 +943,31 @@ cpid=$(irecovery -q | grep "CPID" | sed "s/CPID: //")
 sleep 1
 echo "-----------------------------------------------------------"
 echo "Sending iBSS..."
-
 sudo irecovery -f ./ibss.img4
-
 echo "-----------------------------------------------------------"
 #send iBSS again.
 echo "Sending iBSS again..."
-
 sudo irecovery -f ./ibss.img4
-
 echo "-----------------------------------------------------------"
 echo "Sending iBEC..."
-
 sudo irecovery -f ./ibec.img4
-
 if [[ "$cpid" == *"0x80"* ]]; then
+    echo "-----------------------------------------------------------"   
+    #send iBEC again.
+    echo "Sending iBEC again..."
     irecovery -f ibec.img4
     sleep 2
     irecovery -c "go"
     sleep 5
 fi
-
 echo "-----------------------------------------------------------"
 echo "Sending BootLogo..."
 sudo irecovery -f ./bootlogo.img4
 echo "-----------------------------------------------------------"
 echo "Running display commands..."
+echo -e "Running command \"setpicture 0\" on the device"
 sudo irecovery -c "setpicture 0"
+echo "\"Running command bgcolor 0 0 0\""
 sudo irecovery -c "bgcolor 0 0 0"
 sleep 3
 if [[ -f "./ramdisk.img4" ]]; then
@@ -1240,6 +1245,8 @@ done
 done
 
 echo "$line_length"
+
+unset CHECK
 
 read -p "The script has completed. Do you want to run the script again? yes/no: "  CHECK
 
