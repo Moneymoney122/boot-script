@@ -20,7 +20,7 @@ Table of contents:
 - This script is for tether booting A8/A9 devices that have been downgraded by [sunst0rm](https://github.com/mineek/sunst0rm)
   - It might work with devices that have been tethered downgraded by other tools.
   
-   - Also capable of running the commands for checkra1n
+   - Also capable of running the commands for checkra1n, running the commands for connecting via ssh to your device and saving your device's infomation to a text file
   
 - I made this script for personal use, but anyone can use it
 
