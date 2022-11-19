@@ -60,6 +60,8 @@ fi
 
 usage="Boot script by Moneymoney122 (@chandler_hacker)\nhttps://github.com/Moneymoney122/boot-script\nGNU Bourne Again SHell script (https://www.gnu.org/software/bash/)\nProudly written in gedit\n2022\n\nOptions:\n-h, --help or an invalid option: display this help menu\n-d or --debug: output extra information (coming sooon).\nOwO: OwO\nNo arguments: run normally\nssh: ssh into a root shell for your device, your device must be jailbroken and have OpenSSH installed.\n-s, --save: save device infomation to file: ~/boot-script/deviceinfo.txt${NC}"
 
+Version="Version: $(date -d @$(git log -1 --format="%at") --rfc-3339=date)-$(git rev-parse HEAD | cut -c -7)"
+
 #check terminal size
 
 terminallines=$(tput lines)
@@ -131,6 +133,7 @@ echo -e "$ICyan ___  ___   ___ _____   ___  ___ ___ ___ ___ _____ "
 echo         "| _ )/ _ \ / _ \_   _| / __|/ __| _ \_ _| _ \_   _| " 
 echo         "| _ \ (_) | (_) || |   \__ \ (__|   /| ||  _/ | |  " 
 echo -e      "|___/\___/ \___/ |_|   |___/\___|_|_\___|_|   |_|  \n" 
+echo -e  "${ICyan}${Version}"
 echo -e  "${ICyan}$usage"
  
 exit
@@ -141,7 +144,8 @@ echo -e "$ICyan ___  ___   ___ _____   ___  ___ ___ ___ ___ _____ " | lolcat -p 
 echo         "| _ )/ _ \ / _ \_   _| / __|/ __| _ \_ _| _ \_   _| " | lolcat -p 0.1
 echo         "| _ \ (_) | (_) || |   \__ \ (__|   /| ||  _/ | |  "  | lolcat -p 0.1
 echo -e      "|___/\___/ \___/ |_|   |___/\___|_|_\___|_|   |_|  \n" | lolcat -p 0.1
-echo -e  "${ICyan}$usage"
+echo -e "${ICyan}${Version}"
+echo -e "${ICyan}$usage"
 
 fi
 
@@ -157,6 +161,7 @@ echo -e "$ICyan ___  ___   ___ _____   ___  ___ ___ ___ ___ _____ "
 echo         "| _ )/ _ \ / _ \_   _| / __|/ __| _ \_ _| _ \_   _| " 
 echo         "| _ \ (_) | (_) || |   \__ \ (__|   /| ||  _/ | |  " 
 echo -e      "|___/\___/ \___/ |_|   |___/\___|_|_\___|_|   |_|  \n" 
+echo -e   "${ICyan}${Version}"
 echo -e  "${ICyan}$usage"
  
 exit
@@ -167,6 +172,7 @@ echo -e "$ICyan ___  ___   ___ _____   ___  ___ ___ ___ ___ _____ " | lolcat -p 
 echo         "| _ )/ _ \ / _ \_   _| / __|/ __| _ \_ _| _ \_   _| " | lolcat -p 0.1
 echo         "| _ \ (_) | (_) || |   \__ \ (__|   /| ||  _/ | |  "  | lolcat -p 0.1
 echo -e      "|___/\___/ \___/ |_|   |___/\___|_|_\___|_|   |_|  \n" | lolcat -p 0.1
+echo -e  "${ICyan}${Version}"
 echo -e  "${ICyan}$usage"
 
 fi
