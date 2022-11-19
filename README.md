@@ -88,7 +88,7 @@ And then run:
 | `-h`            | `--help`                    | Prints help options                                               |
 | `OwO`           | `OwO`                       | OwO                                                               |
 | `ssh`           | `ssh`                       | ssh into your device                                              |
-| `-s`            | '--save'                    | save device infomation to text file: ~/boot-script/deviceinfo.txt |
+| `-s`            | `--save`                    | save device infomation to text file: ~/boot-script/deviceinfo.txt |
 
 This script will ask for your user's password, this is not intended to be anything malicious and you can check the code yourself if you want
 
