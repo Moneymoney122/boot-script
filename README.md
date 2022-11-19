@@ -72,7 +72,7 @@ And then run:
 
 - test version: `chmod +x test-boot.sh` then `./test-boot.sh`
 
-- I don't really update the test version anymore, If you want the latest version with the most features use the main version.
+ - I don't really update the test version anymore, If you want the latest version with the most features use the main version.
 
 - old version: `chmod +x old-boot.sh` then `./old-boot.sh`
 
