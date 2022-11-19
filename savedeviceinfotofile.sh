@@ -43,7 +43,7 @@ touch ~/boot-script/deviceinfo.txt
 
 echo "Activation State: $ActivationState Name: $DeviceName UDID: $UniqueDeviceID Serial Number: $SerialNumber iOS Version: $ProductVersion ECID (Decimal/Hexadecimal): $UniqueChipID / $Hex Model: $HardwareModel CPU Architecture: $CPUArchitecture Hardware Platform: $HardwarePlatform" > ~/boot-script/deviceinfo.txt
 
-echo "Done, your device infomation text file is located at ~/boot-script/deviceinfo.txt" 
+echo -e "Done, your device infomation text file is located at ~/boot-script/deviceinfo.txt${NC}" 
 
 exit
             ;;
@@ -59,7 +59,7 @@ touch ~/boot-script/deviceinfo.txt
 
 echo $Deviceinfo > ~/boot-script/deviceinfo.txt
 
-echo "Done, your device infomation text file is located at ~/boot-script/deviceinfo.txt"
+echo -e "Done, your device infomation text file is located at ~/boot-script/deviceinfo.txt${NC}"
 
 exit
             ;;
