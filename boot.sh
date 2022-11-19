@@ -127,7 +127,7 @@ echo "hello" | lolcat >/dev/null
  
 if [[ $? != 0 ]]; then
 
-echo -e "${ICyan}\nlolcat is not installed, printing art in regular colours.\n."
+echo -e "${ICyan}\nlolcat is not installed, printing art in regular colours.\n"
 
 echo -e "$ICyan ___  ___   ___ _____   ___  ___ ___ ___ ___ _____ " 
 echo         "| _ )/ _ \ / _ \_   _| / __|/ __| _ \_ _| _ \_   _| " 
@@ -203,6 +203,7 @@ echo "hello" | lolcat >/dev/null
  echo         "| _ )/ _ \ / _ \_   _| / __|/ __| _ \_ _| _ \_   _| " 
  echo         "| _ \ (_) | (_) || |   \__ \ (__|   /| ||  _/ | |  " 
  echo -e      "|___/\___/ \___/ |_|   |___/\___|_|_\___|_|   |_|  \n" 
+ echo -e  "${ICyan}${Version}"
  echo -e  "${ICyan}$usage"
  
  exit
@@ -215,6 +216,7 @@ echo "hello" | lolcat >/dev/null
  echo         "| _ )/ _ \ / _ \_   _| / __|/ __| _ \_ _| _ \_   _| " | lolcat -p 0.1
  echo         "| _ \ (_) | (_) || |   \__ \ (__|   /| ||  _/ | |  "  | lolcat -p 0.1
  echo -e      "|___/\___/ \___/ |_|   |___/\___|_|_\___|_|   |_|  \n" | lolcat -p 0.1
+ echo -e  "${ICyan}${Version}"
  echo -e  "${ICyan}$usage"
  
  exit
