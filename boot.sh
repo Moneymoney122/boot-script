@@ -58,7 +58,7 @@ else
 
 fi
 
-usage="Boot script by Moneymoney122 (@chandler_hacker)\nhttps://github.com/Moneymoney122/boot-script\nGNU Bourne Again SHell script (https://www.gnu.org/software/bash/)\nProudly written in gedit\n2022\n\nOptions:\n-h, --help or an invalid option: display this help menu\n-d, --debug: output extra information (coming soon).\nOwO: OwO\nNo arguments: run normally\nssh: ssh into a root shell for your device, your device must be jailbroken and have OpenSSH installed.\n-s, --save: save device infomation to file: ~/boot-script/deviceinfo.txt${NC}"
+usage="Boot script by Moneymoney122 (@chandler_hacker)\nhttps://github.com/Moneymoney122/boot-script\nGNU Bourne Again SHell script (https://www.gnu.org/software/bash/)\nProudly written in gedit\n2022\n\nOptions:\n-h, --help or an invalid option: display this help menu\n-v, --version: print version infomation\n-d, --debug: output extra information (coming soon).\n-s, --save: save device infomation to file: ~/boot-script/deviceinfo.txt\nOwO: OwO\nssh: ssh into a root shell for your device, your device must be jailbroken and have OpenSSH installed.\nNo arguments: run normally${NC}"
 
 Version="Version: $(date -d @$(git log -1 --format="%at") --rfc-3339=date)-$(git rev-parse HEAD | cut -c -7)"
 
@@ -184,6 +184,12 @@ exit ;;
 --save)
 chmod +x savedeviceinfotofile.sh
 ./savedeviceinfotofile.sh
+exit ;;
+-v)
+echo -e "${ICyan}Boot-script by Moneymoney122\nhttps://github.com/Moneymoney122/boot-script\n\n${Version}${NC}"
+exit ;;
+--version)
+echo -e "${ICyan}Boot-script by Moneymoney122\nhttps://github.com/Moneymoney122/boot-script\n\n${Version}${NC}"
 exit ;;
 esac
 
