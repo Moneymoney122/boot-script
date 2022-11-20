@@ -736,7 +736,7 @@ done
 #cd into the folder with your boot files, change this command to cd into the folder with your boot files.
 echo -e "${ICyan}${line_length}"
 echo "Changing into the folder with your boot files..."
-cd ~/sunst0rm/boot-ixbugnoe/
+cd *insert folder name here*
 pwd
 
 if test -n "$ActivationState"
@@ -987,7 +987,7 @@ echo "-----------------------------------------------------------"
 echo "Running display commands..."
 echo -e "Running command \"setpicture 0\" on the device"
 sudo irecovery -c "setpicture 0"
-echo "\"Running command bgcolor 0 0 0\""
+echo "Running command \"bgcolor 0 0 0\" on the device"
 sudo irecovery -c "bgcolor 0 0 0"
 sleep 3
 if [[ -f "./ramdisk.img4" ]]; then
@@ -1014,6 +1014,9 @@ echo "Booting device..."
 echo "Running command \"bootx\" on the device" 
 sudo irecovery -c bootx
 echo "-----------------------------------------------------------"
+echo "$line_length"
+echo "Done, enjoy your tethered booted device OwO"
+echo -e "if your device failed to boot, it could have not been pwned successfully by ipwndfu or gaster, please retry ipwndfu or gaster, or if you used any other tool to pwn your device ensure that worked successfully too, or the boot files could not have been sent or not sent correctly"
         break
         ;;
         [a]*)
