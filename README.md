@@ -86,9 +86,14 @@ And then run:
 | Option (short)  | Option (long)               | Description                                                       |
 |-----------------|-----------------------------|-------------------------------------------------------------------|
 | `-h`            | `--help`                    | Prints help options                                               |
+| `-v`            | `--version`                 | Prints version infomation                                         |
+| `-d`            | `--debug`                   | Outputs extra information (coming soon).                          |
+| `-s`            | `--save`                    | Save device infomation to text file: ~/boot-script/deviceinfo.txt |
 | `OwO`           | `OwO`                       | OwO                                                               |
 | `ssh`           | `ssh`                       | ssh into your device                                              |
-| `-s`            | `--save`                    | save device infomation to text file: ~/boot-script/deviceinfo.txt |
+| No Arguments    | No Arguments                | Run normally                                                      |
+
+*Cannot proccess more than one argument at a time at the moment*
 
 This script will ask for your user's password, this is not intended to be anything malicious and you can check the code yourself if you want
 
