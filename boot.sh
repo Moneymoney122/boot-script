@@ -58,7 +58,7 @@ else
 
 fi
 
-usage="Boot script by Moneymoney122 (@chandler_hacker)\nhttps://github.com/Moneymoney122/boot-script\nGNU Bourne Again SHell script (https://www.gnu.org/software/bash/)\nProudly written in gedit\n2022\n\nOptions:\n-h, --help or an invalid option: display this help menu\n-v, --version: print version information\n-d, --debug: output extra information (coming soon).\n-s, --save: save device information to file: ~/boot-script/deviceinfo.txt\nOwO: OwO\nssh: ssh into a root shell for your device, your device must be jailbroken and have OpenSSH installed.\nNo arguments: run normally\n***Cannot proccess more than one argument at a time at the moment***${NC}"
+usage="Boot script by Moneymoney122 (@chandler_hacker)\nhttps://github.com/Moneymoney122/boot-script\nSubmit/check currently submitted issues: https://github.com/Moneymoney122/boot-script/issues\nGNU Bourne Again SHell script (https://www.gnu.org/software/bash/)\nProudly written in gedit\n2022\n\nOptions:\n-h, --help or an invalid option: display this help menu\n-v, --version: print version information\n-d, --debug: output extra information (coming soon).\n-s, --save: save device information to file: ~/boot-script/deviceinfo.txt\nOwO: OwO\nssh: ssh into a root shell for your device, your device must be jailbroken and have OpenSSH installed.\nNo arguments: run normally\n***Cannot proccess more than one argument at a time at the moment***${NC}"
 
 Version="Version: $(date -d @$(git log -1 --format="%at") --rfc-3339=date)-$(git rev-parse HEAD | cut -c -7)"
 
