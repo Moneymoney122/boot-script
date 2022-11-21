@@ -580,6 +580,21 @@ done
 
 else
 
+unset CPID
+unset CPRV
+unset BDID
+unset ECID
+unset CPFM
+unset SCEP
+unset IBFL
+unset SRTG
+unset SRNM
+unset IMEI
+unset NONC
+unset SNON
+unset MODE
+unset PWND
+
 CPID=$(irecovery -q | grep CPID: | awk '{print $NF}')
 CPRV=$(irecovery -q | grep CPRV: | awk '{print $NF}')
 BDID=$(irecovery -q | grep BDID: | awk '{print $NF}')
@@ -601,17 +616,21 @@ Decimal=$(printf '%d\n' $ECID)
  
  SRTG="Not Available"
  
- fi
- 
- if [[ $SRNM == N/A ]]; then
+ elif [[ $SRNM == N/A ]]; then
  
  SRNM="Not Available"
  
- fi
- 
- if [[ $IMEI == N/A ]]; then
+ elif [[ $IMEI == N/A ]]; then
  
  IMEI="Not Available"
+ 
+ elif [[ $NONC == N/A ]]; then
+ 
+ NONC="Not Available"
+ 
+ elif [[ $SNON == N/A ]]; then
+ 
+ SNON="Not Available"
  
  fi
  
@@ -619,17 +638,17 @@ Decimal=$(printf '%d\n' $ECID)
     
  echo -e "Device found in DFU mode:\n"
     
- if test -n "$PWND"
+  if test -n "$PWND"
 
- then
+  then
 
- PWND="| Pwned: $PWND"
+  PWND="| Pwned: $PWND"
 
- else
+  else
 
- PWND="| Pwned: Not Pwned" 
+  PWND="| Pwned: Not Pwned" 
  
- fi
+  fi
 
  else
 
