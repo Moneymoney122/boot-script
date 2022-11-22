@@ -612,23 +612,23 @@ PWND=$(irecovery -q | grep PWND: | awk '{print $NF}')
 
 Decimal=$(printf '%d\n' $ECID)
 
- if [[ $SRTG == N/A ]]; then
+ if [[ "$SRTG" == N/A ]]; then
  
  SRTG="Not Available"
  
- elif [[ $SRNM == N/A ]]; then
+ elif [[ "$SRNM" == N/A ]]; then
  
  SRNM="Not Available"
  
- elif [[ $IMEI == N/A ]]; then
+ elif [[ "$IMEI" == N/A ]]; then
  
  IMEI="Not Available"
  
- elif [[ $NONC == N/A ]]; then
+ elif [[ "$NONC" == N/A ]]; then
  
  NONC="Not Available"
  
- elif [[ $SNON == N/A ]]; then
+ elif [[ "$SNON" == N/A ]]; then
  
  SNON="Not Available"
  
