@@ -167,7 +167,9 @@ then run `sudo bash ./boot.sh` instead
 
 ## Possible future updates:
 
-- None at the moment, I am open to ideas on what to add.
+- ~~None at the moment, I am open to ideas on what to add.~~
+
+- planning on making a version of this script written in python
 
 - This script is constantly being updated with new features.
 
