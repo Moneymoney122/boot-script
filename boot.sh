@@ -1025,7 +1025,7 @@ cd ~/ipwndfu/
 
 sudo ./ipwndfu -p --rmsigchecks
 
-cd -
+cd ~/boot-script/
 
 if [[ $? != 0 ]]; then
 
@@ -1057,7 +1057,7 @@ cd ~/gaster/
 
 sudo ./gaster pwn
 
-cd -
+cd ~/boot-script/
 
 if [[ $? != 0 ]]; then
 
