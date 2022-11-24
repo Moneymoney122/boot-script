@@ -227,7 +227,7 @@ echo -e  "${ICyan}$usage"
 fi
 exit ;;
 -s)
-echo -e "${ICyan}Device infomation will be saved to deviceinfo.txt in the boot-script directory.\nPlease ensure your device is connected to your computer.\n"
+echo -e "${ICyan}Device infomation will be saved to deviceinfo.txt in the boot-script directory.\nPlease ensure your device is in normal mode and connected to your computer.\n"
 
 while true; do
 read -p 'Do you want to save just basic info to the file or all info? (Or press Ctrl+C to cancel and exit). B/A: ' INPUT
@@ -282,7 +282,7 @@ exit
 done
 exit ;;
 --save)
-echo -e "${ICyan}Device infomation will be saved to deviceinfo.txt in the boot-script directory.\nPlease ensure your device is connected to your computer.\n"
+echo -e "${ICyan}Device infomation will be saved to deviceinfo.txt in the boot-script directory.\nPlease ensure your device is in normal mode and connected to your computer.\n"
 
 while true; do
 read -p 'Do you want to save just basic info to the file or all info? (Or press Ctrl+C to cancel and exit). B/A: ' INPUT
