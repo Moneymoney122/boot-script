@@ -853,6 +853,10 @@ echo -e "${ICyan}${line_length}"
 
 echo "$line_length"
 
+read -n 1 -s -r -p "----------------Press any key to continue (Or Ctrl+C to Exit)----------------"
+
+clear
+
 #cd into the folder with your boot files, change this command to cd into the folder with your boot files.
 echo -e "${ICyan}${line_length}"
 echo "Changing into the folder with your boot files..."
@@ -1045,8 +1049,7 @@ echo "$line_length"
         
           break
           ;;
-        [g]*) 
-cd ~/gaster/
+        [g]*)
 
 echo "Running the commands for gaster..."
 
