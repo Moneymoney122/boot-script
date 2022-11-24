@@ -33,10 +33,24 @@ On_Black='\033[40m'
 trap ctrl_c INT
 
 function ctrl_c() {
+        if [[ $(date "+%e %m") == "01 04" ]]; then
+ 
+        echo -e "\n\nlmao you thought you can exit"
+ 
+        sleep 3
+ 
+        echo -e "\nApril Fools!"
+ 
+        echo -e "$ICyan\nExiting...$NC"
+ 
+        exit 1
+ 
+        else
+      
         echo -e "$ICyan\nExiting...$NC"
         exit 1
+        fi
 }
-
 
 linelength=$(tput lines)
 
@@ -58,7 +72,7 @@ else
 
 fi
 
-usage="Boot script by Moneymoney122 (@chandler_hacker)\nhttps://github.com/Moneymoney122/boot-script\nSubmit/check currently submitted issues: https://github.com/Moneymoney122/boot-script/issues\nGNU Bourne Again SHell script (https://www.gnu.org/software/bash/)\nProudly written in gedit\n2022\n\nOptions:\n-h, --help or an invalid option: display this help menu\n-v, --version: print version information\n-d, --debug: output extra information (coming soon).\n-s, --save: save device information to file: ~/boot-script/deviceinfo.txt\nOwO: OwO\nssh: ssh into a root shell for your device, your device must be jailbroken and have OpenSSH installed.\nNo arguments: run normally\n***Cannot proccess more than one argument at a time at the moment***${NC}"
+usage="Boot script by Moneymoney122 (@chandler_hacker)\nhttps://github.com/Moneymoney122/boot-script\nSubmit/check currently submitted issues: https://github.com/Moneymoney122/boot-script/issues\nGNU Bourne Again SHell script (https://www.gnu.org/software/bash/)\nProudly written in gedit\n2022\n\nOptions:\n-h, --help or an invalid option: display this help menu\n-v, --version: print version information\n-d, --debug: output extra information (coming soon).\n-s, --save: save device information to file: ~/boot-script/deviceinfo.txt\nssh: ssh into a root shell for your device, your device must be jailbroken and have OpenSSH installed.\ncheckra1n: run the commands to jailbreak with checkra1n, the checkra1n executable must be in your home directory.\nOwO: OwO\nNo arguments: run normally\n***Cannot proccess more than one argument at a time at the moment***${NC}"
 
 Version="Version: $(date -d @$(git log -1 --format="%at") --rfc-3339=date)-$(git rev-parse HEAD | cut -c -7)"
 
@@ -150,6 +164,41 @@ echo -e "${ICyan}$usage"
 fi
 
 exit ;;
+checkra1n)
+echo -e -n "$ICyan"
+while true; do
+    read -p 'Do you want to run checkra1n in GUI or CLI mode (if your device is in DFU mode you will need to run checkra1n in CLI mode)? (Ctrl+C to exit ant any time). g/c: ' input
+    case $input in
+        [c]*)
+           read -p "Do you want to add any arguments to checkra1n? if yes then please type them here, if you don't know what these are or you don't want to add any then just press enter to leave this blank: " ARGUMENTS
+           echo -e "Running checkra1n in CLI mode. Please ensure your device is in DFU mode and that the checkra1n executable is in your home directory..."
+           echo "When checkra1n has finished please press Ctrl+C to exit checkra1n and exit this script" 
+           echo "$line_length"
+           echo "Searching for devices in DFU/Recovery mode..."
+           sudo irecovery -q
+           echo "$line_length"
+           echo -e "${NC}"
+           sudo ~/checkra1n -c $ARGUMENTS
+           break
+            ;;
+        [g]*)
+           echo "$line_length"   
+           read -p "Do you want to add any arguments to checkra1n? if yes then please type them here, if you don't know what these are or you don't want to add any then just press enter to leave this blank: " ARGUMENTS
+           echo -e "Running checkra1n in GUI mode. Please ensure your device is in normal or recovery mode and that the checkra1n executable is in your home directory..."
+           echo -e "When checkra1n has finished it should exit automatically and then the script will return to the jailbreak with checkra1n option\nso you can run checkra1n again if it failed or if you want to run it again, if it did not exit automatically then please press Ctrl+C to exit checkra1n and exit this script and then you can run the script again if you want to."
+           echo "$line_length"
+           read -n 1 -s -r -p "--------------Press any key to start checkra1n or Ctrl+C to Exit-----------"        
+           echo -e "$NC"
+           sudo ~/checkra1n $ARGUMENTS
+           echo -e "$ICyan"
+           break
+            ;;
+         *)
+            echo 'Invalid input' >&2
+    esac
+done
+echo -e "Exiting...$NC"
+exit ;;
 --help)
 echo "hello" | lolcat >/dev/null
  
@@ -178,12 +227,114 @@ echo -e  "${ICyan}$usage"
 fi
 exit ;;
 -s)
-chmod +x savedeviceinfotofile.sh
-./savedeviceinfotofile.sh
+echo -e "${ICyan}Device infomation will be saved to deviceinfo.txt in the boot-script directory.\nPlease ensure your device is connected to your computer.\n"
+
+while true; do
+read -p 'Do you want to save just basic info to the file or all info? (Or press Ctrl+C to cancel and exit). B/A: ' INPUT
+
+    case $INPUT in
+        [bB]*)
+       
+#get device info
+
+ActivationState=$(ideviceinfo | grep ActivationState: | awk '{print $NF}')
+DeviceName=$(ideviceinfo | grep DeviceName | awk '{print $NF}')
+UniqueDeviceID=$(ideviceinfo | grep UniqueDeviceID | awk '{print $NF}')
+SerialNumber=$(ideviceinfo | grep -w SerialNumber | awk '{print $NF}')
+ProductType=$(ideviceinfo | grep ProductType | awk '{print $NF}')
+ProductVersion=$(ideviceinfo | grep ProductVersion | awk '{print $NF}')
+UniqueChipID=$(ideviceinfo | grep UniqueChipID | awk '{print $NF}')
+HardwareModel=$(ideviceinfo | grep HardwareModel | awk '{print $NF}')
+CPUArchitecture=$(ideviceinfo | grep CPUArchitecture | awk '{print $NF}')
+HardwarePlatform=$(ideviceinfo | grep HardwarePlatform | awk '{print $NF}')
+
+Hex=$(printf '%x\n' $UniqueChipID)
+
+#save device info to file
+
+touch ~/boot-script/deviceinfo.txt
+
+echo "Activation State: $ActivationState Name: $DeviceName UDID: $UniqueDeviceID Serial Number: $SerialNumber iOS Version: $ProductVersion ECID (Decimal/Hexadecimal): $UniqueChipID / $Hex Model: $HardwareModel CPU Architecture: $CPUArchitecture Hardware Platform: $HardwarePlatform" > ~/boot-script/deviceinfo.txt
+
+echo -e "Done, your device infomation text file is located at ~/boot-script/deviceinfo.txt${NC}" 
+
+exit
+            ;;
+        [aA]*)
+
+#get device info 
+
+Deviceinfo=$(ideviceinfo)
+            
+touch ~/boot-script/deviceinfo.txt
+
+#save device info to file
+
+echo $Deviceinfo > ~/boot-script/deviceinfo.txt
+
+echo -e "Done, your device infomation text file is located at ~/boot-script/deviceinfo.txt${NC}"
+
+exit
+            ;;
+         *)
+            echo 'Invalid input' >&2
+    esac
+done
 exit ;;
 --save)
-chmod +x savedeviceinfotofile.sh
-./savedeviceinfotofile.sh
+echo -e "${ICyan}Device infomation will be saved to deviceinfo.txt in the boot-script directory.\nPlease ensure your device is connected to your computer.\n"
+
+while true; do
+read -p 'Do you want to save just basic info to the file or all info? (Or press Ctrl+C to cancel and exit). B/A: ' INPUT
+
+    case $INPUT in
+        [bB]*)
+       
+#get device info
+
+ActivationState=$(ideviceinfo | grep ActivationState: | awk '{print $NF}')
+DeviceName=$(ideviceinfo | grep DeviceName | awk '{print $NF}')
+UniqueDeviceID=$(ideviceinfo | grep UniqueDeviceID | awk '{print $NF}')
+SerialNumber=$(ideviceinfo | grep -w SerialNumber | awk '{print $NF}')
+ProductType=$(ideviceinfo | grep ProductType | awk '{print $NF}')
+ProductVersion=$(ideviceinfo | grep ProductVersion | awk '{print $NF}')
+UniqueChipID=$(ideviceinfo | grep UniqueChipID | awk '{print $NF}')
+HardwareModel=$(ideviceinfo | grep HardwareModel | awk '{print $NF}')
+CPUArchitecture=$(ideviceinfo | grep CPUArchitecture | awk '{print $NF}')
+HardwarePlatform=$(ideviceinfo | grep HardwarePlatform | awk '{print $NF}')
+
+Hex=$(printf '%x\n' $UniqueChipID)
+
+#save device info to file
+
+touch ~/boot-script/deviceinfo.txt
+
+echo "Activation State: $ActivationState Name: $DeviceName UDID: $UniqueDeviceID Serial Number: $SerialNumber iOS Version: $ProductVersion ECID (Decimal/Hexadecimal): $UniqueChipID / $Hex Model: $HardwareModel CPU Architecture: $CPUArchitecture Hardware Platform: $HardwarePlatform" > ~/boot-script/deviceinfo.txt
+
+echo -e "Done, your device infomation text file is located at ~/boot-script/deviceinfo.txt${NC}" 
+
+exit
+            ;;
+        [aA]*)
+
+#get device info 
+
+Deviceinfo=$(ideviceinfo)
+            
+touch ~/boot-script/deviceinfo.txt
+
+#save device info to file
+
+echo $Deviceinfo > ~/boot-script/deviceinfo.txt
+
+echo -e "Done, your device infomation text file is located at ~/boot-script/deviceinfo.txt${NC}"
+
+exit
+            ;;
+         *)
+            echo 'Invalid input' >&2
+    esac
+done
 exit ;;
 -v)
 echo -e "${ICyan}Boot-script by Moneymoney122\nhttps://github.com/Moneymoney122/boot-script\n\n${Version}${NC}"
@@ -263,7 +414,7 @@ echo "if you have any issues with this script please read the README.md file inc
 echo "$line_length"
 echo "if you see any commands in quotes and you want to run them then please copy the commands without the quotes and then run them."
 echo "$line_length"
-echo "this script will be changing directory into the folder with your boot files, please change this command to match the name of the folder with your boot files by opening this script with a text editor and editing the command on line 727, if you have not already."
+echo "this script will be changing directory into the folder with your boot files, please change this command to match the name of the folder with your boot files by opening this script with a text editor and pressing Ctrl+F to search for \"cd into the folder with your boot files\" and changing the cd command to match the location of your boot files, if you have not already."
 echo "$line_length"
 echo "please ensure that the ipwndfu and gaster folders are in the home directory and that python2 is installed before continuing,"
 echo "$line_length"
@@ -439,16 +590,14 @@ echo $MACH
 
 echo "$line_length"
 
-echo "Please connect your device now..."
+echo -e -n "Please connect your device now"
 
 sleep 3
 
-echo "$line_length"
-
-echo "Searching for devices in normal mode..."
+echo "    Searching for devices in normal mode..."
 
 ActivationState=$(ideviceinfo | grep ActivationState: | awk '{print $NF}')
-DeviceName=$(ideviceinfo | grep DeviceName | awk '{print $NF}')
+DeviceName=$(ideviceinfo | grep DeviceName | cut -d " " -f2-)
 UniqueDeviceID=$(ideviceinfo | grep UniqueDeviceID | awk '{print $NF}')
 SerialNumber=$(ideviceinfo | grep -w SerialNumber | awk '{print $NF}')
 ProductType=$(ideviceinfo | grep ProductType | awk '{print $NF}')
@@ -522,7 +671,7 @@ unset HardwarePlatform
 sleep 1
 
 ActivationState=$(ideviceinfo | grep ActivationState: | awk '{print $NF}')
-DeviceName=$(ideviceinfo | grep DeviceName | awk '{print $NF}')
+DeviceName=$(ideviceinfo | grep DeviceName | cut -d " " -f2-)
 UniqueDeviceID=$(ideviceinfo | grep UniqueDeviceID | awk '{print $NF}')
 SerialNumber=$(ideviceinfo | grep -w SerialNumber | awk '{print $NF}')
 ProductType=$(ideviceinfo | grep ProductType | awk '{print $NF}')
@@ -563,9 +712,8 @@ else
       echo -e "${line_length}${IGreen}"
       echo -e "Device found in normal mode, not going to search for devices in DFU/Recovery mode:\n"
       echo -e "${IGreen}Serial Number: $SerialNumber | Device: $ProductType | Firmware: $ProductVersion | UDID: $UniqueDeviceID\n"
-      echo "Name: $DeviceName | Activation State: $ActivationState | ECID (Decimal/Hexadecimal): $UniqueChipID / $Hex | Board ID: $HardwareModel"
-      echo -e "\nCPU Arch: $CPUArchitecture | Hardware Platform: ${HardwarePlatform}${ICyan}"  
-
+      echo -e -n "Name: $DeviceName | Activation State: $ActivationState | ECID (Decimal/Hexadecimal): $UniqueChipID / $Hex\n\nBoard ID: $HardwareModel "
+      echo -e "| CPU Arch: $CPUArchitecture | Hardware Platform: ${HardwarePlatform}${ICyan}"
 fi            
             break
             ;;
@@ -663,12 +811,13 @@ Decimal=$(printf '%d\n' $ECID)
  fi
 
 else
+  
       echo -e "${line_length}${IGreen}"
       echo -e "Device found in normal mode, not going to search for devices in DFU/Recovery mode:\n"
       echo -e "${IGreen}Serial Number: $SerialNumber | Device: $ProductType | Firmware: $ProductVersion | UDID: $UniqueDeviceID\n"
-      echo "Name: $DeviceName | Activation State: $ActivationState | ECID (Decimal/Hexadecimal): $UniqueChipID / $Hex | Board ID: $HardwareModel"
-      echo -e "\nCPU Arch: $CPUArchitecture | Hardware Platform: ${HardwarePlatform}${ICyan}"
-
+      echo -e -n "Name: $DeviceName | Activation State: $ActivationState | ECID (Decimal/Hexadecimal): $UniqueChipID / $Hex\n\nBoard ID: $HardwareModel "
+      echo -e "| CPU Arch: $CPUArchitecture | Hardware Platform: ${HardwarePlatform}${ICyan}"
+      
 #why did i write this all out manually...
 
 ProductType=$(ideviceinfo | grep ProductType | awk '{print $NF}')
@@ -703,54 +852,6 @@ echo -e "${ICyan}${line_length}"
     fi
 
 echo "$line_length"
-
-while true; do
-    read -p 'Do you want to jailbreak with checkra1n? yes/no: ' input
-    case $input in
-        [yY]*)
-
-while true; do
-    read -p 'Do you want to run checkra1n in GUI or CLI mode (if your device is in DFU mode you will need to run checkra1n in CLI mode)? g/c: ' input
-    case $input in
-        [c]*)
-           read -p "Do you want to add any arguments to checkra1n? if yes then please type them here, if you don't know what these are or you don't want to add any then just press enter to leave this blank: " ARGUMENTS
-           echo -e "Running checkra1n in CLI mode. Please ensure your device is in DFU mode and that the checkra1n executable is in your home directory..."
-           echo "When checkra1n has finished please press Ctrl+C to exit checkra1n and exit this script" 
-           echo "$line_length"
-           echo "Searching for devices in DFU/Recovery mode..."
-           sudo irecovery -q
-           echo "$line_length"
-           echo -e "${NC}"
-           sudo ~/checkra1n -c $ARGUMENTS
-           break
-            ;;
-        [g]*)
-           echo "$line_length"   
-           read -p "Do you want to add any arguments to checkra1n? if yes then please type them here, if you don't know what these are or you don't want to add any then just press enter to leave this blank: " ARGUMENTS
-           echo -e "Running checkra1n in GUI mode. Please ensure your device is in normal or recovery mode and that the checkra1n executable is in your home directory..."
-           echo -e "When checkra1n has finished it should exit automatically and then the script will return to the jailbreak with checkra1n option\nso you can run checkra1n again if it failed or if you want to run it again, if it did not exit automatically then please press Ctrl+C to exit checkra1n and exit this script and then you can run the script again if you want to."
-           echo "$line_length"
-           read -n 1 -s -r -p "--------------Press any key to start checkra1n or Ctrl+C to Exit-----------"        
-           echo -e "$NC"
-           sudo ~/checkra1n $ARGUMENTS
-           echo -e "$ICyan"
-           break
-            ;;
-         *)
-            echo 'Invalid input' >&2
-    esac
-done
-            ;;
-        [nN]*)
-            echo "Skipping..."
-            sleep 1
-            clear
-            break
-            ;;
-         *)
-            echo 'Invalid input' >&2
-    esac
-done
 
 #cd into the folder with your boot files, change this command to cd into the folder with your boot files.
 echo -e "${ICyan}${line_length}"
@@ -916,7 +1017,11 @@ cd ~/ipwndfu/
 
 echo "Running the commands for ipwndfu A8/A9..."
 
-sudo python2.7 ./ipwndfu -p --rmsigchecks
+cd ~/ipwndfu/
+
+sudo ./ipwndfu -p --rmsigchecks
+
+cd -
 
 if [[ $? != 0 ]]; then
 
@@ -945,7 +1050,11 @@ cd ~/gaster/
 
 echo "Running the commands for gaster..."
 
-./gaster pwn
+cd ~/gaster/
+
+sudo ./gaster pwn
+
+cd -
 
 if [[ $? != 0 ]]; then
 
