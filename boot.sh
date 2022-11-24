@@ -1014,11 +1014,6 @@ while true; do
     read -p 'Do you want to use ipwndfu or gaster to pwn your device, or is your device already done being pwned? i/g/d: ' input
     case $input in
         [i]*)
-
-echo "Changing into the ipwndfu directory..."
-
-cd ~/ipwndfu/
-
 echo "Running the commands for ipwndfu A8/A9..."
 
 cd ~/ipwndfu/
@@ -1039,8 +1034,6 @@ exit 1
 
 fi
 
-cd ~/boot-script/
-
 echo "$line_length"
         
           break
@@ -1053,7 +1046,7 @@ cd ~/gaster/
 
 sudo ./gaster pwn
 
-cd ~/boot-script/
+cd -
 
 if [[ $? != 0 ]]; then
 
