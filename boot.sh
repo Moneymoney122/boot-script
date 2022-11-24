@@ -1025,7 +1025,7 @@ cd ~/ipwndfu/
 
 sudo ./ipwndfu -p --rmsigchecks
 
-cd ~/boot-script/
+cd -
 
 if [[ $? != 0 ]]; then
 
@@ -1039,11 +1039,7 @@ exit 1
 
 fi
 
-echo "$line_length"
-
-echo "Changing back into the directory with the boot files..."
-
-cd -
+cd ~/boot-script/
 
 echo "$line_length"
         
@@ -1070,10 +1066,7 @@ cd ~/boot-script/
 exit 1
 
 fi
-
-echo "Changing back into the directory with the boot files..."
-
-cd -          
+        
           break
           ;;
           [d]*)
