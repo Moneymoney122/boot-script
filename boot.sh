@@ -72,7 +72,7 @@ else
 
 fi
 
-usage="Boot script by Moneymoney122 (@chandler_hacker)\nhttps://github.com/Moneymoney122/boot-script\nSubmit/check currently submitted issues: https://github.com/Moneymoney122/boot-script/issues\nGNU Bourne Again SHell script (https://www.gnu.org/software/bash/)\nProudly written in gedit\n2022\n\nOptions:\n-h, --help or an invalid option: display this help menu\n-v, --version: print version information\n-d, --debug: output extra information (coming soon).\n-s, --save: save device information to file: ~/boot-script/deviceinfo.txt\nssh: ssh into a root shell for your device, your device must be jailbroken and have OpenSSH installed.\ncheckra1n: run the commands to jailbreak with checkra1n, the checkra1n executable must be in your home directory.\nOwO: OwO\nNo arguments: run normally\n***Cannot proccess more than one argument at a time at the moment***${NC}"
+usage="Boot script by Moneymoney122 (@chandler_hacker)\nhttps://github.com/Moneymoney122/boot-script\nSubmit/check currently submitted issues: https://github.com/Moneymoney122/boot-script/issues\nGNU Bourne Again SHell script (https://www.gnu.org/software/bash/)\nProudly written in gedit\n2022\n\nUsage: ./boot.sh [Options]\n\nOptions:\n-h, --help or an invalid option: display this help menu\n-v, --version: print version information\n-d, --debug: output extra information (coming soon).\n-s, --save: save device information to file: ~/boot-script/deviceinfo.txt\nssh: ssh into a root shell for your device, your device must be jailbroken and have OpenSSH installed.\ncheckra1n: run the commands to jailbreak with checkra1n, the checkra1n executable must be in your home directory.\nOwO: OwO\n${line_length}\nNo options: run normally\n***Cannot proccess more than one argument at a time at the moment***${NC}"
 
 Version="Version: $(date -d @$(git log -1 --format="%at") +%d-%m-%Y) (DD-MM-YYYY) $(git rev-parse HEAD | cut -c -7) Stable Release"
 
@@ -83,7 +83,7 @@ terminalcols=$(tput cols)
 
 if [[ $terminallines -lt 24 ]]; then
 
-echo -e "${ICyan}Terminal size is ${terminallines}x${terminalcols}, it is recommended that you make you make your terminal larger."
+echo -e "${ICyan}Terminal size is ${terminallines}x${terminalcols}, it is recommended that you make you make your terminal larger.\n(Recommended size is 80x24)"
 
 sleep 3
 
@@ -97,7 +97,7 @@ if [[ $terminalcols -lt 80 ]]; then
 
  then
 
- echo -e "${ICyan}Terminal size is ${terminallines}x${terminalcols}, it is recommended that you make you make your terminal larger."
+ echo -e "${ICyan}Terminal size is ${terminallines}x${terminalcols}, it is recommended that you make you make your terminal larger.\n(Recommended size is 80x24)"
 
  sleep 3
  
