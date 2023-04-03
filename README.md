@@ -78,7 +78,7 @@ And then run:
 
 
 
-- or all of them: `chmod +x boot.sh test-boot.sh old-boot.sh` 
+- or all of them: `chmod +x *.sh` 
 
 --------------------------------------------------------------------------
 
